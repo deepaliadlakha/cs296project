@@ -106,6 +106,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="cs296::Sci" -->
+<p>This class implements the functionality of the scissors.  
+ <a href="classcs296_1_1_sci.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>&gt;</code></p>
 
 <p><a href="classcs296_1_1_sci-members.html">List of all members.</a></p>
@@ -113,15 +116,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1_sci.html#a5b380b19e4db32ed4e78c2e613175f91">Sci</a> (b2World *m_world, b2Joint *mj, b2Joint *j1, b2Joint *j2)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor takes the joints to be destroyed upon contact as parameters.  <a href="#a5b380b19e4db32ed4e78c2e613175f91"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1_sci.html#a9bc1fe26349122a05c1e88e8d3bfb042">startContact</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1_sci.html#ad40e5ca93435fa380a01c125eb6d4f86">endContact</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is called whenever the scissors comes in contact with a dynamic body.  <a href="#a9bc1fe26349122a05c1e88e8d3bfb042"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">b2World *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1_sci.html#a571a791ea3e7435bb9bb4d91f475ad0e">world</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores the world in which the scissors have to be created.  <a href="#a571a791ea3e7435bb9bb4d91f475ad0e"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00039">39</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<div class="textblock"><p>This class implements the functionality of the scissors. </p>
+
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00041">41</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a5b380b19e4db32ed4e78c2e613175f91"></a><!-- doxytag: member="cs296::Sci::Sci" ref="a5b380b19e4db32ed4e78c2e613175f91" args="(b2World *m_world, b2Joint *mj, b2Joint *j1, b2Joint *j2)" -->
 <div class="memitem">
@@ -160,9 +166,11 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00031">31</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
+<p>Constructor takes the joints to be destroyed upon contact as parameters. </p>
+
+<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00032">32</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">                                                               {
-        <a class="code" href="classcs296_1_1_sci.html#a571a791ea3e7435bb9bb4d91f475ad0e">world</a>=m_world;
+        <a class="code" href="classcs296_1_1_sci.html#a571a791ea3e7435bb9bb4d91f475ad0e" title="Stores the world in which the scissors have to be created.">world</a>=m_world;
         <a class="code" href="cs296__base_8cpp.html#a0ab6eca2278214e153302032d8c274d3">ja</a>=mj;
         <a class="code" href="cs296__base_8cpp.html#a75004ea73f1a07243fec10e13a1464c0">jb</a>=j1;
         <a class="code" href="cs296__base_8cpp.html#a4fc009f21b49ef03479d84c2604a60ea">jc</a>=j2;
@@ -212,22 +220,6 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="ad40e5ca93435fa380a01c125eb6d4f86"></a><!-- doxytag: member="cs296::Sci::endContact" ref="ad40e5ca93435fa380a01c125eb6d4f86" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="classcs296_1_1_sci.html#ad40e5ca93435fa380a01c125eb6d4f86">cs296::Sci::endContact</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="a9bc1fe26349122a05c1e88e8d3bfb042"></a><!-- doxytag: member="cs296::Sci::startContact" ref="a9bc1fe26349122a05c1e88e8d3bfb042" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -242,7 +234,9 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00078">78</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
+<p>This function is called whenever the scissors comes in contact with a dynamic body. </p>
+
+<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00079">79</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">                          { 
         <span class="keywordflow">if</span> (<a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>!=2){
             <a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>=1;
@@ -266,7 +260,9 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00042">42</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Stores the world in which the scissors have to be created. </p>
+
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00045">45</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -292,7 +288,7 @@ Private Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 10 2013 00:27:18 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 10 2013 01:28:26 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

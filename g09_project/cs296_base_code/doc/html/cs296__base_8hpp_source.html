@@ -102,7 +102,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00020"></a>00020 <span class="comment"> * Base code for CS 296 Software Systems Lab </span>
 <a name="l00021"></a>00021 <span class="comment"> * Department of Computer Science and Engineering, IIT Bombay</span>
 <a name="l00022"></a>00022 <span class="comment"> * Instructor: Parag Chaudhuri</span>
-<a name="l00023"></a>00023 <span class="comment"> */</span>
+<a name="l00023"></a>00023 <span class="comment">*/</span>
 <a name="l00024"></a>00024 
 <a name="l00025"></a>00025 
 <a name="l00026"></a>00026 <span class="preprocessor">#ifndef _CS296BASE_HPP_</span>
@@ -118,191 +118,192 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00036"></a>00036 <span class="preprocessor"></span>
 <a name="l00037"></a>00037 <span class="keyword">namespace </span>cs296
 <a name="l00038"></a>00038 {
-<a name="l00039"></a><a class="code" href="classcs296_1_1_sci.html">00039</a>     <span class="keyword">class </span><a class="code" href="classcs296_1_1_sci.html">Sci</a>
-<a name="l00040"></a>00040     {
-<a name="l00041"></a>00041         <span class="keyword">private</span>:
-<a name="l00042"></a><a class="code" href="classcs296_1_1_sci.html#a571a791ea3e7435bb9bb4d91f475ad0e">00042</a>         b2World* <a class="code" href="classcs296_1_1_sci.html#a571a791ea3e7435bb9bb4d91f475ad0e">world</a>;
-<a name="l00043"></a>00043     
-<a name="l00044"></a>00044     
-<a name="l00045"></a>00045         <span class="keyword">public</span>:
-<a name="l00046"></a>00046         <a class="code" href="classcs296_1_1_sci.html">Sci</a>(b2World* m_world, b2Joint* mj, b2Joint* j1, b2Joint* j2);
-<a name="l00047"></a>00047         <span class="keywordtype">void</span> startContact();
-<a name="l00048"></a>00048         <span class="keywordtype">void</span> endContact();
-<a name="l00049"></a>00049     };
-<a name="l00050"></a>00050 
-<a name="l00051"></a><a class="code" href="classcs296_1_1_my_contact_listener.html">00051</a>     <span class="keyword">class </span><a class="code" href="classcs296_1_1_my_contact_listener.html">MyContactListener</a> : <span class="keyword">public</span> b2ContactListener
-<a name="l00052"></a>00052       {
-<a name="l00053"></a><a class="code" href="classcs296_1_1_my_contact_listener.html#aea75d6039e88cbd4c59a3ea393dd5a7b">00053</a>         <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1_my_contact_listener.html#aea75d6039e88cbd4c59a3ea393dd5a7b">BeginContact</a>(b2Contact* contact) {
-<a name="l00054"></a>00054      
-<a name="l00055"></a>00055           <span class="keywordtype">void</span>* bodyUserData = contact-&gt;GetFixtureA()-&gt;GetBody()-&gt;GetUserData();
-<a name="l00056"></a>00056           <span class="keywordflow">if</span> ( bodyUserData )
-<a name="l00057"></a>00057         <span class="keyword">static_cast&lt;</span><a class="code" href="classcs296_1_1_sci.html">Sci</a>*<span class="keyword">&gt;</span>( bodyUserData )-&gt;startContact();
-<a name="l00058"></a>00058      
-<a name="l00059"></a>00059           bodyUserData = contact-&gt;GetFixtureB()-&gt;GetBody()-&gt;GetUserData();
-<a name="l00060"></a>00060           <span class="keywordflow">if</span> ( bodyUserData )
-<a name="l00061"></a>00061         <span class="keyword">static_cast&lt;</span><a class="code" href="classcs296_1_1_sci.html">Sci</a>*<span class="keyword">&gt;</span>( bodyUserData )-&gt;startContact();
+<a name="l00039"></a>00039 
+<a name="l00041"></a><a class="code" href="classcs296_1_1_sci.html">00041</a>     <span class="keyword">class </span><a class="code" href="classcs296_1_1_sci.html" title="This class implements the functionality of the scissors.">Sci</a>
+<a name="l00042"></a>00042     {
+<a name="l00043"></a>00043         <span class="keyword">private</span>:
+<a name="l00045"></a><a class="code" href="classcs296_1_1_sci.html#a571a791ea3e7435bb9bb4d91f475ad0e">00045</a>         b2World* <a class="code" href="classcs296_1_1_sci.html#a571a791ea3e7435bb9bb4d91f475ad0e" title="Stores the world in which the scissors have to be created.">world</a>;
+<a name="l00046"></a>00046     
+<a name="l00047"></a>00047     
+<a name="l00048"></a>00048         <span class="keyword">public</span>:
+<a name="l00050"></a>00050         <a class="code" href="classcs296_1_1_sci.html" title="This class implements the functionality of the scissors.">Sci</a>(b2World* m_world, b2Joint* mj, b2Joint* j1, b2Joint* j2);
+<a name="l00052"></a>00052         <span class="keywordtype">void</span> startContact();
+<a name="l00053"></a>00053     };
+<a name="l00054"></a>00054     
+<a name="l00055"></a>00055     
+<a name="l00057"></a><a class="code" href="classcs296_1_1_my_contact_listener.html">00057</a>     <span class="keyword">class </span><a class="code" href="classcs296_1_1_my_contact_listener.html" title="This class implements the Contact Listener attached to the scissors.">MyContactListener</a> : <span class="keyword">public</span> b2ContactListener
+<a name="l00058"></a>00058       {
+<a name="l00059"></a>00059       
+<a name="l00061"></a><a class="code" href="classcs296_1_1_my_contact_listener.html#aea75d6039e88cbd4c59a3ea393dd5a7b">00061</a>         <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1_my_contact_listener.html#aea75d6039e88cbd4c59a3ea393dd5a7b" title="This function is called whenever the listener listens to a contact(start of the contact).">BeginContact</a>(b2Contact* contact) {
 <a name="l00062"></a>00062      
-<a name="l00063"></a>00063         }
-<a name="l00064"></a>00064      
-<a name="l00065"></a><a class="code" href="classcs296_1_1_my_contact_listener.html#a4f89c82a136b2ed797e67e178040ccd6">00065</a>         <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1_my_contact_listener.html#a4f89c82a136b2ed797e67e178040ccd6">EndContact</a>(b2Contact* contact) {
-<a name="l00066"></a>00066         }
-<a name="l00067"></a>00067       };
-<a name="l00068"></a>00068 
-<a name="l00069"></a>00069 
-<a name="l00070"></a>00070       <span class="keyword">class </span>base_sim_t;
-<a name="l00071"></a>00071       <span class="keyword">struct </span>settings_t;
-<a name="l00072"></a><a class="code" href="namespacecs296.html#aee93dd0d9f162edd67d267ed9b778a21">00072</a>       <span class="keyword">typedef</span> <a class="code" href="classcs296_1_1base__sim__t.html">base_sim_t</a>* <a class="code" href="namespacecs296.html#aee93dd0d9f162edd67d267ed9b778a21">sim_create_fcn</a>(); 
-<a name="l00073"></a><a class="code" href="structcs296_1_1settings__t.html">00073</a>       <span class="keyword">struct </span><a class="code" href="structcs296_1_1settings__t.html">settings_t</a>
-<a name="l00074"></a>00074       {
-<a name="l00075"></a><a class="code" href="structcs296_1_1settings__t.html#a2234384faced62f706977d9a767b57e6">00075</a>           <a class="code" href="structcs296_1_1settings__t.html">settings_t</a>() :
-<a name="l00076"></a>00076           view_center(0.0f, 20.0f),
-<a name="l00077"></a>00077           hz(60.0f),
-<a name="l00078"></a>00078           velocity_iterations(8),
-<a name="l00079"></a>00079           position_iterations(3),
-<a name="l00080"></a>00080           draw_shapes(1),
-<a name="l00081"></a>00081           draw_joints(1),
-<a name="l00082"></a>00082           draw_AABBs(0),
-<a name="l00083"></a>00083           draw_pairs(0),
-<a name="l00084"></a>00084           draw_contact_points(0),
-<a name="l00085"></a>00085           draw_contact_normals(0),
-<a name="l00086"></a>00086           draw_contact_forces(0),
-<a name="l00087"></a>00087           draw_friction_forces(0),
-<a name="l00088"></a>00088           draw_COMs(0),
-<a name="l00089"></a>00089           draw_stats(0),
-<a name="l00090"></a>00090           draw_profile(0),
-<a name="l00091"></a>00091           enable_warm_starting(1),
-<a name="l00092"></a>00092           enable_continuous(1),
-<a name="l00093"></a>00093           enable_sub_stepping(0),
-<a name="l00094"></a>00094           pause(0),
-<a name="l00095"></a>00095           single_step(0),
-<a name="l00096"></a>00096           candidate(3)
-<a name="l00097"></a>00097         {}
-<a name="l00098"></a>00098         
-<a name="l00099"></a><a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">00099</a>         b2Vec2 <a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>;
-<a name="l00100"></a><a class="code" href="structcs296_1_1settings__t.html#a982922808e2e898eccf04d23a864262a">00100</a>         float32 <a class="code" href="structcs296_1_1settings__t.html#a982922808e2e898eccf04d23a864262a">hz</a>;
-<a name="l00101"></a><a class="code" href="structcs296_1_1settings__t.html#a59e5b6b0abd0fba1adb651062fc726b9">00101</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a59e5b6b0abd0fba1adb651062fc726b9">velocity_iterations</a>;
-<a name="l00102"></a><a class="code" href="structcs296_1_1settings__t.html#a50c25fb9a90a4d14ffa6f13ac437fa9c">00102</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a50c25fb9a90a4d14ffa6f13ac437fa9c">position_iterations</a>;
-<a name="l00103"></a><a class="code" href="structcs296_1_1settings__t.html#aa5eb936cebce9d821b324cf86e4d340e">00103</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#aa5eb936cebce9d821b324cf86e4d340e">draw_shapes</a>;
-<a name="l00104"></a><a class="code" href="structcs296_1_1settings__t.html#a58dbc9ac2a75f7a1dcf88e424a3f1941">00104</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a58dbc9ac2a75f7a1dcf88e424a3f1941">draw_joints</a>;
-<a name="l00105"></a><a class="code" href="structcs296_1_1settings__t.html#ac075d6fc3de075078642bdd4af4a1109">00105</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#ac075d6fc3de075078642bdd4af4a1109">draw_AABBs</a>;
-<a name="l00106"></a><a class="code" href="structcs296_1_1settings__t.html#aeecd3f0399fb4b72fa73e19cb0d24e72">00106</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#aeecd3f0399fb4b72fa73e19cb0d24e72">draw_pairs</a>;
-<a name="l00107"></a><a class="code" href="structcs296_1_1settings__t.html#a605757c75bae317fdaa69db12aaef8e1">00107</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a605757c75bae317fdaa69db12aaef8e1">draw_contact_points</a>;
-<a name="l00108"></a><a class="code" href="structcs296_1_1settings__t.html#add2bb8a39c6a7fe38e33e697adac2cfb">00108</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#add2bb8a39c6a7fe38e33e697adac2cfb">draw_contact_normals</a>;
-<a name="l00109"></a><a class="code" href="structcs296_1_1settings__t.html#a9dcb112dfb28ddf8c6d147341ce88f3b">00109</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a9dcb112dfb28ddf8c6d147341ce88f3b">draw_contact_forces</a>;
-<a name="l00110"></a><a class="code" href="structcs296_1_1settings__t.html#a6de00764f767b13d702d8646b3ea6b51">00110</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a6de00764f767b13d702d8646b3ea6b51">draw_friction_forces</a>;
-<a name="l00111"></a><a class="code" href="structcs296_1_1settings__t.html#a448ce0cd28cf5e2360b9320527c39f04">00111</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a448ce0cd28cf5e2360b9320527c39f04">draw_COMs</a>;
-<a name="l00112"></a><a class="code" href="structcs296_1_1settings__t.html#a87e46173b2610d0d930f60e7fe56d3c6">00112</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a87e46173b2610d0d930f60e7fe56d3c6">draw_stats</a>;
-<a name="l00113"></a><a class="code" href="structcs296_1_1settings__t.html#a9cd6535a21262d6022e4a2352c8eb0aa">00113</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a9cd6535a21262d6022e4a2352c8eb0aa">draw_profile</a>;
-<a name="l00114"></a><a class="code" href="structcs296_1_1settings__t.html#a110e7d9a76cadb3f6c3648da2af0105f">00114</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a110e7d9a76cadb3f6c3648da2af0105f">enable_warm_starting</a>;
-<a name="l00115"></a><a class="code" href="structcs296_1_1settings__t.html#adda79f6bb4df9a81ee807888fc728020">00115</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#adda79f6bb4df9a81ee807888fc728020">enable_continuous</a>;
-<a name="l00116"></a><a class="code" href="structcs296_1_1settings__t.html#a7a66327da13b169d6b1b9e08cc85a842">00116</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a7a66327da13b169d6b1b9e08cc85a842">enable_sub_stepping</a>;
-<a name="l00117"></a><a class="code" href="structcs296_1_1settings__t.html#a92b1c195ffb60a6d5dbf7cd4dd4e36ce">00117</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a92b1c195ffb60a6d5dbf7cd4dd4e36ce">pause</a>;
-<a name="l00118"></a><a class="code" href="structcs296_1_1settings__t.html#a5a643bd4484d116a5ef4f0adf6001cb9">00118</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a5a643bd4484d116a5ef4f0adf6001cb9">single_step</a>;
-<a name="l00119"></a><a class="code" href="structcs296_1_1settings__t.html#a3e85f2089f0b9529c95ae9e72a529d1a">00119</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a3e85f2089f0b9529c95ae9e72a529d1a">candidate</a>;
-<a name="l00120"></a>00120       };
-<a name="l00121"></a>00121       
-<a name="l00122"></a><a class="code" href="structcs296_1_1sim__t.html">00122</a>       <span class="keyword">struct </span><a class="code" href="structcs296_1_1sim__t.html">sim_t</a>
-<a name="l00123"></a>00123       { 
-<a name="l00124"></a>00124         
-<a name="l00125"></a>00125         
-<a name="l00126"></a><a class="code" href="structcs296_1_1sim__t.html#a53aad8202cf04343d42d436b97d3bee7">00126</a>         <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structcs296_1_1sim__t.html#a53aad8202cf04343d42d436b97d3bee7">name</a>;
-<a name="l00127"></a><a class="code" href="structcs296_1_1sim__t.html#a9df5092a72b8586338c0df1888c6cb75">00127</a>         <a class="code" href="namespacecs296.html#aee93dd0d9f162edd67d267ed9b778a21">sim_create_fcn</a> *<a class="code" href="structcs296_1_1sim__t.html#a9df5092a72b8586338c0df1888c6cb75">create_fcn</a>;
-<a name="l00128"></a>00128 
-<a name="l00129"></a><a class="code" href="structcs296_1_1sim__t.html#a49445804d94e6426f449d8837f92a35d">00129</a>         <a class="code" href="structcs296_1_1sim__t.html">sim_t</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *_name, <a class="code" href="namespacecs296.html#aee93dd0d9f162edd67d267ed9b778a21">sim_create_fcn</a> *_create_fcn): 
-<a name="l00130"></a>00130           name(_name), create_fcn(_create_fcn) {;}
-<a name="l00131"></a>00131           
-<a name="l00132"></a>00132           
-<a name="l00133"></a>00133       };
-<a name="l00134"></a>00134       
-<a name="l00135"></a>00135       <span class="keyword">extern</span> sim_t *<a class="code" href="namespacecs296.html#a6a02c1b92c2165c5e723308bcb9c340c">sim</a>;
-<a name="l00136"></a>00136       
-<a name="l00137"></a>00137       
-<a name="l00138"></a><a class="code" href="namespacecs296.html#a77cb0ad2f719557bd95ee4c73cecc689">00138</a>       <span class="keyword">const</span> int32 <a class="code" href="namespacecs296.html#a77cb0ad2f719557bd95ee4c73cecc689">k_max_contact_points</a> = 2048;  
-<a name="l00139"></a><a class="code" href="structcs296_1_1contact__point__t.html">00139</a>       <span class="keyword">struct </span><a class="code" href="structcs296_1_1contact__point__t.html">contact_point_t</a>
-<a name="l00140"></a>00140       {
-<a name="l00141"></a><a class="code" href="structcs296_1_1contact__point__t.html#a000a2a4a158ce28da866c85d79c6fe9a">00141</a>         b2Fixture* <a class="code" href="structcs296_1_1contact__point__t.html#a000a2a4a158ce28da866c85d79c6fe9a">fixtureA</a>;
-<a name="l00142"></a><a class="code" href="structcs296_1_1contact__point__t.html#ad082627540532f27a6324548072c96f4">00142</a>         b2Fixture* <a class="code" href="structcs296_1_1contact__point__t.html#ad082627540532f27a6324548072c96f4">fixtureB</a>;
-<a name="l00143"></a><a class="code" href="structcs296_1_1contact__point__t.html#a991f256c48c67589ddba7f59f2bcb078">00143</a>         b2Vec2 <a class="code" href="structcs296_1_1contact__point__t.html#a991f256c48c67589ddba7f59f2bcb078">normal</a>;
-<a name="l00144"></a><a class="code" href="structcs296_1_1contact__point__t.html#a5ef7408b315030cec9bf687eedb8d6e7">00144</a>         b2Vec2 <a class="code" href="structcs296_1_1contact__point__t.html#a5ef7408b315030cec9bf687eedb8d6e7">position</a>;
-<a name="l00145"></a><a class="code" href="structcs296_1_1contact__point__t.html#a9e5734ab797b941b47ba7e1eac063bcc">00145</a>         b2PointState <a class="code" href="structcs296_1_1contact__point__t.html#a9e5734ab797b941b47ba7e1eac063bcc">state</a>;
-<a name="l00146"></a>00146       };
-<a name="l00147"></a>00147       
-<a name="l00148"></a><a class="code" href="classcs296_1_1base__sim__t.html">00148</a>       <span class="keyword">class </span><a class="code" href="classcs296_1_1base__sim__t.html">base_sim_t</a> : <span class="keyword">public</span> b2ContactListener
+<a name="l00063"></a>00063           <span class="keywordtype">void</span>* bodyUserData = contact-&gt;GetFixtureA()-&gt;GetBody()-&gt;GetUserData();
+<a name="l00064"></a>00064           <span class="keywordflow">if</span> ( bodyUserData )
+<a name="l00065"></a>00065         <span class="keyword">static_cast&lt;</span><a class="code" href="classcs296_1_1_sci.html" title="This class implements the functionality of the scissors.">Sci</a>*<span class="keyword">&gt;</span>( bodyUserData )-&gt;startContact();
+<a name="l00066"></a>00066      
+<a name="l00067"></a>00067           bodyUserData = contact-&gt;GetFixtureB()-&gt;GetBody()-&gt;GetUserData();
+<a name="l00068"></a>00068           <span class="keywordflow">if</span> ( bodyUserData )
+<a name="l00069"></a>00069         <span class="keyword">static_cast&lt;</span><a class="code" href="classcs296_1_1_sci.html" title="This class implements the functionality of the scissors.">Sci</a>*<span class="keyword">&gt;</span>( bodyUserData )-&gt;startContact();
+<a name="l00070"></a>00070      
+<a name="l00071"></a>00071         }
+<a name="l00073"></a><a class="code" href="classcs296_1_1_my_contact_listener.html#a4f89c82a136b2ed797e67e178040ccd6">00073</a>         <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1_my_contact_listener.html#a4f89c82a136b2ed797e67e178040ccd6" title="This function is called whenever the listener listens to a contact(end of the contact).">EndContact</a>(b2Contact* contact) {
+<a name="l00074"></a>00074         }
+<a name="l00075"></a>00075       };
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078       <span class="keyword">class </span>base_sim_t;
+<a name="l00079"></a>00079       <span class="keyword">struct </span>settings_t;
+<a name="l00080"></a><a class="code" href="namespacecs296.html#aee93dd0d9f162edd67d267ed9b778a21">00080</a>       <span class="keyword">typedef</span> <a class="code" href="classcs296_1_1base__sim__t.html" title="This class implements the contact listener(for general use).">base_sim_t</a>* <a class="code" href="namespacecs296.html#aee93dd0d9f162edd67d267ed9b778a21">sim_create_fcn</a>(); 
+<a name="l00082"></a><a class="code" href="structcs296_1_1settings__t.html">00082</a>       <span class="keyword">struct </span><a class="code" href="structcs296_1_1settings__t.html" title="This class implements all the calculations corresponding to physical laws.">settings_t</a>
+<a name="l00083"></a>00083       {
+<a name="l00084"></a><a class="code" href="structcs296_1_1settings__t.html#a2234384faced62f706977d9a767b57e6">00084</a>           <a class="code" href="structcs296_1_1settings__t.html" title="This class implements all the calculations corresponding to physical laws.">settings_t</a>() :
+<a name="l00085"></a>00085           view_center(0.0f, 20.0f),
+<a name="l00086"></a>00086           hz(60.0f),
+<a name="l00087"></a>00087           velocity_iterations(8),
+<a name="l00088"></a>00088           position_iterations(3),
+<a name="l00089"></a>00089           draw_shapes(1),
+<a name="l00090"></a>00090           draw_joints(1),
+<a name="l00091"></a>00091           draw_AABBs(0),
+<a name="l00092"></a>00092           draw_pairs(0),
+<a name="l00093"></a>00093           draw_contact_points(0),
+<a name="l00094"></a>00094           draw_contact_normals(0),
+<a name="l00095"></a>00095           draw_contact_forces(0),
+<a name="l00096"></a>00096           draw_friction_forces(0),
+<a name="l00097"></a>00097           draw_COMs(0),
+<a name="l00098"></a>00098           draw_stats(0),
+<a name="l00099"></a>00099           draw_profile(0),
+<a name="l00100"></a>00100           enable_warm_starting(1),
+<a name="l00101"></a>00101           enable_continuous(1),
+<a name="l00102"></a>00102           enable_sub_stepping(0),
+<a name="l00103"></a>00103           pause(0),
+<a name="l00104"></a>00104           single_step(0),
+<a name="l00105"></a>00105           candidate(3)
+<a name="l00106"></a>00106         {}
+<a name="l00107"></a>00107         
+<a name="l00108"></a><a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">00108</a>         b2Vec2 <a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>;
+<a name="l00109"></a><a class="code" href="structcs296_1_1settings__t.html#a982922808e2e898eccf04d23a864262a">00109</a>         float32 <a class="code" href="structcs296_1_1settings__t.html#a982922808e2e898eccf04d23a864262a">hz</a>;
+<a name="l00110"></a><a class="code" href="structcs296_1_1settings__t.html#a59e5b6b0abd0fba1adb651062fc726b9">00110</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a59e5b6b0abd0fba1adb651062fc726b9">velocity_iterations</a>;
+<a name="l00111"></a><a class="code" href="structcs296_1_1settings__t.html#a50c25fb9a90a4d14ffa6f13ac437fa9c">00111</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a50c25fb9a90a4d14ffa6f13ac437fa9c">position_iterations</a>;
+<a name="l00112"></a><a class="code" href="structcs296_1_1settings__t.html#aa5eb936cebce9d821b324cf86e4d340e">00112</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#aa5eb936cebce9d821b324cf86e4d340e">draw_shapes</a>;
+<a name="l00113"></a><a class="code" href="structcs296_1_1settings__t.html#a58dbc9ac2a75f7a1dcf88e424a3f1941">00113</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a58dbc9ac2a75f7a1dcf88e424a3f1941">draw_joints</a>;
+<a name="l00114"></a><a class="code" href="structcs296_1_1settings__t.html#ac075d6fc3de075078642bdd4af4a1109">00114</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#ac075d6fc3de075078642bdd4af4a1109">draw_AABBs</a>;
+<a name="l00115"></a><a class="code" href="structcs296_1_1settings__t.html#aeecd3f0399fb4b72fa73e19cb0d24e72">00115</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#aeecd3f0399fb4b72fa73e19cb0d24e72">draw_pairs</a>;
+<a name="l00116"></a><a class="code" href="structcs296_1_1settings__t.html#a605757c75bae317fdaa69db12aaef8e1">00116</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a605757c75bae317fdaa69db12aaef8e1">draw_contact_points</a>;
+<a name="l00117"></a><a class="code" href="structcs296_1_1settings__t.html#add2bb8a39c6a7fe38e33e697adac2cfb">00117</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#add2bb8a39c6a7fe38e33e697adac2cfb">draw_contact_normals</a>;
+<a name="l00118"></a><a class="code" href="structcs296_1_1settings__t.html#a9dcb112dfb28ddf8c6d147341ce88f3b">00118</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a9dcb112dfb28ddf8c6d147341ce88f3b">draw_contact_forces</a>;
+<a name="l00119"></a><a class="code" href="structcs296_1_1settings__t.html#a6de00764f767b13d702d8646b3ea6b51">00119</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a6de00764f767b13d702d8646b3ea6b51">draw_friction_forces</a>;
+<a name="l00120"></a><a class="code" href="structcs296_1_1settings__t.html#a448ce0cd28cf5e2360b9320527c39f04">00120</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a448ce0cd28cf5e2360b9320527c39f04">draw_COMs</a>;
+<a name="l00121"></a><a class="code" href="structcs296_1_1settings__t.html#a87e46173b2610d0d930f60e7fe56d3c6">00121</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a87e46173b2610d0d930f60e7fe56d3c6">draw_stats</a>;
+<a name="l00122"></a><a class="code" href="structcs296_1_1settings__t.html#a9cd6535a21262d6022e4a2352c8eb0aa">00122</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a9cd6535a21262d6022e4a2352c8eb0aa">draw_profile</a>;
+<a name="l00123"></a><a class="code" href="structcs296_1_1settings__t.html#a110e7d9a76cadb3f6c3648da2af0105f">00123</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a110e7d9a76cadb3f6c3648da2af0105f">enable_warm_starting</a>;
+<a name="l00124"></a><a class="code" href="structcs296_1_1settings__t.html#adda79f6bb4df9a81ee807888fc728020">00124</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#adda79f6bb4df9a81ee807888fc728020">enable_continuous</a>;
+<a name="l00125"></a><a class="code" href="structcs296_1_1settings__t.html#a7a66327da13b169d6b1b9e08cc85a842">00125</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a7a66327da13b169d6b1b9e08cc85a842">enable_sub_stepping</a>;
+<a name="l00126"></a><a class="code" href="structcs296_1_1settings__t.html#a92b1c195ffb60a6d5dbf7cd4dd4e36ce">00126</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a92b1c195ffb60a6d5dbf7cd4dd4e36ce">pause</a>;
+<a name="l00127"></a><a class="code" href="structcs296_1_1settings__t.html#a5a643bd4484d116a5ef4f0adf6001cb9">00127</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a5a643bd4484d116a5ef4f0adf6001cb9">single_step</a>;
+<a name="l00128"></a><a class="code" href="structcs296_1_1settings__t.html#a3e85f2089f0b9529c95ae9e72a529d1a">00128</a>         int32 <a class="code" href="structcs296_1_1settings__t.html#a3e85f2089f0b9529c95ae9e72a529d1a">candidate</a>;
+<a name="l00129"></a>00129       };
+<a name="l00130"></a>00130       
+<a name="l00131"></a><a class="code" href="structcs296_1_1sim__t.html">00131</a>       <span class="keyword">struct </span><a class="code" href="structcs296_1_1sim__t.html">sim_t</a>
+<a name="l00132"></a>00132       { 
+<a name="l00133"></a>00133         
+<a name="l00134"></a>00134         
+<a name="l00135"></a><a class="code" href="structcs296_1_1sim__t.html#a53aad8202cf04343d42d436b97d3bee7">00135</a>         <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="structcs296_1_1sim__t.html#a53aad8202cf04343d42d436b97d3bee7">name</a>;
+<a name="l00136"></a><a class="code" href="structcs296_1_1sim__t.html#a9df5092a72b8586338c0df1888c6cb75">00136</a>         <a class="code" href="namespacecs296.html#aee93dd0d9f162edd67d267ed9b778a21">sim_create_fcn</a> *<a class="code" href="structcs296_1_1sim__t.html#a9df5092a72b8586338c0df1888c6cb75">create_fcn</a>;
+<a name="l00137"></a>00137 
+<a name="l00138"></a><a class="code" href="structcs296_1_1sim__t.html#a49445804d94e6426f449d8837f92a35d">00138</a>         <a class="code" href="structcs296_1_1sim__t.html">sim_t</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *_name, <a class="code" href="namespacecs296.html#aee93dd0d9f162edd67d267ed9b778a21">sim_create_fcn</a> *_create_fcn): 
+<a name="l00139"></a>00139           name(_name), create_fcn(_create_fcn) {;}
+<a name="l00140"></a>00140           
+<a name="l00141"></a>00141           
+<a name="l00142"></a>00142       };
+<a name="l00143"></a>00143       
+<a name="l00144"></a>00144       <span class="keyword">extern</span> sim_t *<a class="code" href="namespacecs296.html#a6a02c1b92c2165c5e723308bcb9c340c">sim</a>;
+<a name="l00145"></a>00145       
+<a name="l00146"></a>00146       
+<a name="l00147"></a><a class="code" href="namespacecs296.html#a77cb0ad2f719557bd95ee4c73cecc689">00147</a>       <span class="keyword">const</span> int32 <a class="code" href="namespacecs296.html#a77cb0ad2f719557bd95ee4c73cecc689">k_max_contact_points</a> = 2048;  
+<a name="l00148"></a><a class="code" href="structcs296_1_1contact__point__t.html">00148</a>       <span class="keyword">struct </span><a class="code" href="structcs296_1_1contact__point__t.html">contact_point_t</a>
 <a name="l00149"></a>00149       {
-<a name="l00150"></a>00150       <span class="keyword">public</span>:
-<a name="l00151"></a>00151         
-<a name="l00152"></a>00152         <a class="code" href="classcs296_1_1base__sim__t.html">base_sim_t</a>();
-<a name="l00153"></a>00153         
-<a name="l00154"></a><a class="code" href="classcs296_1_1base__sim__t.html#ab18a4e803655ad5a2c71ac405a49eecd">00154</a>         b2World* <a class="code" href="classcs296_1_1base__sim__t.html#ab18a4e803655ad5a2c71ac405a49eecd">get_world</a>(<span class="keywordtype">void</span>){
-<a name="l00155"></a>00155             <span class="keywordflow">return</span> m_world;
-<a name="l00156"></a>00156             }
-<a name="l00157"></a>00157 
-<a name="l00159"></a>00159         <span class="keyword">virtual</span> ~<a class="code" href="classcs296_1_1base__sim__t.html">base_sim_t</a>();
-<a name="l00160"></a>00160         
-<a name="l00161"></a><a class="code" href="classcs296_1_1base__sim__t.html#af31dc6131a713b79bed87fb09c95c58e">00161</a>         <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#af31dc6131a713b79bed87fb09c95c58e">set_text_line</a>(int32 line) { m_text_line = line; }
-<a name="l00162"></a>00162         <span class="keywordtype">void</span> draw_title(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>);
-<a name="l00163"></a>00163         <span class="keywordtype">void</span> dest();
-<a name="l00164"></a>00164         <span class="keywordtype">void</span> changevar();
-<a name="l00165"></a>00165         <span class="keywordtype">void</span> drawtxt(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y );
-<a name="l00166"></a>00166         
-<a name="l00167"></a>00167         <span class="keyword">virtual</span> <span class="keywordtype">void</span> step(<a class="code" href="structcs296_1_1settings__t.html">settings_t</a>* <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>);
-<a name="l00168"></a>00168 
-<a name="l00169"></a><a class="code" href="classcs296_1_1base__sim__t.html#a1dca50470f139d001a45eb9ca54593dd">00169</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#a1dca50470f139d001a45eb9ca54593dd">keyboard</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> key) { B2_NOT_USED(key); }
-<a name="l00170"></a><a class="code" href="classcs296_1_1base__sim__t.html#ab36ae7c1d399e75ad55486a2d79ce907">00170</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#ab36ae7c1d399e75ad55486a2d79ce907">keyboard_up</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> key) { B2_NOT_USED(key); }
-<a name="l00171"></a>00171 
-<a name="l00172"></a><a class="code" href="classcs296_1_1base__sim__t.html#a9194a5bd4cd8a81619b15ec96b7d6492">00172</a>         <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#a9194a5bd4cd8a81619b15ec96b7d6492">shift_mouse_down</a>(<span class="keyword">const</span> b2Vec2&amp; p) { B2_NOT_USED(p); }
-<a name="l00173"></a><a class="code" href="classcs296_1_1base__sim__t.html#a5da72558c7928708920c80d45154c857">00173</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#a5da72558c7928708920c80d45154c857">mouse_down</a>(<span class="keyword">const</span> b2Vec2&amp; p) { B2_NOT_USED(p); }
-<a name="l00174"></a><a class="code" href="classcs296_1_1base__sim__t.html#a61853c5d7521ccb7613b017b0dcc546e">00174</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#a61853c5d7521ccb7613b017b0dcc546e">mouse_up</a>(<span class="keyword">const</span> b2Vec2&amp; p) { B2_NOT_USED(p); }
-<a name="l00175"></a><a class="code" href="classcs296_1_1base__sim__t.html#a1abdedb42db651d0f880829919f1bdd8">00175</a>         <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#a1abdedb42db651d0f880829919f1bdd8">mouse_move</a>(<span class="keyword">const</span> b2Vec2&amp; p) { B2_NOT_USED(p); }
-<a name="l00176"></a>00176 
-<a name="l00177"></a>00177         
-<a name="l00178"></a>00178         <span class="comment">// Let derived tests know that a joint was destroyed.</span>
-<a name="l00179"></a><a class="code" href="classcs296_1_1base__sim__t.html#a107ad2e9d4d24f827eeb1a729ca3ddb0">00179</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#a107ad2e9d4d24f827eeb1a729ca3ddb0">joint_destroyed</a>(b2Joint* joint) { B2_NOT_USED(joint); }
-<a name="l00180"></a>00180         
-<a name="l00181"></a>00181         <span class="comment">// Callbacks for derived classes.</span>
-<a name="l00182"></a><a class="code" href="classcs296_1_1base__sim__t.html#a642e8762671478a90e695c711e16e910">00182</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#a642e8762671478a90e695c711e16e910">begin_contact</a>(b2Contact* contact) { B2_NOT_USED(contact); }
-<a name="l00183"></a><a class="code" href="classcs296_1_1base__sim__t.html#aa3c635f94d218952d788365778d62379">00183</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#aa3c635f94d218952d788365778d62379">end_contact</a>(b2Contact* contact) { B2_NOT_USED(contact); }
-<a name="l00184"></a>00184         <span class="keyword">virtual</span> <span class="keywordtype">void</span> pre_solve(b2Contact* contact, <span class="keyword">const</span> b2Manifold* oldManifold);
-<a name="l00185"></a><a class="code" href="classcs296_1_1base__sim__t.html#a2b50973d45bdd1ee49c70247d624362a">00185</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> post_solve(<span class="keyword">const</span> b2Contact* contact, <span class="keyword">const</span> b2ContactImpulse* impulse)
-<a name="l00186"></a>00186         {
-<a name="l00187"></a>00187           B2_NOT_USED(contact);
-<a name="l00188"></a>00188           B2_NOT_USED(impulse);
-<a name="l00189"></a>00189         }
-<a name="l00190"></a>00190 
-<a name="l00192"></a>00192       <span class="keyword">protected</span>:
-<a name="l00193"></a>00193 
-<a name="l00195"></a><a class="code" href="classcs296_1_1base__sim__t.html#ac297038e4ce79483a2d7f7373b0b819b">00195</a>         <span class="keyword">friend</span> <span class="keyword">class </span>contact_listener_t;
-<a name="l00196"></a>00196         
-<a name="l00197"></a><a class="code" href="classcs296_1_1base__sim__t.html#ad491071d0fed9cf49c906b1bb7a9b071">00197</a>         b2Body* <a class="code" href="classcs296_1_1base__sim__t.html#ad491071d0fed9cf49c906b1bb7a9b071">m_ground_body</a>;
-<a name="l00198"></a><a class="code" href="classcs296_1_1base__sim__t.html#ac0bdb03a59d26a004b9a867c380c975e">00198</a>         b2AABB <a class="code" href="classcs296_1_1base__sim__t.html#ac0bdb03a59d26a004b9a867c380c975e">m_world_AABB</a>;
-<a name="l00199"></a><a class="code" href="classcs296_1_1base__sim__t.html#a96d1d1d7a14ce073df58e61e0b68ca16">00199</a>         <a class="code" href="structcs296_1_1contact__point__t.html">contact_point_t</a> m_points[<a class="code" href="namespacecs296.html#a77cb0ad2f719557bd95ee4c73cecc689">k_max_contact_points</a>];
-<a name="l00200"></a><a class="code" href="classcs296_1_1base__sim__t.html#aab3908acf0ba494df49cc9c1566ef931">00200</a>         int32 <a class="code" href="classcs296_1_1base__sim__t.html#aab3908acf0ba494df49cc9c1566ef931">m_point_count</a>;
+<a name="l00150"></a><a class="code" href="structcs296_1_1contact__point__t.html#a000a2a4a158ce28da866c85d79c6fe9a">00150</a>         b2Fixture* <a class="code" href="structcs296_1_1contact__point__t.html#a000a2a4a158ce28da866c85d79c6fe9a">fixtureA</a>;
+<a name="l00151"></a><a class="code" href="structcs296_1_1contact__point__t.html#ad082627540532f27a6324548072c96f4">00151</a>         b2Fixture* <a class="code" href="structcs296_1_1contact__point__t.html#ad082627540532f27a6324548072c96f4">fixtureB</a>;
+<a name="l00152"></a><a class="code" href="structcs296_1_1contact__point__t.html#a991f256c48c67589ddba7f59f2bcb078">00152</a>         b2Vec2 <a class="code" href="structcs296_1_1contact__point__t.html#a991f256c48c67589ddba7f59f2bcb078">normal</a>;
+<a name="l00153"></a><a class="code" href="structcs296_1_1contact__point__t.html#a5ef7408b315030cec9bf687eedb8d6e7">00153</a>         b2Vec2 <a class="code" href="structcs296_1_1contact__point__t.html#a5ef7408b315030cec9bf687eedb8d6e7">position</a>;
+<a name="l00154"></a><a class="code" href="structcs296_1_1contact__point__t.html#a9e5734ab797b941b47ba7e1eac063bcc">00154</a>         b2PointState <a class="code" href="structcs296_1_1contact__point__t.html#a9e5734ab797b941b47ba7e1eac063bcc">state</a>;
+<a name="l00155"></a>00155       };
+<a name="l00156"></a>00156       
+<a name="l00158"></a><a class="code" href="classcs296_1_1base__sim__t.html">00158</a>       <span class="keyword">class </span><a class="code" href="classcs296_1_1base__sim__t.html" title="This class implements the contact listener(for general use).">base_sim_t</a> : <span class="keyword">public</span> b2ContactListener
+<a name="l00159"></a>00159       {
+<a name="l00160"></a>00160       <span class="keyword">public</span>:
+<a name="l00161"></a>00161         
+<a name="l00162"></a>00162         <a class="code" href="classcs296_1_1base__sim__t.html" title="This class implements the contact listener(for general use).">base_sim_t</a>();
+<a name="l00163"></a>00163         
+<a name="l00164"></a><a class="code" href="classcs296_1_1base__sim__t.html#ab18a4e803655ad5a2c71ac405a49eecd">00164</a>         b2World* <a class="code" href="classcs296_1_1base__sim__t.html#ab18a4e803655ad5a2c71ac405a49eecd">get_world</a>(<span class="keywordtype">void</span>){
+<a name="l00165"></a>00165             <span class="keywordflow">return</span> m_world;
+<a name="l00166"></a>00166             }
+<a name="l00167"></a>00167 
+<a name="l00168"></a>00168         <span class="keyword">virtual</span> ~<a class="code" href="classcs296_1_1base__sim__t.html" title="This class implements the contact listener(for general use).">base_sim_t</a>();
+<a name="l00169"></a>00169         
+<a name="l00170"></a><a class="code" href="classcs296_1_1base__sim__t.html#af31dc6131a713b79bed87fb09c95c58e">00170</a>         <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#af31dc6131a713b79bed87fb09c95c58e">set_text_line</a>(int32 line) { m_text_line = line; }
+<a name="l00171"></a>00171         <span class="keywordtype">void</span> draw_title(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>);
+<a name="l00172"></a>00172         <span class="keywordtype">void</span> dest();
+<a name="l00173"></a>00173         <span class="keywordtype">void</span> changevar();
+<a name="l00174"></a>00174         <span class="keywordtype">void</span> drawtxt(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y );
+<a name="l00175"></a>00175         
+<a name="l00176"></a>00176         <span class="keyword">virtual</span> <span class="keywordtype">void</span> step(<a class="code" href="structcs296_1_1settings__t.html" title="This class implements all the calculations corresponding to physical laws.">settings_t</a>* <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>);
+<a name="l00177"></a>00177 
+<a name="l00178"></a><a class="code" href="classcs296_1_1base__sim__t.html#a1dca50470f139d001a45eb9ca54593dd">00178</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#a1dca50470f139d001a45eb9ca54593dd">keyboard</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> key) { B2_NOT_USED(key); }
+<a name="l00179"></a><a class="code" href="classcs296_1_1base__sim__t.html#ab36ae7c1d399e75ad55486a2d79ce907">00179</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#ab36ae7c1d399e75ad55486a2d79ce907">keyboard_up</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> key) { B2_NOT_USED(key); }
+<a name="l00180"></a>00180 
+<a name="l00181"></a><a class="code" href="classcs296_1_1base__sim__t.html#a9194a5bd4cd8a81619b15ec96b7d6492">00181</a>         <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#a9194a5bd4cd8a81619b15ec96b7d6492">shift_mouse_down</a>(<span class="keyword">const</span> b2Vec2&amp; p) { B2_NOT_USED(p); }
+<a name="l00182"></a><a class="code" href="classcs296_1_1base__sim__t.html#a5da72558c7928708920c80d45154c857">00182</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#a5da72558c7928708920c80d45154c857">mouse_down</a>(<span class="keyword">const</span> b2Vec2&amp; p) { B2_NOT_USED(p); }
+<a name="l00183"></a><a class="code" href="classcs296_1_1base__sim__t.html#a61853c5d7521ccb7613b017b0dcc546e">00183</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#a61853c5d7521ccb7613b017b0dcc546e">mouse_up</a>(<span class="keyword">const</span> b2Vec2&amp; p) { B2_NOT_USED(p); }
+<a name="l00184"></a><a class="code" href="classcs296_1_1base__sim__t.html#a1abdedb42db651d0f880829919f1bdd8">00184</a>         <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#a1abdedb42db651d0f880829919f1bdd8">mouse_move</a>(<span class="keyword">const</span> b2Vec2&amp; p) { B2_NOT_USED(p); }
+<a name="l00185"></a>00185 
+<a name="l00186"></a>00186         
+<a name="l00187"></a>00187         <span class="comment">// Let derived tests know that a joint was destroyed.</span>
+<a name="l00188"></a><a class="code" href="classcs296_1_1base__sim__t.html#a107ad2e9d4d24f827eeb1a729ca3ddb0">00188</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#a107ad2e9d4d24f827eeb1a729ca3ddb0">joint_destroyed</a>(b2Joint* joint) { B2_NOT_USED(joint); }
+<a name="l00189"></a>00189         
+<a name="l00190"></a>00190         <span class="comment">// Callbacks for derived classes.</span>
+<a name="l00191"></a><a class="code" href="classcs296_1_1base__sim__t.html#a642e8762671478a90e695c711e16e910">00191</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#a642e8762671478a90e695c711e16e910">begin_contact</a>(b2Contact* contact) { B2_NOT_USED(contact); }
+<a name="l00192"></a><a class="code" href="classcs296_1_1base__sim__t.html#aa3c635f94d218952d788365778d62379">00192</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classcs296_1_1base__sim__t.html#aa3c635f94d218952d788365778d62379">end_contact</a>(b2Contact* contact) { B2_NOT_USED(contact); }
+<a name="l00193"></a>00193         <span class="keyword">virtual</span> <span class="keywordtype">void</span> pre_solve(b2Contact* contact, <span class="keyword">const</span> b2Manifold* oldManifold);
+<a name="l00194"></a><a class="code" href="classcs296_1_1base__sim__t.html#a2b50973d45bdd1ee49c70247d624362a">00194</a>         <span class="keyword">virtual</span> <span class="keywordtype">void</span> post_solve(<span class="keyword">const</span> b2Contact* contact, <span class="keyword">const</span> b2ContactImpulse* impulse)
+<a name="l00195"></a>00195         {
+<a name="l00196"></a>00196           B2_NOT_USED(contact);
+<a name="l00197"></a>00197           B2_NOT_USED(impulse);
+<a name="l00198"></a>00198         }
+<a name="l00199"></a>00199 
+<a name="l00200"></a>00200        <span class="keyword">protected</span>:
 <a name="l00201"></a>00201 
-<a name="l00202"></a><a class="code" href="classcs296_1_1base__sim__t.html#a33766aa4f03ede7059cec3d15c006176">00202</a>         <a class="code" href="classdebug__draw__t.html" title="This class implements debug drawing callbacks that are invoked inside b2World::Step.">debug_draw_t</a> <a class="code" href="classcs296_1_1base__sim__t.html#a33766aa4f03ede7059cec3d15c006176">m_debug_draw</a>;
-<a name="l00203"></a><a class="code" href="classcs296_1_1base__sim__t.html#afb2c0accf3fe614b5614583c7940f86c">00203</a>         <a class="code" href="classcs296_1_1_my_contact_listener.html">MyContactListener</a> <a class="code" href="classcs296_1_1base__sim__t.html#afb2c0accf3fe614b5614583c7940f86c">mcl</a>;  
-<a name="l00204"></a><a class="code" href="classcs296_1_1base__sim__t.html#a6c031f3c54d370c2693aee638f318c3e">00204</a>         int32 <a class="code" href="classcs296_1_1base__sim__t.html#a6c031f3c54d370c2693aee638f318c3e">m_text_line</a>;
-<a name="l00205"></a><a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">00205</a>         b2World* <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>;
-<a name="l00206"></a>00206 
-<a name="l00207"></a><a class="code" href="classcs296_1_1base__sim__t.html#a3b921022c1b0c34bd1dfb2f53be6ba10">00207</a>         int32 <a class="code" href="classcs296_1_1base__sim__t.html#a3b921022c1b0c34bd1dfb2f53be6ba10">m_step_count</a>;
-<a name="l00208"></a>00208         
-<a name="l00209"></a><a class="code" href="classcs296_1_1base__sim__t.html#a2756934de9a43409837a17833f083c2f">00209</a>         b2Profile <a class="code" href="classcs296_1_1base__sim__t.html#a2756934de9a43409837a17833f083c2f">m_max_profile</a>;
-<a name="l00210"></a><a class="code" href="classcs296_1_1base__sim__t.html#a039d952c5b5558f51da4a7e956caa585">00210</a>         b2Profile <a class="code" href="classcs296_1_1base__sim__t.html#a039d952c5b5558f51da4a7e956caa585">m_total_profile</a>;
-<a name="l00211"></a>00211       };
-<a name="l00212"></a>00212       
-<a name="l00213"></a>00213       
-<a name="l00214"></a>00214 
-<a name="l00215"></a>00215   
-<a name="l00216"></a>00216   
-<a name="l00217"></a>00217   
-<a name="l00218"></a>00218   
-<a name="l00219"></a>00219   
-<a name="l00220"></a>00220   
-<a name="l00221"></a>00221   
+<a name="l00202"></a><a class="code" href="classcs296_1_1base__sim__t.html#ac297038e4ce79483a2d7f7373b0b819b">00202</a>         <span class="keyword">friend</span> <span class="keyword">class </span>contact_listener_t;
+<a name="l00203"></a>00203         
+<a name="l00204"></a><a class="code" href="classcs296_1_1base__sim__t.html#ad491071d0fed9cf49c906b1bb7a9b071">00204</a>         b2Body* <a class="code" href="classcs296_1_1base__sim__t.html#ad491071d0fed9cf49c906b1bb7a9b071">m_ground_body</a>;
+<a name="l00205"></a><a class="code" href="classcs296_1_1base__sim__t.html#ac0bdb03a59d26a004b9a867c380c975e">00205</a>         b2AABB <a class="code" href="classcs296_1_1base__sim__t.html#ac0bdb03a59d26a004b9a867c380c975e">m_world_AABB</a>;
+<a name="l00206"></a><a class="code" href="classcs296_1_1base__sim__t.html#a96d1d1d7a14ce073df58e61e0b68ca16">00206</a>         <a class="code" href="structcs296_1_1contact__point__t.html">contact_point_t</a> m_points[<a class="code" href="namespacecs296.html#a77cb0ad2f719557bd95ee4c73cecc689">k_max_contact_points</a>];
+<a name="l00207"></a><a class="code" href="classcs296_1_1base__sim__t.html#aab3908acf0ba494df49cc9c1566ef931">00207</a>         int32 <a class="code" href="classcs296_1_1base__sim__t.html#aab3908acf0ba494df49cc9c1566ef931">m_point_count</a>;
+<a name="l00208"></a>00208 
+<a name="l00209"></a><a class="code" href="classcs296_1_1base__sim__t.html#a33766aa4f03ede7059cec3d15c006176">00209</a>         <a class="code" href="classdebug__draw__t.html" title="This class implements debug drawing callbacks that are invoked inside b2World::Step.">debug_draw_t</a> <a class="code" href="classcs296_1_1base__sim__t.html#a33766aa4f03ede7059cec3d15c006176">m_debug_draw</a>;
+<a name="l00210"></a><a class="code" href="classcs296_1_1base__sim__t.html#afb2c0accf3fe614b5614583c7940f86c">00210</a>         <a class="code" href="classcs296_1_1_my_contact_listener.html" title="This class implements the Contact Listener attached to the scissors.">MyContactListener</a> <a class="code" href="classcs296_1_1base__sim__t.html#afb2c0accf3fe614b5614583c7940f86c">mcl</a>;  
+<a name="l00211"></a><a class="code" href="classcs296_1_1base__sim__t.html#a6c031f3c54d370c2693aee638f318c3e">00211</a>         int32 <a class="code" href="classcs296_1_1base__sim__t.html#a6c031f3c54d370c2693aee638f318c3e">m_text_line</a>;
+<a name="l00212"></a><a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">00212</a>         b2World* <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>;
+<a name="l00213"></a>00213 
+<a name="l00214"></a><a class="code" href="classcs296_1_1base__sim__t.html#a3b921022c1b0c34bd1dfb2f53be6ba10">00214</a>         int32 <a class="code" href="classcs296_1_1base__sim__t.html#a3b921022c1b0c34bd1dfb2f53be6ba10">m_step_count</a>;
+<a name="l00215"></a>00215         
+<a name="l00216"></a><a class="code" href="classcs296_1_1base__sim__t.html#a2756934de9a43409837a17833f083c2f">00216</a>         b2Profile <a class="code" href="classcs296_1_1base__sim__t.html#a2756934de9a43409837a17833f083c2f">m_max_profile</a>;
+<a name="l00217"></a><a class="code" href="classcs296_1_1base__sim__t.html#a039d952c5b5558f51da4a7e956caa585">00217</a>         b2Profile <a class="code" href="classcs296_1_1base__sim__t.html#a039d952c5b5558f51da4a7e956caa585">m_total_profile</a>;
+<a name="l00218"></a>00218       };
+<a name="l00219"></a>00219       
+<a name="l00220"></a>00220       
+<a name="l00221"></a>00221 
 <a name="l00222"></a>00222   
 <a name="l00223"></a>00223   
-<a name="l00224"></a>00224 }
-<a name="l00225"></a>00225 
-<a name="l00226"></a>00226 <span class="preprocessor">#endif</span>
+<a name="l00224"></a>00224   
+<a name="l00225"></a>00225   
+<a name="l00226"></a>00226   
+<a name="l00227"></a>00227   
+<a name="l00228"></a>00228   
+<a name="l00229"></a>00229   
+<a name="l00230"></a>00230   
+<a name="l00231"></a>00231 }
+<a name="l00232"></a>00232 
+<a name="l00233"></a>00233 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -321,7 +322,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 10 2013 00:27:18 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 10 2013 01:28:26 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -20,7 +20,7 @@
  * Base code for CS 296 Software Systems Lab 
  * Department of Computer Science and Engineering, IIT Bombay
  * Instructor: Parag Chaudhuri
- */
+*/
 
 
 #ifndef _CS296BASE_HPP_
@@ -36,20 +36,28 @@ using namespace std;
 
 namespace cs296
 {
+
+	/*!This class implements the functionality of the scissors.*/
 	class Sci
 	{
 		private:
+		/*!Stores the world in which the scissors have to be created.*/
 		b2World* world;
 	
 	
 		public:
+		/*!Constructor takes the joints to be destroyed upon contact as parameters.*/
 		Sci(b2World* m_world, b2Joint* mj, b2Joint* j1, b2Joint* j2);
+		/*!This function is called whenever the scissors comes in contact with a dynamic body.*/
 		void startContact();
-		void endContact();
 	};
-
+	
+	
+	/*!This class implements the Contact Listener attached to the scissors*/
 	class MyContactListener : public b2ContactListener
 	  {
+	  
+	    /*!This function is called whenever the listener listens to a contact(start of the contact).*/
 	    void BeginContact(b2Contact* contact) {
 	 
 	      void* bodyUserData = contact->GetFixtureA()->GetBody()->GetUserData();
@@ -61,7 +69,7 @@ namespace cs296
 		static_cast<Sci*>( bodyUserData )->startContact();
 	 
 	    }
-	 
+	    /*!This function is called whenever the listener listens to a contact(end of the contact).*/
 	    void EndContact(b2Contact* contact) {
 	    }
 	  };
@@ -145,6 +153,7 @@ namespace cs296
 	    b2PointState state;
 	  };
 	  
+	  /*!This class implements the contact listener(for general use).*/
 	  class base_sim_t : public b2ContactListener
 	  {
 	  public:
@@ -155,7 +164,6 @@ namespace cs296
 	    	return m_world;
 	    	}
 
-	    //! Virtual destructors - amazing objects. Why are these necessary?
 	    virtual ~base_sim_t();
 	    
 	    void set_text_line(int32 line) { m_text_line = line; }
@@ -188,10 +196,8 @@ namespace cs296
 	      B2_NOT_USED(impulse);
 	    }
 
-	  //!How are protected members different from private memebers of a class in C++ ?
-	  protected:
+	   protected:
 
-	    //! What are Friend classes?
 	    friend class contact_listener_t;
 	    
 	    b2Body* m_ground_body;

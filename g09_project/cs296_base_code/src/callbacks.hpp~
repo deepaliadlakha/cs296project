@@ -4,36 +4,26 @@
  * Instructor: Parag Chaudhuri
  */
 
-//! Notice the use of these pre-processor directives on top of each header file
-//! Why are they used?
 #ifndef _CALLBACKS_HPP_
 #define _CALLBACKS_HPP_
 
-/*! 
-  This file defines all the callback functions our code needs.
-  Why are they not members of a class? Can you make them into a class?
 
-  Callback functions are called when a event occurs due to the press
-  of a key, mouse button, or a GUI element like a menu item is
-  clicked or scroller is dragged. Some callbacks are triggered after
-  a fixed intervals when a timer elapses.  
-*/
 
-//! These are user defined include files
-//! Included in double quotes - the path to find these has to be given at compile time
 #include "render.hpp"
 #include "cs296_base.hpp"
 
 namespace cs296
 {
+  /*! 
+  Defines all the callbacks.  
+  */
   class callbacks_t
   {
   public:
   //! Helper function for coordinates system conversion
-  //! Note the function is a static function. Read about C++ static functions
   static b2Vec2 convert_screen_to_world(int32 x, int32 y);
   
-  //! GLUT resize callback. This is set via GLUI. Why is this so?
+  //! GLUT resize callback. This is set via GLUI.
   //! This gets called when the window is resized. Passed as parameters
   //! are the current window width and height.
   static void resize_cb(int32 w, int32 h);
@@ -60,11 +50,9 @@ namespace cs296
   //! This is used to control the frame rate - figure out how by reading the GLUT manual.
   static void timer_cb(int);
   
-  static void start_cb(int);
-  
   //! GLUT display callback
   //! This draws every time a draw event is posted. 
-  //! It also xecutes the main simulation loop by calling test->step(...)
+  //! It also executes the main simulation loop by calling test->step(...)
   static void display_cb(void);
   
   //! GLUI callback - Called when the restart button is pressed

@@ -27,16 +27,16 @@
 
 namespace cs296
 {
-  //! This is the class that sets up the Box2D simulation world
-  //! Notice the public inheritance - why do we inherit the base_sim_t class?
+  //! This is the class that sets up the Elements of the Box2D simulation world
   class dominos_t : public base_sim_t
   {
   public:
-    
+    /*! \brief Describes the elements and incorporates the dynamics involved. 
+ *  Elements include ground, see-saw, pulley, pendulum, revolute and prismatic joints and candidate blocks.
+ */
     dominos_t();
-    
-    //dominos_t(int a1, int a2);
-    
+    /*! \brief Simulates the world created.
+    */
     static base_sim_t* create()
     {
       return new dominos_t;

@@ -72,7 +72,7 @@ namespace cs296
 	   
 	   </ul>*/
 	   
-	   //Ground 
+	  //Ground 
 	    {
 	      b2Body* b1;
 	      b2EdgeShape shape;
@@ -84,124 +84,121 @@ namespace cs296
 	    }
 
 	 //Platform
-	   {
-	      b2PolygonShape shape;
-	      shape.SetAsBox(11.0f, 0.25f);
-	      b2BodyDef bd2;
-	      bd2.position.Set(-24.0f, 26.0f);
-	      b2Body* body = m_world->CreateBody(&bd2);
-	      b2FixtureDef *fd2 = new b2FixtureDef;
-	      fd2->density = 1.f;
-	      fd2->shape = new b2PolygonShape;
-	      fd2->shape = &shape;
-	      body->CreateFixture(fd2);
-	  }
+	    {
+	      	b2PolygonShape shape;
+	      	shape.SetAsBox(11.0f, 0.25f);
+	      	b2BodyDef bd2;
+	      	bd2.position.Set(-24.0f, 26.0f);
+	      	b2Body* body = m_world->CreateBody(&bd2);
+	      	b2FixtureDef *fd2 = new b2FixtureDef;
+	      	fd2->density = 1.f;
+	      	fd2->shape = new b2PolygonShape;
+	      	fd2->shape = &shape;
+	      	body->CreateFixture(fd2);
+	    }
 	  
          //holder
-	   {
-	      b2PolygonShape shape;
-	      shape.SetAsBox(0.01f, 0.01f);
-	      b2BodyDef bd2;
-	      bd2.position.Set(-33.75f, 26.26f);
-	      b2Body* body = m_world->CreateBody(&bd2);
-	      b2FixtureDef *fd2 = new b2FixtureDef;
-	      fd2->density = 1.f;
-	      fd2->shape = new b2PolygonShape;
-	      fd2->shape = &shape;
-	      body->CreateFixture(fd2);
-	   }
-    //Pendulum
-    {
+	    {
+	      	b2PolygonShape shape;
+	      	shape.SetAsBox(0.01f, 0.01f);
+	      	b2BodyDef bd2;
+	      	bd2.position.Set(-33.75f, 26.26f);
+	      	b2Body* body = m_world->CreateBody(&bd2);
+	      	b2FixtureDef *fd2 = new b2FixtureDef;
+	      	fd2->density = 1.f;
+	      	fd2->shape = new b2PolygonShape;
+	      	fd2->shape = &shape;
+	      	body->CreateFixture(fd2);
+	    }
+    	//Pendulum
+     	{
      
-      {
-	b2Body* b2;
-	b2PolygonShape shape;
-	shape.SetAsBox(0.25f, 1.5f);
+           {
+		b2Body* b2;
+		b2PolygonShape shape;
+		shape.SetAsBox(0.25f, 1.5f);
+		  
+		b2BodyDef bd;
+		bd.position.Set(-37.0f, 23.0f);
+		b2 = m_world->CreateBody(&bd);
+		b2->CreateFixture(&shape, 10.0f);
+	      	
+		b2Body* b4;
+		b2FixtureDef *bobf = new b2FixtureDef;
+		bobf->restitution=0.0f;
+		bobf->density=2.0f;
+		shape.SetAsBox(.25f, .25f);
+		bobf->shape=&shape;
+		b2BodyDef bd2;
+		bd2.type = b2_dynamicBody;
+		bd2.position.Set(-45.0f, 38.0f);
+		b4 = m_world->CreateBody(&bd2);
+		b4->CreateFixture(bobf);
+	
 	  
-	b2BodyDef bd;
-	bd.position.Set(-37.0f, 23.0f);
-	b2 = m_world->CreateBody(&bd);
-	b2->CreateFixture(&shape, 10.0f);
-      	
-        b2Body* b4;
-        b2FixtureDef *bobf = new b2FixtureDef;
-	bobf->restitution=0.0f;
-	bobf->density=2.0f;
-	shape.SetAsBox(.25f, .25f);
-	bobf->shape=&shape;
-	b2BodyDef bd2;
-	bd2.type = b2_dynamicBody;
-	bd2.position.Set(-45.0f, 38.0f);
-	b4 = m_world->CreateBody(&bd2);
-	b4->CreateFixture(bobf);
-	
-  
-       b2RevoluteJointDef jd;
-       b2Vec2 anchor;
-       anchor.Set(-37.0f, 35.0f);
-       jd.Initialize(b2, b4, anchor);
-       m_world->CreateJoint(&jd);
-      }
+	       	b2RevoluteJointDef jd;
+	       	b2Vec2 anchor;
+	       	anchor.Set(-37.0f, 35.0f);
+	       	jd.Initialize(b2, b4, anchor);
+	       	m_world->CreateJoint(&jd);
+      	   }
       
-    }
+    	}
       
-    //the balls on the left side
-    {
-      b2Body* spherebody1;
+    	//the balls on the left side
+    	{
+	      	b2Body* spherebody1;
 	
-      b2CircleShape circle;
-      circle.m_radius = 0.75;
-	
-      
-
-      b2FixtureDef ballfd2;
-      ballfd2.shape = &circle;
-      ballfd2.density = 4.0f;
-      ballfd2.friction = 0.0f;
-      ballfd2.restitution =0.6f;
+	      	b2CircleShape circle;
+	      	circle.m_radius = 0.75;
+		b2FixtureDef ballfd2;
+	      	ballfd2.shape = &circle;
+	      	ballfd2.density = 4.0f;
+	      	ballfd2.friction = 0.0f;
+	      	ballfd2.restitution =0.6f;
 
 	
 	//pipe
 	{
-	      b2PolygonShape shape1;
-	      shape1.SetAsBox(.1f, 2.25f);
+	      	b2PolygonShape shape1;
+	      	shape1.SetAsBox(.1f, 2.25f);
 	
-	      b2BodyDef bd1;
-	      bd1.position.Set(-34.35f, 30.1f);
-	      b2Body* body1 = m_world->CreateBody(&bd1);
-	      b2FixtureDef *fd1 = new b2FixtureDef;
-	      fd1->density = 0.f;
-	      fd1->shape = new b2PolygonShape;
-	      fd1->shape = &shape1;
-	      body1->CreateFixture(fd1);
+	      	b2BodyDef bd1;
+	      	bd1.position.Set(-34.35f, 30.1f);
+	      	b2Body* body1 = m_world->CreateBody(&bd1);
+	      	b2FixtureDef *fd1 = new b2FixtureDef;
+	      	fd1->density = 0.f;
+	      	fd1->shape = new b2PolygonShape;
+	      	fd1->shape = &shape1;
+	      	body1->CreateFixture(fd1);
 	}
 	
 	
 	{
-	      b2PolygonShape shape1;
-	      shape1.SetAsBox(.1f, 2.25f);
-	      b2BodyDef bd1;
-	      bd1.position.Set(-32.65f, 30.1f);
-	      b2Body* body1 = m_world->CreateBody(&bd1);
-	      b2FixtureDef *fd1 = new b2FixtureDef;
-	      fd1->density = 0.f;
-	      fd1->shape = new b2PolygonShape;
-	      fd1->shape = &shape1;
-	      body1->CreateFixture(fd1);
+	      	b2PolygonShape shape1;
+	      	shape1.SetAsBox(.1f, 2.25f);
+	      	b2BodyDef bd1;
+	      	bd1.position.Set(-32.65f, 30.1f);
+	      	b2Body* body1 = m_world->CreateBody(&bd1);
+	      	b2FixtureDef *fd1 = new b2FixtureDef;
+	      	fd1->density = 0.f;
+	      	fd1->shape = new b2PolygonShape;
+	      	fd1->shape = &shape1;
+	      	body1->CreateFixture(fd1);
 	}
 
 	//bottom-most ball
 	{
-	      b2FixtureDef ballfd1;
-	      ballfd1.shape = &circle;
-	      ballfd1.density = 4.0f;
-	      ballfd1.friction = 0.0f;
-	      ballfd1.restitution =0.3f;
-	      b2BodyDef ballbd1;
-	      ballbd1.type = b2_dynamicBody;
-	      ballbd1.position.Set(-33.5f , 27.0f);
-	      spherebody1 = m_world->CreateBody(&ballbd1);
-	      spherebody1->CreateFixture(&ballfd1);
+	      	b2FixtureDef ballfd1;
+	      	ballfd1.shape = &circle;
+	      	ballfd1.density = 4.0f;
+	      	ballfd1.friction = 0.0f;
+	      	ballfd1.restitution =0.3f;
+	      	b2BodyDef ballbd1;
+	      	ballbd1.type = b2_dynamicBody;
+	      	ballbd1.position.Set(-33.5f , 27.0f);
+	      	spherebody1 = m_world->CreateBody(&ballbd1);
+	      	spherebody1->CreateFixture(&ballfd1);
 	  
 	}
 

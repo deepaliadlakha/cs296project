@@ -159,7 +159,7 @@ void debug_draw_t::DrawPoint(const b2Vec2& p, float32 size, const b2Color& color
 	glPointSize(1.0f);
 }
 
-void debug_draw_t::DrawString(int x, int y, const char *string)
+void debug_draw_t::DrawString(int x, int y, const char *string, ...)
 {
 	char buffer[128];
 

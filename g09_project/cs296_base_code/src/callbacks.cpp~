@@ -245,7 +245,7 @@ namespace cs296
   { 	
 	glutSetWindow(main_window);
     	glutPostRedisplay();  
-    		glutTimerFunc(frame_period, timer_cb, 0);
+    	glutTimerFunc(frame_period, timer_cb, 0);
   }
   
   void callbacks_t::display_cb(void)

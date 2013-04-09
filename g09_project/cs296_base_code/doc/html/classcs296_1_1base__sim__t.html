@@ -107,6 +107,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="cs296::base_sim_t" -->
+<p>This class implements the contact listener(for general use).  
+ <a href="classcs296_1_1base__sim__t.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for cs296::base_sim_t:</div>
@@ -114,7 +117,7 @@ Inheritance diagram for cs296::base_sim_t:</div>
  <div class="center">
   <img src="classcs296_1_1base__sim__t.png" usemap="#cs296::base_sim_t_map" alt=""/>
   <map id="cs296::base_sim_t_map" name="cs296::base_sim_t_map">
-<area href="classcs296_1_1dominos__t.html" title="This is the class that sets up the Box2D simulation world Notice the public inheritance - why do we i..." alt="cs296::dominos_t" shape="rect" coords="0,56,114,80"/>
+<area href="classcs296_1_1dominos__t.html" title="This is the class that sets up the Elements of the Box2D simulation world." alt="cs296::dominos_t" shape="rect" coords="0,56,114,80"/>
 </map>
  </div></div>
 
@@ -125,7 +128,6 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1base__sim__t.html#a52acc40a593ab47ce5f0940beece44fa">base_sim_t</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">b2World *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1base__sim__t.html#ab18a4e803655ad5a2c71ac405a49eecd">get_world</a> (void)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1base__sim__t.html#a82651e1cc41c6d5bff90edef489cfbc3">~base_sim_t</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructors - amazing objects. Why are these necessary?  <a href="#a82651e1cc41c6d5bff90edef489cfbc3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1base__sim__t.html#af31dc6131a713b79bed87fb09c95c58e">set_text_line</a> (int32 line)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1base__sim__t.html#ab1019cd5117fd02f705dcbc1b160d53f">draw_title</a> (int x, int y, const char *string)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1base__sim__t.html#a81f0b588ed0ef5d7e4c0f1843b8eff35">dest</a> ()</td></tr>
@@ -159,11 +161,11 @@ Protected Attributes</h2></td></tr>
 <tr><td colspan="2"><h2><a name="friends"></a>
 Friends</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1base__sim__t.html#ac297038e4ce79483a2d7f7373b0b819b">contact_listener_t</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">How are protected members different from private memebers of a class in C++ ?  <a href="#ac297038e4ce79483a2d7f7373b0b819b"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00148">148</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<div class="textblock"><p>This class implements the contact listener(for general use). </p>
+
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00158">158</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a52acc40a593ab47ce5f0940beece44fa"></a><!-- doxytag: member="cs296::base_sim_t::base_sim_t" ref="a52acc40a593ab47ce5f0940beece44fa" args="()" -->
 <div class="memitem">
@@ -179,7 +181,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00088">88</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00089">89</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
     b2Vec2 gravity;
     gravity.Set(0.0f, -10.0f);
@@ -218,9 +220,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Virtual destructors - amazing objects. Why are these necessary? </p>
-
-<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00111">111</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00112">112</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
     <span class="comment">// By deleting the world, we delete the bomb, mouse joint, etc.</span>
     <span class="keyword">delete</span> <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>;
@@ -245,7 +245,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00182">182</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00191">191</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 <div class="fragment"><pre class="fragment">{ B2_NOT_USED(contact); }
 </pre></div>
 </div>
@@ -264,7 +264,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00334">334</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00335">335</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">                          {
     <a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>=0;
 }   
@@ -285,7 +285,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00321">321</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00322">322</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">                     {
  <span class="keywordflow">if</span> (<a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a> == 1){
     <a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>=2;
@@ -332,7 +332,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00148">148</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00149">149</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
     <a class="code" href="classcs296_1_1base__sim__t.html#a33766aa4f03ede7059cec3d15c006176">m_debug_draw</a>.<a class="code" href="classdebug__draw__t.html#a4d1e569f5b7d2897e7df61d467c87af8">DrawString</a>(x, y, <span class="keywordtype">string</span>);
 }
@@ -364,7 +364,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00153">153</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00154">154</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
     std::cout&lt;&lt;x&lt;&lt;<span class="stringliteral">&quot;dcdfcfsfc&quot;</span>&lt;&lt;y&lt;&lt;std::endl;
     <a class="code" href="classcs296_1_1base__sim__t.html#a33766aa4f03ede7059cec3d15c006176">m_debug_draw</a>.<a class="code" href="classdebug__draw__t.html#a4d1e569f5b7d2897e7df61d467c87af8">DrawString</a>(x, y, <span class="stringliteral">&quot;Thank You for Voting&quot;</span>);
@@ -387,7 +387,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00183">183</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00192">192</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 <div class="fragment"><pre class="fragment">{ B2_NOT_USED(contact); }
 </pre></div>
 </div>
@@ -407,7 +407,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00154">154</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00164">164</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 <div class="fragment"><pre class="fragment">                                {
             <span class="keywordflow">return</span> <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>;
             }
@@ -429,7 +429,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00179">179</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00188">188</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 <div class="fragment"><pre class="fragment">{ B2_NOT_USED(joint); }
 </pre></div>
 </div>
@@ -449,7 +449,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00169">169</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00178">178</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 <div class="fragment"><pre class="fragment">{ B2_NOT_USED(key); }
 </pre></div>
 </div>
@@ -469,7 +469,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00170">170</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00179">179</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 <div class="fragment"><pre class="fragment">{ B2_NOT_USED(key); }
 </pre></div>
 </div>
@@ -489,7 +489,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00173">173</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00182">182</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 <div class="fragment"><pre class="fragment">{ B2_NOT_USED(p); }
 </pre></div>
 </div>
@@ -509,7 +509,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00175">175</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00184">184</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 <div class="fragment"><pre class="fragment">{ B2_NOT_USED(p); }
 </pre></div>
 </div>
@@ -529,7 +529,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00174">174</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00183">183</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 <div class="fragment"><pre class="fragment">{ B2_NOT_USED(p); }
 </pre></div>
 </div>
@@ -559,7 +559,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00185">185</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00194">194</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 <div class="fragment"><pre class="fragment">        {
           B2_NOT_USED(contact);
           B2_NOT_USED(impulse);
@@ -592,7 +592,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00118">118</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00119">119</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{   
   <span class="keyword">const</span> b2Manifold* manifold = contact-&gt;GetManifold();
   
@@ -639,7 +639,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00161">161</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00170">170</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 <div class="fragment"><pre class="fragment">{ <a class="code" href="classcs296_1_1base__sim__t.html#a6c031f3c54d370c2693aee638f318c3e">m_text_line</a> = line; }
 </pre></div>
 </div>
@@ -659,7 +659,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00172">172</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00181">181</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 <div class="fragment"><pre class="fragment">{ B2_NOT_USED(p); }
 </pre></div>
 </div>
@@ -679,7 +679,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00160">160</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00161">161</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{ 
   float32 time_step = settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a982922808e2e898eccf04d23a864262a">hz</a> &gt; 0.0f ? 1.0f / settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a982922808e2e898eccf04d23a864262a">hz</a> : float32(0.0f);
 
@@ -854,10 +854,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>How are protected members different from private memebers of a class in C++ ? </p>
-<p>What are Friend classes? </p>
-
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00195">195</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00202">202</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -873,7 +870,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00202">202</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00209">209</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -888,7 +885,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00197">197</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00204">204</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -903,7 +900,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00209">209</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00216">216</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -918,7 +915,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00200">200</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00207">207</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -933,7 +930,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00199">199</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00206">206</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -948,7 +945,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00207">207</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00214">214</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -963,7 +960,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00204">204</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00211">211</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -978,7 +975,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00210">210</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00217">217</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -993,7 +990,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00205">205</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00212">212</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -1008,7 +1005,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00198">198</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00205">205</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -1023,7 +1020,7 @@ Friends</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00203">203</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00210">210</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -1049,7 +1046,7 @@ Friends</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 10 2013 00:27:18 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 10 2013 01:28:26 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

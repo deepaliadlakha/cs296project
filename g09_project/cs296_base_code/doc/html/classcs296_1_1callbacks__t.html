@@ -105,6 +105,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="cs296::callbacks_t" -->
+<p>This class implements all the callbacks.  
+ <a href="classcs296_1_1callbacks__t.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="callbacks_8hpp_source.html">callbacks.hpp</a>&gt;</code></p>
 
 <p><a href="classcs296_1_1callbacks__t-members.html">List of all members.</a></p>
@@ -112,9 +115,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static b2Vec2&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1callbacks__t.html#a4228164c031d731cadff7754e961ec0e">convert_screen_to_world</a> (int32 x, int32 y)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function for coordinates system conversion Note the function is a static function. Read about C++ static functions.  <a href="#a4228164c031d731cadff7754e961ec0e"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper function for coordinates system conversion.  <a href="#a4228164c031d731cadff7754e961ec0e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452">resize_cb</a> (int32 w, int32 h)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">GLUT resize callback. This is set via GLUI. Why is this so? This gets called when the window is resized. Passed as parameters are the current window width and height.  <a href="#a54aa6b624b64d010ee90e9fbbaba6452"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height.  <a href="#a54aa6b624b64d010ee90e9fbbaba6452"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1callbacks__t.html#a5c3aa26b271e4d25180351b86b596ccd">keyboard_cb</a> (unsigned char key, int x, int y)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">GLUT keyboard callback This gets called whenever a key is pressed.  <a href="#a5c3aa26b271e4d25180351b86b596ccd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1callbacks__t.html#a6a9dab81c00eb8387542674423a30baa">keyboard_special_cb</a> (int key, int x, int y)</td></tr>
@@ -128,7 +131,7 @@ Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1callbacks__t.html#a725d00a20ae9a326ffa96d31bb2fcac1">timer_cb</a> (int)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">GLUT timer callback. This is used to control the frame rate - figure out how by reading the GLUT manual.  <a href="#a725d00a20ae9a326ffa96d31bb2fcac1"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1callbacks__t.html#a1ca7679171cd9c3ad84373650d85fdec">display_cb</a> (void)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">GLUT display callback This draws every time a draw event is posted. It also xecutes the main simulation loop by calling test-&gt;step(...)  <a href="#a1ca7679171cd9c3ad84373650d85fdec"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">GLUT display callback This draws every time a draw event is posted. It also executes the main simulation loop by calling test-&gt;step(...)  <a href="#a1ca7679171cd9c3ad84373650d85fdec"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1callbacks__t.html#aa9407b70147973da3b267bd10af68368">restart_cb</a> (int)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">GLUI callback - Called when the restart button is pressed.  <a href="#aa9407b70147973da3b267bd10af68368"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1callbacks__t.html#a95b83d0aa43e1379eaf0b36687392287">pause_cb</a> (int)</td></tr>
@@ -139,8 +142,9 @@ Static Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">GLUI callback - Called when the exit button is pressed.  <a href="#aa92108fc543dae09c46267f7dc9055f1"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="callbacks_8hpp_source.html#l00029">29</a> of file <a class="el" href="callbacks_8hpp_source.html">callbacks.hpp</a>.</p>
+<div class="textblock"><p>This class implements all the callbacks. </p>
+
+<p>Definition at line <a class="el" href="callbacks_8hpp_source.html#l00020">20</a> of file <a class="el" href="callbacks_8hpp_source.html">callbacks.hpp</a>.</p>
 </div><hr/><h2>Member Function Documentation</h2>
 <a class="anchor" id="a4228164c031d731cadff7754e961ec0e"></a><!-- doxytag: member="cs296::callbacks_t::convert_screen_to_world" ref="a4228164c031d731cadff7754e961ec0e" args="(int32 x, int32 y)" -->
 <div class="memitem">
@@ -167,9 +171,9 @@ Static Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Helper function for coordinates system conversion Note the function is a static function. Read about C++ static functions. </p>
+<p>Helper function for coordinates system conversion. </p>
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00043">43</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00041">41</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">  {
     float32 u = x / <span class="keyword">static_cast&lt;</span>float32<span class="keyword">&gt;</span>(<a class="code" href="namespacecs296.html#a7006acc96d25bc2ecbf7b2d82cdb432c">tw</a>);
     float32 v = (<a class="code" href="namespacecs296.html#ae721ed2f829aed2546386188b4295146">th</a> - y) / float32(<a class="code" href="namespacecs296.html#ae721ed2f829aed2546386188b4295146">th</a>);
@@ -204,9 +208,9 @@ Static Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>GLUT display callback This draws every time a draw event is posted. It also xecutes the main simulation loop by calling test-&gt;step(...) </p>
+<p>GLUT display callback This draws every time a draw event is posted. It also executes the main simulation loop by calling test-&gt;step(...) </p>
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00251">251</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00244">244</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">  {
   
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -222,7 +226,7 @@ Static Public Member Functions</h2></td></tr>
     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>-&gt;<a class="code" href="classcs296_1_1base__sim__t.html#a81f0b588ed0ef5d7e4c0f1843b8eff35">dest</a>();
     <span class="keywordflow">if</span> (old_center.x != <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>.x || old_center.y != <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>.y)
       {
-    <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. Why is this so? This gets called when the window is resiz...">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
+    <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height.">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
       }
     
     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>-&gt;<a class="code" href="classcs296_1_1base__sim__t.html#ab1019cd5117fd02f705dcbc1b160d53f">draw_title</a>(5, 15, <a class="code" href="namespacecs296.html#a1b96cdf5ee75c73ecbd3c79a0a04d82b">entry</a>-&gt;<a class="code" href="structcs296_1_1sim__t.html#a53aad8202cf04343d42d436b97d3bee7">name</a>);
@@ -238,7 +242,7 @@ Static Public Member Functions</h2></td></tr>
     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>-&gt;<a class="code" href="classcs296_1_1base__sim__t.html#a55e7af5fe10fb31f187077547b11a2eb">drawtxt</a>(30.0f, 20.0f);
     <a class="code" href="namespacecs296.html#acd94f8ca6c6ebfd23f6742211acfe446">view_zoom</a> = 1.0f;
     <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>.Set(0.0f, 20.0f);
-      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. Why is this so? This gets called when the window is resiz...">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
+      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height.">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
       }
   }
 </pre></div>
@@ -261,7 +265,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>GLUI callback - Called when the exit button is pressed. </p>
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00315">315</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00308">308</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">  {
     exit(code);
   }
@@ -300,15 +304,15 @@ Static Public Member Functions</h2></td></tr>
 <div class="memdoc">
 
 <p>GLUT keyboard callback This gets called whenever a key is pressed. </p>
-<p>What are these?</p>
 <p>Press 'z' to zoom out.</p>
 <p>Press 'x' to zoom in.</p>
 <p>Press 'r' to reset.</p>
 <p>Press 'p' to pause.</p>
 <p>The default case. Why is this needed? </p>
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00089">89</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00082">82</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">  {
+   
     B2_NOT_USED(x);
     B2_NOT_USED(y);
     
@@ -320,12 +324,12 @@ Static Public Member Functions</h2></td></tr>
       
     <span class="keywordflow">case</span> <span class="charliteral">&#39;z&#39;</span>:
       <a class="code" href="namespacecs296.html#acd94f8ca6c6ebfd23f6742211acfe446">view_zoom</a> = b2Min(1.1f * <a class="code" href="namespacecs296.html#acd94f8ca6c6ebfd23f6742211acfe446">view_zoom</a>, 20.0f);
-      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. Why is this so? This gets called when the window is resiz...">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
+      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height.">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
       <span class="keywordflow">break</span>;
       
     <span class="keywordflow">case</span> <span class="charliteral">&#39;x&#39;</span>:
       <a class="code" href="namespacecs296.html#acd94f8ca6c6ebfd23f6742211acfe446">view_zoom</a> = b2Max(0.9f * <a class="code" href="namespacecs296.html#acd94f8ca6c6ebfd23f6742211acfe446">view_zoom</a>, 0.02f);
-      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. Why is this so? This gets called when the window is resiz...">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
+      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height.">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
       <span class="keywordflow">break</span>;
       
     <span class="keywordflow">case</span> <span class="charliteral">&#39;r&#39;</span>:
@@ -385,7 +389,7 @@ Static Public Member Functions</h2></td></tr>
 <p>Press up to pan up.</p>
 <p>Press home to reset the view. </p>
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00134">134</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00127">127</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">  {
     B2_NOT_USED(x);
     B2_NOT_USED(y);
@@ -396,28 +400,28 @@ Static Public Member Functions</h2></td></tr>
       
     <span class="keywordflow">case</span> GLUT_KEY_LEFT:
       <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>.x -= 0.5f;
-      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. Why is this so? This gets called when the window is resiz...">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
+      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height.">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
       <span class="keywordflow">break</span>;
       
     <span class="keywordflow">case</span> GLUT_KEY_RIGHT:
       <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>.x += 0.5f;
-      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. Why is this so? This gets called when the window is resiz...">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
+      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height.">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
       <span class="keywordflow">break</span>;
       
     <span class="keywordflow">case</span> GLUT_KEY_DOWN:
       <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>.y -= 0.5f;
-      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. Why is this so? This gets called when the window is resiz...">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
+      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height.">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
       <span class="keywordflow">break</span>;
       
     <span class="keywordflow">case</span> GLUT_KEY_UP:
       <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>.y += 0.5f;
-      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. Why is this so? This gets called when the window is resiz...">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
+      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height.">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
       <span class="keywordflow">break</span>;
       
     <span class="keywordflow">case</span> GLUT_KEY_HOME:
       <a class="code" href="namespacecs296.html#acd94f8ca6c6ebfd23f6742211acfe446">view_zoom</a> = 1.0f;
       <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>.Set(0.0f, 20.0f);
-      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. Why is this so? This gets called when the window is resiz...">callbacks_t::resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
+      <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height.">callbacks_t::resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
       <span class="keywordflow">break</span>;
     }
   }
@@ -457,7 +461,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Another keyboard callback? Why is this necessary? Is this used? </p>
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00176">176</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00169">169</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">  {
     B2_NOT_USED(x);
     B2_NOT_USED(y);
@@ -510,15 +514,15 @@ Static Public Member Functions</h2></td></tr>
 <p>GLUT mouse callback This is called when a mouse button is pressed. </p>
 <p>Use the mouse to move things around - figure out how this works? </p>
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00187">187</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00180">180</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">  {
     <span class="keywordflow">if</span> (button == GLUT_LEFT_BUTTON)
       {
     <span class="keywordtype">int</span> mod = glutGetModifiers();
-    b2Vec2 p = <a class="code" href="classcs296_1_1callbacks__t.html#a4228164c031d731cadff7754e961ec0e" title="Helper function for coordinates system conversion Note the function is a static function. Read about C++ static functions.">convert_screen_to_world</a>(x, y);
+    b2Vec2 p = <a class="code" href="classcs296_1_1callbacks__t.html#a4228164c031d731cadff7754e961ec0e" title="Helper function for coordinates system conversion.">convert_screen_to_world</a>(x, y);
     <span class="keywordflow">if</span> (state == GLUT_DOWN)
       {
-        b2Vec2 p = <a class="code" href="classcs296_1_1callbacks__t.html#a4228164c031d731cadff7754e961ec0e" title="Helper function for coordinates system conversion Note the function is a static function. Read about C++ static functions.">convert_screen_to_world</a>(x, y);
+        b2Vec2 p = <a class="code" href="classcs296_1_1callbacks__t.html#a4228164c031d731cadff7754e961ec0e" title="Helper function for coordinates system conversion.">convert_screen_to_world</a>(x, y);
         <span class="keywordflow">if</span> (mod == GLUT_ACTIVE_SHIFT)
           {
         <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>-&gt;<a class="code" href="classcs296_1_1base__sim__t.html#a9194a5bd4cd8a81619b15ec96b7d6492">shift_mouse_down</a>(p);
@@ -538,7 +542,7 @@ Static Public Member Functions</h2></td></tr>
       {
     <span class="keywordflow">if</span> (state == GLUT_DOWN)
       { 
-        <a class="code" href="namespacecs296.html#a03a6cd562687c633dafdddda818208f5">lastp</a> = <a class="code" href="classcs296_1_1callbacks__t.html#a4228164c031d731cadff7754e961ec0e" title="Helper function for coordinates system conversion Note the function is a static function. Read about C++ static functions.">convert_screen_to_world</a>(x, y);
+        <a class="code" href="namespacecs296.html#a03a6cd562687c633dafdddda818208f5">lastp</a> = <a class="code" href="classcs296_1_1callbacks__t.html#a4228164c031d731cadff7754e961ec0e" title="Helper function for coordinates system conversion.">convert_screen_to_world</a>(x, y);
         <a class="code" href="namespacecs296.html#ade3fb4a4a73cda302efdcf5661527388">r_mouse_down</a> = <span class="keyword">true</span>;
       }
     
@@ -578,9 +582,9 @@ Static Public Member Functions</h2></td></tr>
 
 <p>GLUT Mouse motion callback This is called when the mouse is moved/dragged. </p>
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00228">228</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00221">221</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">  {
-    b2Vec2 p = <a class="code" href="classcs296_1_1callbacks__t.html#a4228164c031d731cadff7754e961ec0e" title="Helper function for coordinates system conversion Note the function is a static function. Read about C++ static functions.">convert_screen_to_world</a>(x, y);
+    b2Vec2 p = <a class="code" href="classcs296_1_1callbacks__t.html#a4228164c031d731cadff7754e961ec0e" title="Helper function for coordinates system conversion.">convert_screen_to_world</a>(x, y);
     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>-&gt;<a class="code" href="classcs296_1_1base__sim__t.html#a1abdedb42db651d0f880829919f1bdd8">mouse_move</a>(p);
     
     <span class="keywordflow">if</span> (<a class="code" href="namespacecs296.html#ade3fb4a4a73cda302efdcf5661527388">r_mouse_down</a>)
@@ -588,8 +592,8 @@ Static Public Member Functions</h2></td></tr>
     b2Vec2 diff = p - <a class="code" href="namespacecs296.html#a03a6cd562687c633dafdddda818208f5">lastp</a>;
     <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>.x -= diff.x;
     <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>.y -= diff.y;
-    <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. Why is this so? This gets called when the window is resiz...">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
-    lastp = <a class="code" href="classcs296_1_1callbacks__t.html#a4228164c031d731cadff7754e961ec0e" title="Helper function for coordinates system conversion Note the function is a static function. Read about C++ static functions.">convert_screen_to_world</a>(x, y);
+    <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height.">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
+    lastp = <a class="code" href="classcs296_1_1callbacks__t.html#a4228164c031d731cadff7754e961ec0e" title="Helper function for coordinates system conversion.">convert_screen_to_world</a>(x, y);
       }
   }
 </pre></div>
@@ -612,7 +616,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>GLUI callback - Called when the pause button is pressed. </p>
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00310">310</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00303">303</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">  {
     <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#a92b1c195ffb60a6d5dbf7cd4dd4e36ce">pause</a> = !<a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#a92b1c195ffb60a6d5dbf7cd4dd4e36ce">pause</a>;
   }
@@ -644,11 +648,9 @@ Static Public Member Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>GLUT resize callback. This is set via GLUI. Why is this so? This gets called when the window is resized. Passed as parameters are the current window width and height. </p>
-<p>Notice the type casting Read about explicit/implicit type casting in C++</p>
-<p>L/R/B/T extents of the view frustum Find where this function is defined </p>
+<p>GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height. </p>
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00062">62</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00060">60</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">  {
     <a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a> = w;
     <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a> = h;
@@ -658,7 +660,7 @@ Static Public Member Functions</h2></td></tr>
     
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    
+ 
     float32 ratio = <span class="keyword">static_cast&lt;</span>float32<span class="keyword">&gt;</span>(<a class="code" href="namespacecs296.html#a7006acc96d25bc2ecbf7b2d82cdb432c">tw</a>) / static_cast&lt;float32&gt;(<a class="code" href="namespacecs296.html#ae721ed2f829aed2546386188b4295146">th</a>);
     
     b2Vec2 extents(ratio * 25.0f, 25.0f);
@@ -666,7 +668,6 @@ Static Public Member Functions</h2></td></tr>
     
     b2Vec2 lower = <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a> - extents;
     b2Vec2 upper = <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a> + extents;
-  
     gluOrtho2D(lower.x, upper.x, lower.y, upper.y);
   }
 </pre></div>
@@ -689,7 +690,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>GLUI callback - Called when the restart button is pressed. </p>
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00289">289</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00282">282</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">  { 
     <span class="keyword">delete</span> <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>;
     <span class="keywordflow">if</span> (<a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#a3e85f2089f0b9529c95ae9e72a529d1a">candidate</a> == 1){
@@ -706,7 +707,7 @@ Static Public Member Functions</h2></td></tr>
     }
     <a class="code" href="namespacecs296.html#a1b96cdf5ee75c73ecbd3c79a0a04d82b">entry</a> = <a class="code" href="namespacecs296.html#a6a02c1b92c2165c5e723308bcb9c340c">cs296::sim</a>;
     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a> = <a class="code" href="namespacecs296.html#a1b96cdf5ee75c73ecbd3c79a0a04d82b">entry</a>-&gt;<a class="code" href="structcs296_1_1sim__t.html#a9df5092a72b8586338c0df1888c6cb75">create_fcn</a>(); 
-    <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. Why is this so? This gets called when the window is resiz...">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
+    <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height.">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>-&gt;<a class="code" href="classcs296_1_1base__sim__t.html#a662286c6ecc1a696e1b9621f2e85ee5d">changevar</a>();
   }
 </pre></div>
@@ -729,7 +730,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>GLUI callback - Called when the single-step button is pressed. </p>
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00320">320</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00313">313</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">  {
     <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#a92b1c195ffb60a6d5dbf7cd4dd4e36ce">pause</a> = 1;
     <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#a5a643bd4484d116a5ef4f0adf6001cb9">single_step</a> = 1;
@@ -754,7 +755,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>GLUT timer callback. This is used to control the frame rate - figure out how by reading the GLUT manual. </p>
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00244">244</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00237">237</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">  {     
     glutSetWindow(<a class="code" href="namespacecs296.html#a9cc78441e6c3ad7be5b4cb317fc7b92f">main_window</a>);
         glutPostRedisplay();  
@@ -785,7 +786,7 @@ Static Public Member Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 10 2013 00:27:18 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 10 2013 01:28:26 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

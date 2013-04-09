@@ -105,7 +105,7 @@ base_sim_t::base_sim_t()
 
 	memset(&m_max_profile, 0, sizeof(b2Profile));
 	memset(&m_total_profile, 0, sizeof(b2Profile));
-	drawtxt(30.0f, 20.0f);
+	
 }
 
 base_sim_t::~base_sim_t()

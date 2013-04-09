@@ -106,7 +106,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="cs296::dominos_t" --><!-- doxytag: inherits="cs296::base_sim_t" -->
-<p>This is the class that sets up the Box2D simulation world Notice the public inheritance - why do we inherit the <a class="el" href="classcs296_1_1base__sim__t.html">base_sim_t</a> class?  
+<p>This is the class that sets up the Elements of the Box2D simulation world.  
  <a href="classcs296_1_1dominos__t.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="dominos_8hpp_source.html">dominos.hpp</a>&gt;</code></p>
@@ -116,7 +116,7 @@ Inheritance diagram for cs296::dominos_t:</div>
  <div class="center">
   <img src="classcs296_1_1dominos__t.png" usemap="#cs296::dominos_t_map" alt=""/>
   <map id="cs296::dominos_t_map" name="cs296::dominos_t_map">
-<area href="classcs296_1_1base__sim__t.html" alt="cs296::base_sim_t" shape="rect" coords="0,0,114,24"/>
+<area href="classcs296_1_1base__sim__t.html" title="This class implements the contact listener(for general use)." alt="cs296::base_sim_t" shape="rect" coords="0,0,114,24"/>
 </map>
  </div></div>
 
@@ -125,14 +125,16 @@ Inheritance diagram for cs296::dominos_t:</div>
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1dominos__t.html#ae67e4cb8918e0b8316c225a21ba169b4">dominos_t</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Describes the elements and incorporates the dynamics involved.  <a href="#ae67e4cb8918e0b8316c225a21ba169b4"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classcs296_1_1base__sim__t.html">base_sim_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1dominos__t.html#a70f5e2464c3c5f0036a3ea0dd08464e5">create</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulates the world created.  <a href="#a70f5e2464c3c5f0036a3ea0dd08464e5"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>This is the class that sets up the Box2D simulation world Notice the public inheritance - why do we inherit the <a class="el" href="classcs296_1_1base__sim__t.html">base_sim_t</a> class? </p>
+<div class="textblock"><p>This is the class that sets up the Elements of the Box2D simulation world. </p>
 
-<p>Definition at line <a class="el" href="dominos_8hpp_source.html#l00032">32</a> of file <a class="el" href="dominos_8hpp_source.html">dominos.hpp</a>.</p>
+<p>Definition at line <a class="el" href="dominos_8hpp_source.html#l00031">31</a> of file <a class="el" href="dominos_8hpp_source.html">dominos.hpp</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ae67e4cb8918e0b8316c225a21ba169b4"></a><!-- doxytag: member="cs296::dominos_t::dominos_t" ref="ae67e4cb8918e0b8316c225a21ba169b4" args="()" -->
 <div class="memitem">
@@ -147,6 +149,9 @@ Static Public Member Functions</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+
+<p>Describes the elements and incorporates the dynamics involved. </p>
+<p>Elements include ground, see-saw, pulley, pendulum, revolute and prismatic joints and candidate blocks. </p>
 <ul>
 <li>
 <b>Ground</b> is the static body in this simulation world. It acts as a base for all the dynamics involved. </li>
@@ -185,7 +190,7 @@ The ball on the left arm opens up a <b>curtain</b> declaring the result.The curt
   
      
        
-       <span class="comment">//Ground </span>
+      <span class="comment">//Ground </span>
         {
           b2Body* b1;
           b2EdgeShape shape;
@@ -197,124 +202,121 @@ The ball on the left arm opens up a <b>curtain</b> declaring the result.The curt
         }
 
      <span class="comment">//Platform</span>
-       {
-          b2PolygonShape shape;
-          shape.SetAsBox(11.0f, 0.25f);
-          b2BodyDef bd2;
-          bd2.position.Set(-24.0f, 26.0f);
-          b2Body* body = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd2);
-          b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
-          fd2-&gt;density = 1.f;
-          fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-          fd2-&gt;shape = &amp;shape;
-          body-&gt;CreateFixture(fd2);
-      }
+        {
+            b2PolygonShape shape;
+            shape.SetAsBox(11.0f, 0.25f);
+            b2BodyDef bd2;
+            bd2.position.Set(-24.0f, 26.0f);
+            b2Body* body = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd2);
+            b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+            fd2-&gt;density = 1.f;
+            fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+            fd2-&gt;shape = &amp;shape;
+            body-&gt;CreateFixture(fd2);
+        }
       
          <span class="comment">//holder</span>
-       {
-          b2PolygonShape shape;
-          shape.SetAsBox(0.01f, 0.01f);
-          b2BodyDef bd2;
-          bd2.position.Set(-33.75f, 26.26f);
-          b2Body* body = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd2);
-          b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
-          fd2-&gt;density = 1.f;
-          fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-          fd2-&gt;shape = &amp;shape;
-          body-&gt;CreateFixture(fd2);
-       }
-    <span class="comment">//Pendulum</span>
-    {
+        {
+            b2PolygonShape shape;
+            shape.SetAsBox(0.01f, 0.01f);
+            b2BodyDef bd2;
+            bd2.position.Set(-33.75f, 26.26f);
+            b2Body* body = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd2);
+            b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+            fd2-&gt;density = 1.f;
+            fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+            fd2-&gt;shape = &amp;shape;
+            body-&gt;CreateFixture(fd2);
+        }
+        <span class="comment">//Pendulum</span>
+        {
      
-      {
-    b2Body* b2;
-    b2PolygonShape shape;
-    shape.SetAsBox(0.25f, 1.5f);
-      
-    b2BodyDef bd;
-    bd.position.Set(-37.0f, 23.0f);
-    b2 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd);
-    b2-&gt;CreateFixture(&amp;shape, 10.0f);
-        
+           {
+        b2Body* b2;
+        b2PolygonShape shape;
+        shape.SetAsBox(0.25f, 1.5f);
+          
+        b2BodyDef bd;
+        bd.position.Set(-37.0f, 23.0f);
+        b2 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd);
+        b2-&gt;CreateFixture(&amp;shape, 10.0f);
+            
         b2Body* b4;
         b2FixtureDef *bobf = <span class="keyword">new</span> b2FixtureDef;
-    bobf-&gt;restitution=0.0f;
-    bobf-&gt;density=2.0f;
-    shape.SetAsBox(.25f, .25f);
-    bobf-&gt;shape=&amp;shape;
-    b2BodyDef bd2;
-    bd2.type = b2_dynamicBody;
-    bd2.position.Set(-45.0f, 38.0f);
-    b4 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd2);
-    b4-&gt;CreateFixture(bobf);
-    
-  
-       b2RevoluteJointDef <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>;
-       b2Vec2 anchor;
-       anchor.Set(-37.0f, 35.0f);
-       jd.Initialize(b2, b4, anchor);
-       <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint(&amp;jd);
-      }
-      
-    }
-      
-    <span class="comment">//the balls on the left side</span>
-    {
-      b2Body* spherebody1;
-    
-      b2CircleShape circle;
-      circle.m_radius = 0.75;
+        bobf-&gt;restitution=0.0f;
+        bobf-&gt;density=2.0f;
+        shape.SetAsBox(.25f, .25f);
+        bobf-&gt;shape=&amp;shape;
+        b2BodyDef bd2;
+        bd2.type = b2_dynamicBody;
+        bd2.position.Set(-45.0f, 38.0f);
+        b4 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd2);
+        b4-&gt;CreateFixture(bobf);
     
       
-
-      b2FixtureDef ballfd2;
-      ballfd2.shape = &amp;circle;
-      ballfd2.density = 4.0f;
-      ballfd2.friction = 0.0f;
-      ballfd2.restitution =0.6f;
+            b2RevoluteJointDef <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>;
+            b2Vec2 anchor;
+            anchor.Set(-37.0f, 35.0f);
+            jd.Initialize(b2, b4, anchor);
+            <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint(&amp;jd);
+           }
+      
+        }
+      
+        <span class="comment">//the balls on the left side</span>
+        {
+            b2Body* spherebody1;
+    
+            b2CircleShape circle;
+            circle.m_radius = 0.75;
+        b2FixtureDef ballfd2;
+            ballfd2.shape = &amp;circle;
+            ballfd2.density = 4.0f;
+            ballfd2.friction = 0.0f;
+            ballfd2.restitution =0.6f;
 
     
     <span class="comment">//pipe</span>
     {
-          b2PolygonShape shape1;
-          shape1.SetAsBox(.1f, 2.25f);
+            b2PolygonShape shape1;
+            shape1.SetAsBox(.1f, 2.25f);
     
-          b2BodyDef bd1;
-          bd1.position.Set(-34.35f, 30.1f);
-          b2Body* body1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd1);
-          b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
-          fd1-&gt;density = 0.f;
-          fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-          fd1-&gt;shape = &amp;shape1;
-          body1-&gt;CreateFixture(fd1);
+            b2BodyDef bd1;
+            bd1.position.Set(-34.35f, 30.1f);
+            b2Body* body1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd1);
+            b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+            fd1-&gt;density = 0.f;
+            fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+            fd1-&gt;shape = &amp;shape1;
+            body1-&gt;CreateFixture(fd1);
     }
     
     
     {
-          b2PolygonShape shape1;
-          shape1.SetAsBox(.1f, 2.25f);
-          b2BodyDef bd1;
-          bd1.position.Set(-32.65f, 30.1f);
-          b2Body* body1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd1);
-          b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
-          fd1-&gt;density = 0.f;
-          fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-          fd1-&gt;shape = &amp;shape1;
-          body1-&gt;CreateFixture(fd1);
+            b2PolygonShape shape1;
+            shape1.SetAsBox(.1f, 2.25f);
+            b2BodyDef bd1;
+            bd1.position.Set(-32.65f, 30.1f);
+            b2Body* body1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd1);
+            b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+            fd1-&gt;density = 0.f;
+            fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+            fd1-&gt;shape = &amp;shape1;
+            body1-&gt;CreateFixture(fd1);
     }
 
     <span class="comment">//bottom-most ball</span>
     {
-          b2FixtureDef ballfd1;
-          ballfd1.shape = &amp;circle;
-          ballfd1.density = 4.0f;
-          ballfd1.friction = 0.0f;
-          ballfd1.restitution =0.3f;
-          b2BodyDef ballbd1;
-          ballbd1.type = b2_dynamicBody;
-          ballbd1.position.Set(-33.5f , 27.0f);
-          spherebody1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd1);
-          spherebody1-&gt;CreateFixture(&amp;ballfd1);
+            b2FixtureDef ballfd1;
+            ballfd1.shape = &amp;circle;
+            ballfd1.density = 4.0f;
+            ballfd1.friction = 0.0f;
+            ballfd1.restitution =0.3f;
+            b2BodyDef ballbd1;
+            ballbd1.type = b2_dynamicBody;
+            ballbd1.position.Set(-33.5f , 27.0f);
+            spherebody1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd1);
+            spherebody1-&gt;CreateFixture(&amp;ballfd1);
       
     }
 
@@ -931,9 +933,11 @@ The ball on the left arm opens up a <b>curtain</b> declaring the result.The curt
 </div>
 <div class="memdoc">
 
+<p>Simulates the world created. </p>
+
 <p>Definition at line <a class="el" href="dominos_8hpp_source.html#l00040">40</a> of file <a class="el" href="dominos_8hpp_source.html">dominos.hpp</a>.</p>
 <div class="fragment"><pre class="fragment">    {
-      <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="classcs296_1_1dominos__t.html#ae67e4cb8918e0b8316c225a21ba169b4">dominos_t</a>;
+      <span class="keywordflow">return</span> <span class="keyword">new</span> <a class="code" href="classcs296_1_1dominos__t.html#ae67e4cb8918e0b8316c225a21ba169b4" title="Describes the elements and incorporates the dynamics involved.">dominos_t</a>;
     }
 </pre></div>
 </div>
@@ -960,7 +964,7 @@ The ball on the left arm opens up a <b>curtain</b> declaring the result.The curt
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 10 2013 00:27:18 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 10 2013 01:28:26 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

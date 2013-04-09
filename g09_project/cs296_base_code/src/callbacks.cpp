@@ -4,8 +4,6 @@
  * Instructor: Parag Chaudhuri
  */
 
-//! These are user defined include files
-//! Included in double quotes - the path to find these has to be given at compile time
 #include "callbacks.hpp"
 
 #ifndef __APPLE__
@@ -69,9 +67,7 @@ namespace cs296
     
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    
-    //! Notice the type casting 
-    //! Read about explicit/implicit type casting in C++
+ 
     float32 ratio = static_cast<float32>(tw) / static_cast<float32>(th);
     
     b2Vec2 extents(ratio * 25.0f, 25.0f);
@@ -79,16 +75,13 @@ namespace cs296
     
     b2Vec2 lower = settings.view_center - extents;
     b2Vec2 upper = settings.view_center + extents;
-  
-    //! L/R/B/T extents of the view frustum
-    //! Find where this function is defined
     gluOrtho2D(lower.x, upper.x, lower.y, upper.y);
   }
   
   
   void callbacks_t::keyboard_cb(unsigned char key, int x, int y)
   {
-    //! What are these?
+   
     B2_NOT_USED(x);
     B2_NOT_USED(y);
     

@@ -28,6 +28,7 @@ b2Joint* jd ;
 b2Joint* je ;
 b2Joint* jf ;
 int var=0;
+
 Sci::Sci(b2World* m_world, b2Joint* mj, b2Joint* j1, b2Joint* j2){
 	 	world=m_world;
 	 	ja=mj;

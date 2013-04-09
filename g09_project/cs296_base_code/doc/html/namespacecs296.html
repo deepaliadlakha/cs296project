@@ -85,20 +85,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>These are user defined include files Included in double quotes - the path to find these has to be given at compile time.  
+<p>The namespace protects the global variables and other names from clashes in scope. Read about the use of named and unnamed namespaces in C++ Figure out where all the datatypes used below are defined.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1callbacks__t.html">callbacks_t</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class implements all the callbacks.  <a href="classcs296_1_1callbacks__t.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1_sci.html">Sci</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class implements the functionality of the scissors.  <a href="classcs296_1_1_sci.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1_my_contact_listener.html">MyContactListener</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class implements the Contact Listener attached to the scissors.  <a href="classcs296_1_1_my_contact_listener.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcs296_1_1settings__t.html">settings_t</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class implements all the calculations corresponding to physical laws.  <a href="structcs296_1_1settings__t.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcs296_1_1sim__t.html">sim_t</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcs296_1_1contact__point__t.html">contact_point_t</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1base__sim__t.html">base_sim_t</a></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This class implements the contact listener(for general use).  <a href="classcs296_1_1base__sim__t.html#details">More...</a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1dominos__t.html">dominos_t</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the class that sets up the Box2D simulation world Notice the public inheritance - why do we inherit the <a class="el" href="classcs296_1_1base__sim__t.html">base_sim_t</a> class?  <a href="classcs296_1_1dominos__t.html#details">More...</a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the class that sets up the Elements of the Box2D simulation world.  <a href="classcs296_1_1dominos__t.html#details">More...</a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classcs296_1_1base__sim__t.html">base_sim_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecs296.html#aee93dd0d9f162edd67d267ed9b778a21">sim_create_fcn</a> ()</td></tr>
@@ -129,13 +134,9 @@ Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecs296.html#a77cb0ad2f719557bd95ee4c73cecc689">k_max_contact_points</a> = 2048</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>These are user defined include files Included in double quotes - the path to find these has to be given at compile time. </p>
+<div class="textblock"><p>The namespace protects the global variables and other names from clashes in scope. Read about the use of named and unnamed namespaces in C++ Figure out where all the datatypes used below are defined. </p>
 <p>Notice the use of extern. Why is it used here?</p>
-<p>Namespace for the project is CS296.</p>
-<p>Notice the use of these pre-processor directives on top of each header file Why are they used?</p>
-<p>The namespace protects the global variables and other names from clashes in scope. Read about the use of named and unnamed namespaces in C++ Figure out where all the datatypes used below are defined</p>
-<p>This file defines all the callback functions our code needs. Why are they not members of a class? Can you make them into a class?</p>
-<p>Callback functions are called when a event occurs due to the press of a key, mouse button, or a GUI element like a menu item is clicked or scroller is dragged. Some callbacks are triggered after a fixed intervals when a timer elapses. These are user defined include files Included in double quotes - the path to find these has to be given at compile time </p>
+<p>Namespace for the project is CS296. </p>
 </div><hr/><h2>Typedef Documentation</h2>
 <a class="anchor" id="aee93dd0d9f162edd67d267ed9b778a21"></a><!-- doxytag: member="cs296::sim_create_fcn" ref="aee93dd0d9f162edd67d267ed9b778a21" args="()" -->
 <div class="memitem">
@@ -148,7 +149,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00072">72</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00080">80</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -164,7 +165,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00030">30</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00028">28</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -179,7 +180,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00035">35</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00033">33</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -196,7 +197,7 @@ Variables</h2></td></tr>
 
 <p>Elements in the Box2D Simulation World. </p>
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00025">25</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00023">23</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -211,7 +212,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00026">26</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00024">24</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -226,7 +227,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00034">34</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00032">32</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -241,7 +242,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00138">138</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00147">147</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -256,7 +257,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00041">41</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00039">39</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -271,7 +272,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00036">36</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00034">34</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -286,7 +287,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00040">40</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00038">38</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -301,7 +302,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00032">32</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00030">30</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -316,7 +317,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00037">37</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00035">35</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -331,7 +332,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="dominos_8cpp_source.html#l00804">804</a> of file <a class="el" href="dominos_8cpp_source.html">dominos.cpp</a>.</p>
+<p>Definition at line <a class="el" href="dominos_8cpp_source.html#l00801">801</a> of file <a class="el" href="dominos_8cpp_source.html">dominos.cpp</a>.</p>
 
 </div>
 </div>
@@ -346,7 +347,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00031">31</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00029">29</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -361,7 +362,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00029">29</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00027">27</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -376,7 +377,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00027">27</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00025">25</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -391,7 +392,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00028">28</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00026">26</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -406,7 +407,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00039">39</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00037">37</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -421,7 +422,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00039">39</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00037">37</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -436,7 +437,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00039">39</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00037">37</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -451,7 +452,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00039">39</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00037">37</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -466,7 +467,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00038">38</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00036">36</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -481,7 +482,7 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00033">33</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
+<p>Definition at line <a class="el" href="callbacks_8cpp_source.html#l00031">31</a> of file <a class="el" href="callbacks_8cpp_source.html">callbacks.cpp</a>.</p>
 
 </div>
 </div>
@@ -503,7 +504,7 @@ Variables</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 10 2013 00:27:18 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 10 2013 01:28:26 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
