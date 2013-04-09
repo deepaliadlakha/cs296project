@@ -1,0 +1,108 @@
+32,35c32
+< #include <iostream>
+< #include <list>
+< using namespace std;
+< //extern int32 abc;	
+---
+> 
+40,73d36
+< 	
+< 
+< 
+< class Sci
+< {
+< 	private:
+< 	b2World* world;
+< 	
+< 	
+< 	public:
+< 	Sci(b2World* m_world, b2Joint* mj, b2Joint* j1, b2Joint* j2);
+< 	void startContact();
+< 	void endContact();
+< };
+< 
+< class MyContactListener : public b2ContactListener
+<   {
+<     void BeginContact(b2Contact* contact) {
+<  
+<       //check if fixture A was a ball
+<       void* bodyUserData = contact->GetFixtureA()->GetBody()->GetUserData();
+<       if ( bodyUserData )
+<         static_cast<Sci*>( bodyUserData )->startContact();
+<  
+<       //check if fixture B was a ball
+<       bodyUserData = contact->GetFixtureB()->GetBody()->GetUserData();
+<       if ( bodyUserData )
+<         static_cast<Sci*>( bodyUserData )->startContact();
+<  
+<     }
+<  
+<     void EndContact(b2Contact* contact) {
+<     }
+<   };
+77,78d39
+< 
+<   
+109,110c70
+<       single_step(0),
+<       candidate(3)
+---
+>       single_step(0)
+133d92
+<     int32 candidate;
+137,139c96
+<   {	
+<   	
+<   	
+---
+>   {
+145,148d101
+<       
+<       
+<       
+<       
+169,172d121
+<     
+<     b2World* get_world(void){
+<     	return m_world;
+<     	}
+179,181d127
+<     void dest();
+<     void changevar();
+<     void drawtxt(int x, int y );
+198,215c144
+<     virtual void begin_contact(b2Contact* contact) { 
+<     
+<     
+<     std::cout<<"sdfdf"<<std::endl;
+<     //check if fixture A was a ball
+<       void* bodyUserData = contact->GetFixtureA()->GetBody()->GetUserData();
+<       if ( bodyUserData ){
+<       std::cout<<"sdfdf"<<std::endl;
+<         static_cast<Sci*>( bodyUserData )->startContact();
+<  }
+<       //check if fixture B was a ball
+<       bodyUserData = contact->GetFixtureB()->GetBody()->GetUserData();
+<       if ( bodyUserData ){
+<        static_cast<Sci*>( bodyUserData )->startContact();
+<        std::cout<<"sdfdf"<<std::endl;
+<        }
+<         
+<         }
+---
+>     virtual void begin_contact(b2Contact* contact) { B2_NOT_USED(contact); }
+236d164
+<     MyContactListener mcl;	
+245,256d172
+<   
+<   
+< 
+<   
+<   
+<   
+<   
+<   
+<   
+<   
+<   
+<   
