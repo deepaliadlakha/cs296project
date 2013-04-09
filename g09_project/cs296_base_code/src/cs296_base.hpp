@@ -127,7 +127,7 @@ namespace cs296
 	    int32 single_step;
 	    int32 candidate;
 	  };
-	  
+	  /*!This class implements simulation*/
 	  struct sim_t
 	  {	
 	  	
@@ -145,6 +145,7 @@ namespace cs296
 	  
 	  
 	  const int32 k_max_contact_points = 2048;  
+	  /*!This class implements the analysis of contact points */
 	  struct contact_point_t
 	  {
 	    b2Fixture* fixtureA;

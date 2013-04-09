@@ -78,6 +78,7 @@ namespace cs296
 	  class base_sim_t;
 	  struct settings_t;
 	  typedef base_sim_t* sim_create_fcn(); 
+	  /*!This class implements all the calculations corresponding to physical laws.*/
 	  struct settings_t
 	  {
 	      settings_t() :
@@ -144,6 +145,7 @@ namespace cs296
 	  
 	  
 	  const int32 k_max_contact_points = 2048;  
+	  /*!This class implements the analysis of contact points */
 	  struct contact_point_t
 	  {
 	    b2Fixture* fixtureA;
