@@ -111,338 +111,315 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00029"></a><a class="code" href="cs296__base_8cpp.html#a5341bbd3d45dc1363c763731f7f35126">00029</a> b2Joint* <a class="code" href="cs296__base_8cpp.html#a5341bbd3d45dc1363c763731f7f35126">jf</a> ;
 <a name="l00030"></a><a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">00030</a> <span class="keywordtype">int</span> <a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>=0;
 <a name="l00031"></a><a class="code" href="classcs296_1_1_sci.html#a5b380b19e4db32ed4e78c2e613175f91">00031</a> Sci::Sci(b2World* m_world, b2Joint* mj, b2Joint* j1, b2Joint* j2){
-<a name="l00032"></a>00032         <span class="comment">//b2Body* b2;</span>
-<a name="l00033"></a>00033         world=m_world;
-<a name="l00034"></a>00034         <a class="code" href="cs296__base_8cpp.html#a0ab6eca2278214e153302032d8c274d3">ja</a>=mj;
-<a name="l00035"></a>00035         <a class="code" href="cs296__base_8cpp.html#a75004ea73f1a07243fec10e13a1464c0">jb</a>=j1;
-<a name="l00036"></a>00036         <a class="code" href="cs296__base_8cpp.html#a4fc009f21b49ef03479d84c2604a60ea">jc</a>=j2;
-<a name="l00037"></a>00037         <span class="comment">/*</span>
-<a name="l00038"></a>00038 <span class="comment">        //std::cout&lt;&lt;j-&gt;GetAnchorA().x&lt;&lt;std::endl;</span>
-<a name="l00039"></a>00039 <span class="comment">     // jointdestroy=mj;</span>
-<a name="l00040"></a>00040 <span class="comment">        b2PolygonShape shape;</span>
-<a name="l00041"></a>00041 <span class="comment">        shape.SetAsBox(1.5f, .25f);</span>
-<a name="l00042"></a>00042 <span class="comment">        b2BodyDef bd;</span>
-<a name="l00043"></a>00043 <span class="comment">        bd.position.Set(-10.0f, 29.0f);</span>
-<a name="l00044"></a>00044 <span class="comment">        b2 = world-&gt;CreateBody(&amp;bd);</span>
-<a name="l00045"></a>00045 <span class="comment">        b2-&gt;CreateFixture(&amp;shape, 10.0f);</span>
-<a name="l00046"></a>00046 <span class="comment">        b2-&gt;SetUserData(this);</span>
-<a name="l00047"></a>00047 <span class="comment">        */</span>
-<a name="l00048"></a>00048         <span class="comment">//myscissor</span>
-<a name="l00049"></a>00049         {
-<a name="l00050"></a>00050             b2Body* sbody;
-<a name="l00051"></a>00051       b2PolygonShape poly;
-<a name="l00052"></a>00052       b2Vec2 vertices[3];
-<a name="l00053"></a>00053       vertices[0].Set(-2.0,-0.25);
-<a name="l00054"></a>00054       vertices[1].Set(2.0,0.25);
-<a name="l00055"></a>00055       vertices[2].Set(1.0,0.25);
-<a name="l00056"></a>00056       poly.Set(vertices, 3);
-<a name="l00057"></a>00057       b2FixtureDef wedgefd;
-<a name="l00058"></a>00058       wedgefd.shape = &amp;poly;
-<a name="l00059"></a>00059       wedgefd.density = 10.0f;
-<a name="l00060"></a>00060       wedgefd.friction = 0.0f;
-<a name="l00061"></a>00061       wedgefd.restitution = 0.0f;
-<a name="l00062"></a>00062       b2BodyDef wedgebd;
-<a name="l00063"></a>00063       wedgebd.position.Set(-9.0f, 29.0f);
-<a name="l00064"></a>00064       sbody = m_world-&gt;CreateBody(&amp;wedgebd);
-<a name="l00065"></a>00065       sbody-&gt;CreateFixture(&amp;wedgefd);
-<a name="l00066"></a>00066       sbody-&gt;SetUserData(<span class="keyword">this</span>);
-<a name="l00067"></a>00067         }
-<a name="l00068"></a>00068         
-<a name="l00069"></a>00069         
-<a name="l00070"></a>00070         b2Body* sbody;
-<a name="l00071"></a>00071       b2PolygonShape poly;
-<a name="l00072"></a>00072       b2Vec2 vertices[3];
-<a name="l00073"></a>00073       vertices[0].Set(-2.0,0.15);
-<a name="l00074"></a>00074       vertices[1].Set(2.0,-0.15);
-<a name="l00075"></a>00075       vertices[2].Set(1.0,0.15);
-<a name="l00076"></a>00076       poly.Set(vertices, 3);
-<a name="l00077"></a>00077       b2FixtureDef wedgefd;
-<a name="l00078"></a>00078       wedgefd.shape = &amp;poly;
-<a name="l00079"></a>00079       wedgefd.density = 10.0f;
-<a name="l00080"></a>00080       wedgefd.friction = 0.0f;
-<a name="l00081"></a>00081       wedgefd.restitution = 0.0f;
-<a name="l00082"></a>00082       b2BodyDef wedgebd;
-<a name="l00083"></a>00083       wedgebd.position.Set(-9.0f, 29.0f);
-<a name="l00084"></a>00084       sbody = m_world-&gt;CreateBody(&amp;wedgebd);
-<a name="l00085"></a>00085       sbody-&gt;CreateFixture(&amp;wedgefd);
-<a name="l00086"></a>00086       sbody-&gt;SetUserData(<span class="keyword">this</span>);
-<a name="l00087"></a>00087       
-<a name="l00088"></a>00088         
-<a name="l00089"></a>00089         }
-<a name="l00090"></a><a class="code" href="classcs296_1_1_sci.html#a9bc1fe26349122a05c1e88e8d3bfb042">00090</a>     <span class="keywordtype">void</span> Sci::startContact(){ 
-<a name="l00091"></a>00091         <span class="keywordflow">if</span> (<a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>!=2){
-<a name="l00092"></a>00092         <a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>=1;
-<a name="l00093"></a>00093         
-<a name="l00094"></a>00094         std::cout&lt;&lt;<span class="stringliteral">&quot;success&quot;</span>&lt;&lt;std::endl;
-<a name="l00095"></a>00095         
-<a name="l00096"></a>00096         <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>=<a class="code" href="cs296__base_8cpp.html#a0ab6eca2278214e153302032d8c274d3">ja</a>;
-<a name="l00097"></a>00097         <a class="code" href="cs296__base_8cpp.html#a2f3aff76c4208829eda2e05eb79eeae0">je</a>=<a class="code" href="cs296__base_8cpp.html#a75004ea73f1a07243fec10e13a1464c0">jb</a>;
-<a name="l00098"></a>00098         <a class="code" href="cs296__base_8cpp.html#a5341bbd3d45dc1363c763731f7f35126">jf</a>=<a class="code" href="cs296__base_8cpp.html#a4fc009f21b49ef03479d84c2604a60ea">jc</a>;
-<a name="l00099"></a>00099         }
-<a name="l00100"></a>00100         <span class="comment">//if (jod==NULL){std::cout&lt;&lt;&quot;deepali&quot;&lt;&lt;std::endl;}</span>
-<a name="l00101"></a>00101         
+<a name="l00032"></a>00032         world=m_world;
+<a name="l00033"></a>00033         <a class="code" href="cs296__base_8cpp.html#a0ab6eca2278214e153302032d8c274d3">ja</a>=mj;
+<a name="l00034"></a>00034         <a class="code" href="cs296__base_8cpp.html#a75004ea73f1a07243fec10e13a1464c0">jb</a>=j1;
+<a name="l00035"></a>00035         <a class="code" href="cs296__base_8cpp.html#a4fc009f21b49ef03479d84c2604a60ea">jc</a>=j2;
+<a name="l00036"></a>00036     
+<a name="l00037"></a>00037         {
+<a name="l00038"></a>00038               b2Body* sbody;
+<a name="l00039"></a>00039               b2PolygonShape poly;
+<a name="l00040"></a>00040               b2Vec2 vertices[3];
+<a name="l00041"></a>00041               vertices[0].Set(-2.0,-0.25);
+<a name="l00042"></a>00042               vertices[1].Set(2.0,0.25);
+<a name="l00043"></a>00043               vertices[2].Set(1.0,0.25);
+<a name="l00044"></a>00044               poly.Set(vertices, 3);
+<a name="l00045"></a>00045               b2FixtureDef wedgefd;
+<a name="l00046"></a>00046               wedgefd.shape = &amp;poly;
+<a name="l00047"></a>00047               wedgefd.density = 10.0f;
+<a name="l00048"></a>00048               wedgefd.friction = 0.0f;
+<a name="l00049"></a>00049               wedgefd.restitution = 0.0f;
+<a name="l00050"></a>00050               b2BodyDef wedgebd;
+<a name="l00051"></a>00051               wedgebd.position.Set(-9.0f, 29.0f);
+<a name="l00052"></a>00052               sbody = m_world-&gt;CreateBody(&amp;wedgebd);
+<a name="l00053"></a>00053               sbody-&gt;CreateFixture(&amp;wedgefd);
+<a name="l00054"></a>00054               sbody-&gt;SetUserData(<span class="keyword">this</span>);
+<a name="l00055"></a>00055         }
+<a name="l00056"></a>00056         
+<a name="l00057"></a>00057         {
+<a name="l00058"></a>00058               b2Body* sbody;
+<a name="l00059"></a>00059               b2PolygonShape poly;
+<a name="l00060"></a>00060               b2Vec2 vertices[3];
+<a name="l00061"></a>00061               vertices[0].Set(-2.0,0.15);
+<a name="l00062"></a>00062               vertices[1].Set(2.0,-0.15);
+<a name="l00063"></a>00063               vertices[2].Set(1.0,0.15);
+<a name="l00064"></a>00064               poly.Set(vertices, 3);
+<a name="l00065"></a>00065               b2FixtureDef wedgefd;
+<a name="l00066"></a>00066               wedgefd.shape = &amp;poly;
+<a name="l00067"></a>00067               wedgefd.density = 10.0f;
+<a name="l00068"></a>00068               wedgefd.friction = 0.0f;
+<a name="l00069"></a>00069               wedgefd.restitution = 0.0f;
+<a name="l00070"></a>00070               b2BodyDef wedgebd;
+<a name="l00071"></a>00071               wedgebd.position.Set(-9.0f, 29.0f);
+<a name="l00072"></a>00072               sbody = m_world-&gt;CreateBody(&amp;wedgebd);
+<a name="l00073"></a>00073               sbody-&gt;CreateFixture(&amp;wedgefd);
+<a name="l00074"></a>00074               sbody-&gt;SetUserData(<span class="keyword">this</span>);
+<a name="l00075"></a>00075             }
+<a name="l00076"></a>00076         
+<a name="l00077"></a>00077         }
+<a name="l00078"></a><a class="code" href="classcs296_1_1_sci.html#a9bc1fe26349122a05c1e88e8d3bfb042">00078</a>     <span class="keywordtype">void</span> Sci::startContact(){ 
+<a name="l00079"></a>00079         <span class="keywordflow">if</span> (<a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>!=2){
+<a name="l00080"></a>00080             <a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>=1;
+<a name="l00081"></a>00081             <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>=<a class="code" href="cs296__base_8cpp.html#a0ab6eca2278214e153302032d8c274d3">ja</a>;
+<a name="l00082"></a>00082             <a class="code" href="cs296__base_8cpp.html#a2f3aff76c4208829eda2e05eb79eeae0">je</a>=<a class="code" href="cs296__base_8cpp.html#a75004ea73f1a07243fec10e13a1464c0">jb</a>;
+<a name="l00083"></a>00083             <a class="code" href="cs296__base_8cpp.html#a5341bbd3d45dc1363c763731f7f35126">jf</a>=<a class="code" href="cs296__base_8cpp.html#a4fc009f21b49ef03479d84c2604a60ea">jc</a>;
+<a name="l00084"></a>00084         }
+<a name="l00085"></a>00085     }
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087 
+<a name="l00088"></a><a class="code" href="classcs296_1_1base__sim__t.html#a52acc40a593ab47ce5f0940beece44fa">00088</a> base_sim_t::base_sim_t()
+<a name="l00089"></a>00089 {
+<a name="l00090"></a>00090     b2Vec2 gravity;
+<a name="l00091"></a>00091     gravity.Set(0.0f, -10.0f);
+<a name="l00092"></a>00092     m_world = <span class="keyword">new</span> b2World(gravity);
+<a name="l00093"></a>00093     
+<a name="l00094"></a>00094     m_world-&gt;SetContactListener(&amp;mcl);
+<a name="l00095"></a>00095     m_text_line = 30;
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097     m_point_count = 0;
+<a name="l00098"></a>00098 
+<a name="l00099"></a>00099     m_world-&gt;SetDebugDraw(&amp;m_debug_draw);
+<a name="l00100"></a>00100     
+<a name="l00101"></a>00101     m_step_count = 0;
 <a name="l00102"></a>00102 
-<a name="l00103"></a>00103         }
-<a name="l00104"></a>00104         <span class="comment">//abc=9;</span>
-<a name="l00105"></a>00105     <span class="comment">//  Sci::jointdestroy=j;</span>
-<a name="l00106"></a>00106 
-<a name="l00107"></a><a class="code" href="classcs296_1_1_sci.html#add96462b5612d355c86d1e9dc0111f06">00107</a>     <span class="keywordtype">void</span> Sci::endContact(){ 
-<a name="l00108"></a>00108         std::cout&lt;&lt;<span class="stringliteral">&quot;you&quot;</span>&lt;&lt;std::endl;
-<a name="l00109"></a>00109     }
-<a name="l00110"></a>00110     
-<a name="l00111"></a>00111 
-<a name="l00112"></a><a class="code" href="classcs296_1_1base__sim__t.html#a52acc40a593ab47ce5f0940beece44fa">00112</a> base_sim_t::base_sim_t()
-<a name="l00113"></a>00113 {
-<a name="l00114"></a>00114     b2Vec2 gravity;
-<a name="l00115"></a>00115     gravity.Set(0.0f, -10.0f);
-<a name="l00116"></a>00116     m_world = <span class="keyword">new</span> b2World(gravity);
-<a name="l00117"></a>00117     
-<a name="l00118"></a>00118     m_world-&gt;SetContactListener(&amp;mcl);
-<a name="l00119"></a>00119     m_text_line = 30;
-<a name="l00120"></a>00120 
-<a name="l00121"></a>00121     m_point_count = 0;
-<a name="l00122"></a>00122 
-<a name="l00123"></a>00123     m_world-&gt;SetDebugDraw(&amp;m_debug_draw);
-<a name="l00124"></a>00124     
-<a name="l00125"></a>00125     m_step_count = 0;
-<a name="l00126"></a>00126 
-<a name="l00127"></a>00127     b2BodyDef body_def;
-<a name="l00128"></a>00128     m_ground_body = m_world-&gt;CreateBody(&amp;body_def);
-<a name="l00129"></a>00129 
-<a name="l00130"></a>00130     memset(&amp;m_max_profile, 0, <span class="keyword">sizeof</span>(b2Profile));
-<a name="l00131"></a>00131     memset(&amp;m_total_profile, 0, <span class="keyword">sizeof</span>(b2Profile));
-<a name="l00132"></a>00132 }
-<a name="l00133"></a>00133 
-<a name="l00134"></a><a class="code" href="classcs296_1_1base__sim__t.html#a82651e1cc41c6d5bff90edef489cfbc3">00134</a> base_sim_t::~base_sim_t()
-<a name="l00135"></a>00135 {
-<a name="l00136"></a>00136     <span class="comment">// By deleting the world, we delete the bomb, mouse joint, etc.</span>
-<a name="l00137"></a>00137     <span class="keyword">delete</span> m_world;
-<a name="l00138"></a>00138     <span class="comment">//jointdestroy.clear();</span>
-<a name="l00139"></a>00139     m_world = NULL;
-<a name="l00140"></a>00140 }
-<a name="l00141"></a>00141 
-<a name="l00142"></a><a class="code" href="classcs296_1_1base__sim__t.html#a7972d0c551f894b3a4e7cda7dcd7025e">00142</a> <span class="keywordtype">void</span> base_sim_t::pre_solve(b2Contact* contact, <span class="keyword">const</span> b2Manifold* oldManifold)
-<a name="l00143"></a>00143 {   <span class="comment">//std::cout&lt;&lt;&quot;abc&quot;&lt;&lt;std::endl;</span>
-<a name="l00144"></a>00144   <span class="keyword">const</span> b2Manifold* manifold = contact-&gt;GetManifold();
-<a name="l00145"></a>00145   
-<a name="l00146"></a>00146   <span class="keywordflow">if</span> (manifold-&gt;pointCount == 0)
-<a name="l00147"></a>00147     {
-<a name="l00148"></a>00148       <span class="keywordflow">return</span>;
-<a name="l00149"></a>00149     }
-<a name="l00150"></a>00150   
-<a name="l00151"></a>00151   b2Fixture* fixtureA = contact-&gt;GetFixtureA();
-<a name="l00152"></a>00152   b2Fixture* fixtureB = contact-&gt;GetFixtureB();
-<a name="l00153"></a>00153   
-<a name="l00154"></a>00154   b2PointState state1[b2_maxManifoldPoints], state2[b2_maxManifoldPoints];
-<a name="l00155"></a>00155   b2GetPointStates(state1, state2, oldManifold, manifold);
-<a name="l00156"></a>00156   
-<a name="l00157"></a>00157   b2WorldManifold world_manifold;
-<a name="l00158"></a>00158   contact-&gt;GetWorldManifold(&amp;world_manifold);
-<a name="l00159"></a>00159   
-<a name="l00160"></a>00160   <span class="keywordflow">for</span> (int32 i = 0; i &lt; manifold-&gt;pointCount &amp;&amp; m_point_count &lt; <a class="code" href="namespacecs296.html#a77cb0ad2f719557bd95ee4c73cecc689">k_max_contact_points</a>; ++i)
-<a name="l00161"></a>00161     {
-<a name="l00162"></a>00162       <a class="code" href="structcs296_1_1contact__point__t.html">contact_point_t</a>* cp = m_points + m_point_count;
-<a name="l00163"></a>00163       cp-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a000a2a4a158ce28da866c85d79c6fe9a">fixtureA</a> = fixtureA;
-<a name="l00164"></a>00164       cp-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#ad082627540532f27a6324548072c96f4">fixtureB</a> = fixtureB;
-<a name="l00165"></a>00165       cp-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a5ef7408b315030cec9bf687eedb8d6e7">position</a> = world_manifold.points[i];
-<a name="l00166"></a>00166       cp-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a991f256c48c67589ddba7f59f2bcb078">normal</a> = world_manifold.normal;
-<a name="l00167"></a>00167       cp-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a9e5734ab797b941b47ba7e1eac063bcc">state</a> = state2[i];
-<a name="l00168"></a>00168       ++m_point_count;
+<a name="l00103"></a>00103     b2BodyDef body_def;
+<a name="l00104"></a>00104     m_ground_body = m_world-&gt;CreateBody(&amp;body_def);
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106     memset(&amp;m_max_profile, 0, <span class="keyword">sizeof</span>(b2Profile));
+<a name="l00107"></a>00107     memset(&amp;m_total_profile, 0, <span class="keyword">sizeof</span>(b2Profile));
+<a name="l00108"></a>00108     
+<a name="l00109"></a>00109 }
+<a name="l00110"></a>00110 
+<a name="l00111"></a><a class="code" href="classcs296_1_1base__sim__t.html#a82651e1cc41c6d5bff90edef489cfbc3">00111</a> base_sim_t::~base_sim_t()
+<a name="l00112"></a>00112 {
+<a name="l00113"></a>00113     <span class="comment">// By deleting the world, we delete the bomb, mouse joint, etc.</span>
+<a name="l00114"></a>00114     <span class="keyword">delete</span> m_world;
+<a name="l00115"></a>00115     m_world = NULL;
+<a name="l00116"></a>00116 }
+<a name="l00117"></a>00117 
+<a name="l00118"></a><a class="code" href="classcs296_1_1base__sim__t.html#a7972d0c551f894b3a4e7cda7dcd7025e">00118</a> <span class="keywordtype">void</span> base_sim_t::pre_solve(b2Contact* contact, <span class="keyword">const</span> b2Manifold* oldManifold)
+<a name="l00119"></a>00119 {   
+<a name="l00120"></a>00120   <span class="keyword">const</span> b2Manifold* manifold = contact-&gt;GetManifold();
+<a name="l00121"></a>00121   
+<a name="l00122"></a>00122   <span class="keywordflow">if</span> (manifold-&gt;pointCount == 0)
+<a name="l00123"></a>00123     {
+<a name="l00124"></a>00124       <span class="keywordflow">return</span>;
+<a name="l00125"></a>00125     }
+<a name="l00126"></a>00126   
+<a name="l00127"></a>00127   b2Fixture* fixtureA = contact-&gt;GetFixtureA();
+<a name="l00128"></a>00128   b2Fixture* fixtureB = contact-&gt;GetFixtureB();
+<a name="l00129"></a>00129   
+<a name="l00130"></a>00130   b2PointState state1[b2_maxManifoldPoints], state2[b2_maxManifoldPoints];
+<a name="l00131"></a>00131   b2GetPointStates(state1, state2, oldManifold, manifold);
+<a name="l00132"></a>00132   
+<a name="l00133"></a>00133   b2WorldManifold world_manifold;
+<a name="l00134"></a>00134   contact-&gt;GetWorldManifold(&amp;world_manifold);
+<a name="l00135"></a>00135   
+<a name="l00136"></a>00136   <span class="keywordflow">for</span> (int32 i = 0; i &lt; manifold-&gt;pointCount &amp;&amp; m_point_count &lt; <a class="code" href="namespacecs296.html#a77cb0ad2f719557bd95ee4c73cecc689">k_max_contact_points</a>; ++i)
+<a name="l00137"></a>00137     {
+<a name="l00138"></a>00138       <a class="code" href="structcs296_1_1contact__point__t.html">contact_point_t</a>* cp = m_points + m_point_count;
+<a name="l00139"></a>00139       cp-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a000a2a4a158ce28da866c85d79c6fe9a">fixtureA</a> = fixtureA;
+<a name="l00140"></a>00140       cp-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#ad082627540532f27a6324548072c96f4">fixtureB</a> = fixtureB;
+<a name="l00141"></a>00141       cp-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a5ef7408b315030cec9bf687eedb8d6e7">position</a> = world_manifold.points[i];
+<a name="l00142"></a>00142       cp-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a991f256c48c67589ddba7f59f2bcb078">normal</a> = world_manifold.normal;
+<a name="l00143"></a>00143       cp-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a9e5734ab797b941b47ba7e1eac063bcc">state</a> = state2[i];
+<a name="l00144"></a>00144       ++m_point_count;
+<a name="l00145"></a>00145     }
+<a name="l00146"></a>00146 }
+<a name="l00147"></a>00147 
+<a name="l00148"></a><a class="code" href="classcs296_1_1base__sim__t.html#ab1019cd5117fd02f705dcbc1b160d53f">00148</a> <span class="keywordtype">void</span> base_sim_t::draw_title(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>)
+<a name="l00149"></a>00149 {
+<a name="l00150"></a>00150     m_debug_draw.DrawString(x, y, <span class="keywordtype">string</span>);
+<a name="l00151"></a>00151 }
+<a name="l00152"></a>00152 
+<a name="l00153"></a><a class="code" href="classcs296_1_1base__sim__t.html#a55e7af5fe10fb31f187077547b11a2eb">00153</a> <span class="keywordtype">void</span> base_sim_t::drawtxt(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y)
+<a name="l00154"></a>00154 {
+<a name="l00155"></a>00155     std::cout&lt;&lt;x&lt;&lt;<span class="stringliteral">&quot;dcdfcfsfc&quot;</span>&lt;&lt;y&lt;&lt;std::endl;
+<a name="l00156"></a>00156     m_debug_draw.DrawString(x, y, <span class="stringliteral">&quot;Thank You for Voting&quot;</span>);
+<a name="l00157"></a>00157 }
+<a name="l00158"></a>00158 
+<a name="l00159"></a>00159 
+<a name="l00160"></a><a class="code" href="classcs296_1_1base__sim__t.html#af2667e32281a3878c77f4859b1a71b68">00160</a> <span class="keywordtype">void</span> base_sim_t::step(<a class="code" href="structcs296_1_1settings__t.html">settings_t</a>* <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>)
+<a name="l00161"></a>00161 { 
+<a name="l00162"></a>00162   float32 time_step = settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a982922808e2e898eccf04d23a864262a">hz</a> &gt; 0.0f ? 1.0f / settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a982922808e2e898eccf04d23a864262a">hz</a> : float32(0.0f);
+<a name="l00163"></a>00163 
+<a name="l00164"></a>00164   <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a92b1c195ffb60a6d5dbf7cd4dd4e36ce">pause</a>)
+<a name="l00165"></a>00165     {
+<a name="l00166"></a>00166       <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a5a643bd4484d116a5ef4f0adf6001cb9">single_step</a>)
+<a name="l00167"></a>00167     {
+<a name="l00168"></a>00168       settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a5a643bd4484d116a5ef4f0adf6001cb9">single_step</a> = 0;
 <a name="l00169"></a>00169     }
-<a name="l00170"></a>00170 }
-<a name="l00171"></a>00171 
-<a name="l00172"></a><a class="code" href="classcs296_1_1base__sim__t.html#ab1019cd5117fd02f705dcbc1b160d53f">00172</a> <span class="keywordtype">void</span> base_sim_t::draw_title(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>)
-<a name="l00173"></a>00173 {
-<a name="l00174"></a>00174     m_debug_draw.DrawString(x, y, <span class="keywordtype">string</span>);
-<a name="l00175"></a>00175 }
-<a name="l00176"></a>00176 
-<a name="l00177"></a><a class="code" href="classcs296_1_1base__sim__t.html#a55e7af5fe10fb31f187077547b11a2eb">00177</a> <span class="keywordtype">void</span> base_sim_t::drawtxt(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y)
-<a name="l00178"></a>00178 {
-<a name="l00179"></a>00179     m_debug_draw.DrawString(x, y, <span class="stringliteral">&quot;Thank You for Voting&quot;</span>);
-<a name="l00180"></a>00180 }
-<a name="l00181"></a>00181 
-<a name="l00182"></a>00182 
-<a name="l00183"></a><a class="code" href="classcs296_1_1base__sim__t.html#af2667e32281a3878c77f4859b1a71b68">00183</a> <span class="keywordtype">void</span> base_sim_t::step(<a class="code" href="structcs296_1_1settings__t.html" title="Simulation settings. Some can be controlled in the GUI.">settings_t</a>* <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>)
-<a name="l00184"></a>00184 { 
-<a name="l00185"></a>00185   float32 time_step = settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a982922808e2e898eccf04d23a864262a">hz</a> &gt; 0.0f ? 1.0f / settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a982922808e2e898eccf04d23a864262a">hz</a> : float32(0.0f);
-<a name="l00186"></a>00186 
-<a name="l00187"></a>00187   <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a92b1c195ffb60a6d5dbf7cd4dd4e36ce">pause</a>)
-<a name="l00188"></a>00188     {
-<a name="l00189"></a>00189       <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a5a643bd4484d116a5ef4f0adf6001cb9">single_step</a>)
-<a name="l00190"></a>00190     {
-<a name="l00191"></a>00191       settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a5a643bd4484d116a5ef4f0adf6001cb9">single_step</a> = 0;
-<a name="l00192"></a>00192     }
-<a name="l00193"></a>00193       <span class="keywordflow">else</span>
-<a name="l00194"></a>00194     {
-<a name="l00195"></a>00195       time_step = 0.0f;
-<a name="l00196"></a>00196     }
-<a name="l00197"></a>00197       
-<a name="l00198"></a>00198       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;****PAUSED****&quot;</span>);
-<a name="l00199"></a>00199       m_text_line += 15;
+<a name="l00170"></a>00170       <span class="keywordflow">else</span>
+<a name="l00171"></a>00171     {
+<a name="l00172"></a>00172       time_step = 0.0f;
+<a name="l00173"></a>00173     }
+<a name="l00174"></a>00174       
+<a name="l00175"></a>00175       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;****PAUSED****&quot;</span>);
+<a name="l00176"></a>00176       m_text_line += 15;
+<a name="l00177"></a>00177     }
+<a name="l00178"></a>00178   
+<a name="l00179"></a>00179   uint32 flags = 0;
+<a name="l00180"></a>00180   flags += settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#aa5eb936cebce9d821b324cf86e4d340e">draw_shapes</a>            * b2Draw::e_shapeBit;
+<a name="l00181"></a>00181   flags += settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a58dbc9ac2a75f7a1dcf88e424a3f1941">draw_joints</a>            * b2Draw::e_jointBit;
+<a name="l00182"></a>00182   flags += settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#ac075d6fc3de075078642bdd4af4a1109">draw_AABBs</a>         * b2Draw::e_aabbBit;
+<a name="l00183"></a>00183   flags += settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#aeecd3f0399fb4b72fa73e19cb0d24e72">draw_pairs</a>         * b2Draw::e_pairBit;
+<a name="l00184"></a>00184   flags += settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a448ce0cd28cf5e2360b9320527c39f04">draw_COMs</a>              * b2Draw::e_centerOfMassBit;
+<a name="l00185"></a>00185   m_debug_draw.SetFlags(flags);
+<a name="l00186"></a>00186   
+<a name="l00187"></a>00187   m_world-&gt;SetWarmStarting(settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a110e7d9a76cadb3f6c3648da2af0105f">enable_warm_starting</a> &gt; 0);
+<a name="l00188"></a>00188   m_world-&gt;SetContinuousPhysics(settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#adda79f6bb4df9a81ee807888fc728020">enable_continuous</a> &gt; 0);
+<a name="l00189"></a>00189   m_world-&gt;SetSubStepping(settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a7a66327da13b169d6b1b9e08cc85a842">enable_sub_stepping</a> &gt; 0);
+<a name="l00190"></a>00190   
+<a name="l00191"></a>00191   m_point_count = 0;
+<a name="l00192"></a>00192   
+<a name="l00193"></a>00193   m_world-&gt;Step(time_step, settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a59e5b6b0abd0fba1adb651062fc726b9">velocity_iterations</a>, settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a50c25fb9a90a4d14ffa6f13ac437fa9c">position_iterations</a>);
+<a name="l00194"></a>00194   
+<a name="l00195"></a>00195   m_world-&gt;DrawDebugData();
+<a name="l00196"></a>00196   
+<a name="l00197"></a>00197   <span class="keywordflow">if</span> (time_step &gt; 0.0f)
+<a name="l00198"></a>00198     {
+<a name="l00199"></a>00199       ++m_step_count;
 <a name="l00200"></a>00200     }
 <a name="l00201"></a>00201   
-<a name="l00202"></a>00202   uint32 flags = 0;
-<a name="l00203"></a>00203   flags += settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#aa5eb936cebce9d821b324cf86e4d340e">draw_shapes</a>            * b2Draw::e_shapeBit;
-<a name="l00204"></a>00204   flags += settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a58dbc9ac2a75f7a1dcf88e424a3f1941">draw_joints</a>            * b2Draw::e_jointBit;
-<a name="l00205"></a>00205   flags += settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#ac075d6fc3de075078642bdd4af4a1109">draw_AABBs</a>         * b2Draw::e_aabbBit;
-<a name="l00206"></a>00206   flags += settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#aeecd3f0399fb4b72fa73e19cb0d24e72">draw_pairs</a>         * b2Draw::e_pairBit;
-<a name="l00207"></a>00207   flags += settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a448ce0cd28cf5e2360b9320527c39f04">draw_COMs</a>              * b2Draw::e_centerOfMassBit;
-<a name="l00208"></a>00208   m_debug_draw.SetFlags(flags);
-<a name="l00209"></a>00209   
-<a name="l00210"></a>00210   m_world-&gt;SetWarmStarting(settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a110e7d9a76cadb3f6c3648da2af0105f">enable_warm_starting</a> &gt; 0);
-<a name="l00211"></a>00211   m_world-&gt;SetContinuousPhysics(settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#adda79f6bb4df9a81ee807888fc728020">enable_continuous</a> &gt; 0);
-<a name="l00212"></a>00212   m_world-&gt;SetSubStepping(settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a7a66327da13b169d6b1b9e08cc85a842">enable_sub_stepping</a> &gt; 0);
-<a name="l00213"></a>00213   
-<a name="l00214"></a>00214   m_point_count = 0;
-<a name="l00215"></a>00215   
-<a name="l00216"></a>00216   m_world-&gt;Step(time_step, settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a59e5b6b0abd0fba1adb651062fc726b9">velocity_iterations</a>, settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a50c25fb9a90a4d14ffa6f13ac437fa9c">position_iterations</a>);
+<a name="l00202"></a>00202   <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a87e46173b2610d0d930f60e7fe56d3c6">draw_stats</a>)
+<a name="l00203"></a>00203     {
+<a name="l00204"></a>00204       int32 body_count = m_world-&gt;GetBodyCount();
+<a name="l00205"></a>00205       int32 contact_count = m_world-&gt;GetContactCount();
+<a name="l00206"></a>00206       int32 joint_count = m_world-&gt;GetJointCount();
+<a name="l00207"></a>00207       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;bodies/contacts/joints = %d/%d/%d&quot;</span>, body_count, contact_count, joint_count);
+<a name="l00208"></a>00208       m_text_line += 15;
+<a name="l00209"></a>00209       
+<a name="l00210"></a>00210       int32 proxy_count = m_world-&gt;GetProxyCount();
+<a name="l00211"></a>00211       int32 <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a> = m_world-&gt;GetTreeHeight();
+<a name="l00212"></a>00212       int32 balance = m_world-&gt;GetTreeBalance();
+<a name="l00213"></a>00213       float32 quality = m_world-&gt;GetTreeQuality();
+<a name="l00214"></a>00214       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;proxies/height/balance/quality = %d/%d/%d/%g&quot;</span>, proxy_count, height, balance, quality);
+<a name="l00215"></a>00215       m_text_line += 15;
+<a name="l00216"></a>00216     }
 <a name="l00217"></a>00217   
-<a name="l00218"></a>00218   m_world-&gt;DrawDebugData();
-<a name="l00219"></a>00219   
-<a name="l00220"></a>00220   <span class="keywordflow">if</span> (time_step &gt; 0.0f)
-<a name="l00221"></a>00221     {
-<a name="l00222"></a>00222       ++m_step_count;
-<a name="l00223"></a>00223     }
-<a name="l00224"></a>00224   
-<a name="l00225"></a>00225   <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a87e46173b2610d0d930f60e7fe56d3c6">draw_stats</a>)
-<a name="l00226"></a>00226     {
-<a name="l00227"></a>00227       int32 body_count = m_world-&gt;GetBodyCount();
-<a name="l00228"></a>00228       int32 contact_count = m_world-&gt;GetContactCount();
-<a name="l00229"></a>00229       int32 joint_count = m_world-&gt;GetJointCount();
-<a name="l00230"></a>00230       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;bodies/contacts/joints = %d/%d/%d&quot;</span>, body_count, contact_count, joint_count);
-<a name="l00231"></a>00231       m_text_line += 15;
-<a name="l00232"></a>00232       
-<a name="l00233"></a>00233       int32 proxy_count = m_world-&gt;GetProxyCount();
-<a name="l00234"></a>00234       int32 <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a> = m_world-&gt;GetTreeHeight();
-<a name="l00235"></a>00235       int32 balance = m_world-&gt;GetTreeBalance();
-<a name="l00236"></a>00236       float32 quality = m_world-&gt;GetTreeQuality();
-<a name="l00237"></a>00237       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;proxies/height/balance/quality = %d/%d/%d/%g&quot;</span>, proxy_count, height, balance, quality);
-<a name="l00238"></a>00238       m_text_line += 15;
-<a name="l00239"></a>00239     }
-<a name="l00240"></a>00240   
-<a name="l00241"></a>00241   <span class="comment">// Track maximum profile times</span>
-<a name="l00242"></a>00242   {
-<a name="l00243"></a>00243     <span class="keyword">const</span> b2Profile&amp; p = m_world-&gt;GetProfile();
-<a name="l00244"></a>00244     m_max_profile.step = b2Max(m_max_profile.step, p.step);
-<a name="l00245"></a>00245     m_max_profile.collide = b2Max(m_max_profile.collide, p.collide);
-<a name="l00246"></a>00246     m_max_profile.solve = b2Max(m_max_profile.solve, p.solve);
-<a name="l00247"></a>00247     m_max_profile.solveInit = b2Max(m_max_profile.solveInit, p.solveInit);
-<a name="l00248"></a>00248     m_max_profile.solveVelocity = b2Max(m_max_profile.solveVelocity, p.solveVelocity);
-<a name="l00249"></a>00249     m_max_profile.solvePosition = b2Max(m_max_profile.solvePosition, p.solvePosition);
-<a name="l00250"></a>00250     m_max_profile.solveTOI = b2Max(m_max_profile.solveTOI, p.solveTOI);
-<a name="l00251"></a>00251     m_max_profile.broadphase = b2Max(m_max_profile.broadphase, p.broadphase);
-<a name="l00252"></a>00252     
-<a name="l00253"></a>00253     m_total_profile.step += p.step;
-<a name="l00254"></a>00254     m_total_profile.collide += p.collide;
-<a name="l00255"></a>00255     m_total_profile.solve += p.solve;
-<a name="l00256"></a>00256     m_total_profile.solveInit += p.solveInit;
-<a name="l00257"></a>00257     m_total_profile.solveVelocity += p.solveVelocity;
-<a name="l00258"></a>00258     m_total_profile.solvePosition += p.solvePosition;
-<a name="l00259"></a>00259     m_total_profile.solveTOI += p.solveTOI;
-<a name="l00260"></a>00260     m_total_profile.broadphase += p.broadphase;
-<a name="l00261"></a>00261   }
-<a name="l00262"></a>00262   
-<a name="l00263"></a>00263   <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a9cd6535a21262d6022e4a2352c8eb0aa">draw_profile</a>)
-<a name="l00264"></a>00264     {
-<a name="l00265"></a>00265       <span class="keyword">const</span> b2Profile&amp; p = m_world-&gt;GetProfile();
-<a name="l00266"></a>00266       
-<a name="l00267"></a>00267       b2Profile ave_profile;
-<a name="l00268"></a>00268       memset(&amp;ave_profile, 0, <span class="keyword">sizeof</span>(b2Profile));
-<a name="l00269"></a>00269       <span class="keywordflow">if</span> (m_step_count &gt; 0)
-<a name="l00270"></a>00270     {
-<a name="l00271"></a>00271       float32 scale = 1.0f / m_step_count;
-<a name="l00272"></a>00272       ave_profile.step = scale * m_total_profile.step;
-<a name="l00273"></a>00273       ave_profile.collide = scale * m_total_profile.collide;
-<a name="l00274"></a>00274       ave_profile.solve = scale * m_total_profile.solve;
-<a name="l00275"></a>00275       ave_profile.solveInit = scale * m_total_profile.solveInit;
-<a name="l00276"></a>00276       ave_profile.solveVelocity = scale * m_total_profile.solveVelocity;
-<a name="l00277"></a>00277       ave_profile.solvePosition = scale * m_total_profile.solvePosition;
-<a name="l00278"></a>00278       ave_profile.solveTOI = scale * m_total_profile.solveTOI;
-<a name="l00279"></a>00279       ave_profile.broadphase = scale * m_total_profile.broadphase;
-<a name="l00280"></a>00280     }
+<a name="l00218"></a>00218   <span class="comment">// Track maximum profile times</span>
+<a name="l00219"></a>00219   {
+<a name="l00220"></a>00220     <span class="keyword">const</span> b2Profile&amp; p = m_world-&gt;GetProfile();
+<a name="l00221"></a>00221     m_max_profile.step = b2Max(m_max_profile.step, p.step);
+<a name="l00222"></a>00222     m_max_profile.collide = b2Max(m_max_profile.collide, p.collide);
+<a name="l00223"></a>00223     m_max_profile.solve = b2Max(m_max_profile.solve, p.solve);
+<a name="l00224"></a>00224     m_max_profile.solveInit = b2Max(m_max_profile.solveInit, p.solveInit);
+<a name="l00225"></a>00225     m_max_profile.solveVelocity = b2Max(m_max_profile.solveVelocity, p.solveVelocity);
+<a name="l00226"></a>00226     m_max_profile.solvePosition = b2Max(m_max_profile.solvePosition, p.solvePosition);
+<a name="l00227"></a>00227     m_max_profile.solveTOI = b2Max(m_max_profile.solveTOI, p.solveTOI);
+<a name="l00228"></a>00228     m_max_profile.broadphase = b2Max(m_max_profile.broadphase, p.broadphase);
+<a name="l00229"></a>00229     
+<a name="l00230"></a>00230     m_total_profile.step += p.step;
+<a name="l00231"></a>00231     m_total_profile.collide += p.collide;
+<a name="l00232"></a>00232     m_total_profile.solve += p.solve;
+<a name="l00233"></a>00233     m_total_profile.solveInit += p.solveInit;
+<a name="l00234"></a>00234     m_total_profile.solveVelocity += p.solveVelocity;
+<a name="l00235"></a>00235     m_total_profile.solvePosition += p.solvePosition;
+<a name="l00236"></a>00236     m_total_profile.solveTOI += p.solveTOI;
+<a name="l00237"></a>00237     m_total_profile.broadphase += p.broadphase;
+<a name="l00238"></a>00238   }
+<a name="l00239"></a>00239   
+<a name="l00240"></a>00240   <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a9cd6535a21262d6022e4a2352c8eb0aa">draw_profile</a>)
+<a name="l00241"></a>00241     {
+<a name="l00242"></a>00242       <span class="keyword">const</span> b2Profile&amp; p = m_world-&gt;GetProfile();
+<a name="l00243"></a>00243       
+<a name="l00244"></a>00244       b2Profile ave_profile;
+<a name="l00245"></a>00245       memset(&amp;ave_profile, 0, <span class="keyword">sizeof</span>(b2Profile));
+<a name="l00246"></a>00246       <span class="keywordflow">if</span> (m_step_count &gt; 0)
+<a name="l00247"></a>00247     {
+<a name="l00248"></a>00248       float32 scale = 1.0f / m_step_count;
+<a name="l00249"></a>00249       ave_profile.step = scale * m_total_profile.step;
+<a name="l00250"></a>00250       ave_profile.collide = scale * m_total_profile.collide;
+<a name="l00251"></a>00251       ave_profile.solve = scale * m_total_profile.solve;
+<a name="l00252"></a>00252       ave_profile.solveInit = scale * m_total_profile.solveInit;
+<a name="l00253"></a>00253       ave_profile.solveVelocity = scale * m_total_profile.solveVelocity;
+<a name="l00254"></a>00254       ave_profile.solvePosition = scale * m_total_profile.solvePosition;
+<a name="l00255"></a>00255       ave_profile.solveTOI = scale * m_total_profile.solveTOI;
+<a name="l00256"></a>00256       ave_profile.broadphase = scale * m_total_profile.broadphase;
+<a name="l00257"></a>00257     }
+<a name="l00258"></a>00258       
+<a name="l00259"></a>00259       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;step [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.step, ave_profile.step, m_max_profile.step);
+<a name="l00260"></a>00260       m_text_line += 15;
+<a name="l00261"></a>00261       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;collide [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.collide, ave_profile.collide, m_max_profile.collide);
+<a name="l00262"></a>00262       m_text_line += 15;
+<a name="l00263"></a>00263       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;solve [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.solve, ave_profile.solve, m_max_profile.solve);
+<a name="l00264"></a>00264       m_text_line += 15;
+<a name="l00265"></a>00265       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;solve init [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.solveInit, ave_profile.solveInit, m_max_profile.solveInit);
+<a name="l00266"></a>00266       m_text_line += 15;
+<a name="l00267"></a>00267       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;solve velocity [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.solveVelocity, ave_profile.solveVelocity, m_max_profile.solveVelocity);
+<a name="l00268"></a>00268       m_text_line += 15;
+<a name="l00269"></a>00269       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;solve position [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.solvePosition, ave_profile.solvePosition, m_max_profile.solvePosition);
+<a name="l00270"></a>00270       m_text_line += 15;
+<a name="l00271"></a>00271       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;solveTOI [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.solveTOI, ave_profile.solveTOI, m_max_profile.solveTOI);
+<a name="l00272"></a>00272       m_text_line += 15;
+<a name="l00273"></a>00273       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;broad-phase [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.broadphase, ave_profile.broadphase, m_max_profile.broadphase);
+<a name="l00274"></a>00274       m_text_line += 15;
+<a name="l00275"></a>00275     }
+<a name="l00276"></a>00276     
+<a name="l00277"></a>00277   <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a605757c75bae317fdaa69db12aaef8e1">draw_contact_points</a>)
+<a name="l00278"></a>00278     {
+<a name="l00279"></a>00279       <span class="comment">//const float32 k_impulseScale = 0.1f;</span>
+<a name="l00280"></a>00280       <span class="keyword">const</span> float32 k_axis_scale = 0.3f;
 <a name="l00281"></a>00281       
-<a name="l00282"></a>00282       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;step [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.step, ave_profile.step, m_max_profile.step);
-<a name="l00283"></a>00283       m_text_line += 15;
-<a name="l00284"></a>00284       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;collide [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.collide, ave_profile.collide, m_max_profile.collide);
-<a name="l00285"></a>00285       m_text_line += 15;
-<a name="l00286"></a>00286       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;solve [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.solve, ave_profile.solve, m_max_profile.solve);
-<a name="l00287"></a>00287       m_text_line += 15;
-<a name="l00288"></a>00288       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;solve init [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.solveInit, ave_profile.solveInit, m_max_profile.solveInit);
-<a name="l00289"></a>00289       m_text_line += 15;
-<a name="l00290"></a>00290       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;solve velocity [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.solveVelocity, ave_profile.solveVelocity, m_max_profile.solveVelocity);
-<a name="l00291"></a>00291       m_text_line += 15;
-<a name="l00292"></a>00292       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;solve position [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.solvePosition, ave_profile.solvePosition, m_max_profile.solvePosition);
-<a name="l00293"></a>00293       m_text_line += 15;
-<a name="l00294"></a>00294       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;solveTOI [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.solveTOI, ave_profile.solveTOI, m_max_profile.solveTOI);
-<a name="l00295"></a>00295       m_text_line += 15;
-<a name="l00296"></a>00296       m_debug_draw.DrawString(5, m_text_line, <span class="stringliteral">&quot;broad-phase [ave] (max) = %5.2f [%6.2f] (%6.2f)&quot;</span>, p.broadphase, ave_profile.broadphase, m_max_profile.broadphase);
-<a name="l00297"></a>00297       m_text_line += 15;
-<a name="l00298"></a>00298     }
-<a name="l00299"></a>00299     
-<a name="l00300"></a>00300   <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a605757c75bae317fdaa69db12aaef8e1">draw_contact_points</a>)
-<a name="l00301"></a>00301     {
-<a name="l00302"></a>00302       <span class="comment">//const float32 k_impulseScale = 0.1f;</span>
-<a name="l00303"></a>00303       <span class="keyword">const</span> float32 k_axis_scale = 0.3f;
-<a name="l00304"></a>00304       
-<a name="l00305"></a>00305       <span class="keywordflow">for</span> (int32 i = 0; i &lt; m_point_count; ++i)
-<a name="l00306"></a>00306     {
-<a name="l00307"></a>00307       <a class="code" href="structcs296_1_1contact__point__t.html">contact_point_t</a>* point = m_points + i;
-<a name="l00308"></a>00308       
-<a name="l00309"></a>00309       <span class="keywordflow">if</span> (point-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a9e5734ab797b941b47ba7e1eac063bcc">state</a> == b2_addState)
-<a name="l00310"></a>00310         {
-<a name="l00311"></a>00311           <span class="comment">// Add</span>
-<a name="l00312"></a>00312           m_debug_draw.DrawPoint(point-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a5ef7408b315030cec9bf687eedb8d6e7">position</a>, 10.0f, b2Color(0.3f, 0.95f, 0.3f));
-<a name="l00313"></a>00313         }
-<a name="l00314"></a>00314       <span class="keywordflow">else</span> <span class="keywordflow">if</span> (point-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a9e5734ab797b941b47ba7e1eac063bcc">state</a> == b2_persistState)
-<a name="l00315"></a>00315         {
-<a name="l00316"></a>00316           <span class="comment">// Persist</span>
-<a name="l00317"></a>00317           m_debug_draw.DrawPoint(point-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a5ef7408b315030cec9bf687eedb8d6e7">position</a>, 5.0f, b2Color(0.3f, 0.3f, 0.95f));
-<a name="l00318"></a>00318         }
-<a name="l00319"></a>00319       
-<a name="l00320"></a>00320       <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#add2bb8a39c6a7fe38e33e697adac2cfb">draw_contact_normals</a> == 1)
-<a name="l00321"></a>00321         {
-<a name="l00322"></a>00322           b2Vec2 p1 = point-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a5ef7408b315030cec9bf687eedb8d6e7">position</a>;
-<a name="l00323"></a>00323           b2Vec2 p2 = p1 + k_axis_scale * point-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a991f256c48c67589ddba7f59f2bcb078">normal</a>;
-<a name="l00324"></a>00324           m_debug_draw.DrawSegment(p1, p2, b2Color(0.9f, 0.9f, 0.9f));
-<a name="l00325"></a>00325         }
-<a name="l00326"></a>00326       <span class="keywordflow">else</span> <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a9dcb112dfb28ddf8c6d147341ce88f3b">draw_contact_forces</a> == 1)
-<a name="l00327"></a>00327         {
-<a name="l00328"></a>00328           <span class="comment">//b2Vec2 p1 = point-&gt;position;</span>
-<a name="l00329"></a>00329           <span class="comment">//b2Vec2 p2 = p1 + k_forceScale * point-&gt;normalForce * point-&gt;normal;</span>
-<a name="l00330"></a>00330           <span class="comment">//DrawSegment(p1, p2, b2Color(0.9f, 0.9f, 0.3f));</span>
-<a name="l00331"></a>00331         }
-<a name="l00332"></a>00332       
-<a name="l00333"></a>00333       <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a6de00764f767b13d702d8646b3ea6b51">draw_friction_forces</a> == 1)
-<a name="l00334"></a>00334         {
-<a name="l00335"></a>00335           <span class="comment">//b2Vec2 tangent = b2Cross(point-&gt;normal, 1.0f);</span>
-<a name="l00336"></a>00336           <span class="comment">//b2Vec2 p1 = point-&gt;position;</span>
-<a name="l00337"></a>00337           <span class="comment">//b2Vec2 p2 = p1 + k_forceScale * point-&gt;tangentForce * tangent;</span>
-<a name="l00338"></a>00338           <span class="comment">//DrawSegment(p1, p2, b2Color(0.9f, 0.9f, 0.3f));</span>
-<a name="l00339"></a>00339         }
-<a name="l00340"></a>00340     }
-<a name="l00341"></a>00341     }
-<a name="l00342"></a>00342 }    
-<a name="l00343"></a>00343 
-<a name="l00344"></a><a class="code" href="classcs296_1_1base__sim__t.html#a81f0b588ed0ef5d7e4c0f1843b8eff35">00344</a> <span class="keywordtype">void</span> base_sim_t::dest(){
-<a name="l00345"></a>00345  <span class="keywordflow">if</span> (<a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a> == 1){
-<a name="l00346"></a>00346     <a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>=2;
-<a name="l00347"></a>00347     m_world-&gt;DestroyJoint(<a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>);
-<a name="l00348"></a>00348     m_world-&gt;DestroyJoint(<a class="code" href="cs296__base_8cpp.html#a2f3aff76c4208829eda2e05eb79eeae0">je</a>);
-<a name="l00349"></a>00349     m_world-&gt;DestroyJoint(<a class="code" href="cs296__base_8cpp.html#a5341bbd3d45dc1363c763731f7f35126">jf</a>);
-<a name="l00350"></a>00350     
-<a name="l00351"></a>00351     <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a> = NULL;
-<a name="l00352"></a>00352     <a class="code" href="cs296__base_8cpp.html#a2f3aff76c4208829eda2e05eb79eeae0">je</a> = NULL;
-<a name="l00353"></a>00353     <a class="code" href="cs296__base_8cpp.html#a5341bbd3d45dc1363c763731f7f35126">jf</a> = NULL;
-<a name="l00354"></a>00354     }
-<a name="l00355"></a>00355 }
-<a name="l00356"></a>00356 
-<a name="l00357"></a><a class="code" href="classcs296_1_1base__sim__t.html#a662286c6ecc1a696e1b9621f2e85ee5d">00357</a> <span class="keywordtype">void</span> base_sim_t::changevar(){
-<a name="l00358"></a>00358     <a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>=0;
-<a name="l00359"></a>00359     }   
-<a name="l00360"></a>00360 
-<a name="l00361"></a>00361 
-<a name="l00362"></a>00362     
-<a name="l00363"></a>00363 
+<a name="l00282"></a>00282       <span class="keywordflow">for</span> (int32 i = 0; i &lt; m_point_count; ++i)
+<a name="l00283"></a>00283     {
+<a name="l00284"></a>00284       <a class="code" href="structcs296_1_1contact__point__t.html">contact_point_t</a>* point = m_points + i;
+<a name="l00285"></a>00285       
+<a name="l00286"></a>00286       <span class="keywordflow">if</span> (point-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a9e5734ab797b941b47ba7e1eac063bcc">state</a> == b2_addState)
+<a name="l00287"></a>00287         {
+<a name="l00288"></a>00288           <span class="comment">// Add</span>
+<a name="l00289"></a>00289           m_debug_draw.DrawPoint(point-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a5ef7408b315030cec9bf687eedb8d6e7">position</a>, 10.0f, b2Color(0.3f, 0.95f, 0.3f));
+<a name="l00290"></a>00290         }
+<a name="l00291"></a>00291       <span class="keywordflow">else</span> <span class="keywordflow">if</span> (point-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a9e5734ab797b941b47ba7e1eac063bcc">state</a> == b2_persistState)
+<a name="l00292"></a>00292         {
+<a name="l00293"></a>00293           <span class="comment">// Persist</span>
+<a name="l00294"></a>00294           m_debug_draw.DrawPoint(point-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a5ef7408b315030cec9bf687eedb8d6e7">position</a>, 5.0f, b2Color(0.3f, 0.3f, 0.95f));
+<a name="l00295"></a>00295         }
+<a name="l00296"></a>00296       
+<a name="l00297"></a>00297       <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#add2bb8a39c6a7fe38e33e697adac2cfb">draw_contact_normals</a> == 1)
+<a name="l00298"></a>00298         {
+<a name="l00299"></a>00299           b2Vec2 p1 = point-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a5ef7408b315030cec9bf687eedb8d6e7">position</a>;
+<a name="l00300"></a>00300           b2Vec2 p2 = p1 + k_axis_scale * point-&gt;<a class="code" href="structcs296_1_1contact__point__t.html#a991f256c48c67589ddba7f59f2bcb078">normal</a>;
+<a name="l00301"></a>00301           m_debug_draw.DrawSegment(p1, p2, b2Color(0.9f, 0.9f, 0.9f));
+<a name="l00302"></a>00302         }
+<a name="l00303"></a>00303       <span class="keywordflow">else</span> <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a9dcb112dfb28ddf8c6d147341ce88f3b">draw_contact_forces</a> == 1)
+<a name="l00304"></a>00304         {
+<a name="l00305"></a>00305           <span class="comment">//b2Vec2 p1 = point-&gt;position;</span>
+<a name="l00306"></a>00306           <span class="comment">//b2Vec2 p2 = p1 + k_forceScale * point-&gt;normalForce * point-&gt;normal;</span>
+<a name="l00307"></a>00307           <span class="comment">//DrawSegment(p1, p2, b2Color(0.9f, 0.9f, 0.3f));</span>
+<a name="l00308"></a>00308         }
+<a name="l00309"></a>00309       
+<a name="l00310"></a>00310       <span class="keywordflow">if</span> (settings-&gt;<a class="code" href="structcs296_1_1settings__t.html#a6de00764f767b13d702d8646b3ea6b51">draw_friction_forces</a> == 1)
+<a name="l00311"></a>00311         {
+<a name="l00312"></a>00312           <span class="comment">//b2Vec2 tangent = b2Cross(point-&gt;normal, 1.0f);</span>
+<a name="l00313"></a>00313           <span class="comment">//b2Vec2 p1 = point-&gt;position;</span>
+<a name="l00314"></a>00314           <span class="comment">//b2Vec2 p2 = p1 + k_forceScale * point-&gt;tangentForce * tangent;</span>
+<a name="l00315"></a>00315           <span class="comment">//DrawSegment(p1, p2, b2Color(0.9f, 0.9f, 0.3f));</span>
+<a name="l00316"></a>00316         }
+<a name="l00317"></a>00317     }
+<a name="l00318"></a>00318     }
+<a name="l00319"></a>00319 }    
+<a name="l00320"></a>00320 
+<a name="l00321"></a><a class="code" href="classcs296_1_1base__sim__t.html#a81f0b588ed0ef5d7e4c0f1843b8eff35">00321</a> <span class="keywordtype">void</span> base_sim_t::dest(){
+<a name="l00322"></a>00322  <span class="keywordflow">if</span> (<a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a> == 1){
+<a name="l00323"></a>00323     <a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>=2;
+<a name="l00324"></a>00324     m_world-&gt;DestroyJoint(<a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>);
+<a name="l00325"></a>00325     m_world-&gt;DestroyJoint(<a class="code" href="cs296__base_8cpp.html#a2f3aff76c4208829eda2e05eb79eeae0">je</a>);
+<a name="l00326"></a>00326     m_world-&gt;DestroyJoint(<a class="code" href="cs296__base_8cpp.html#a5341bbd3d45dc1363c763731f7f35126">jf</a>);
+<a name="l00327"></a>00327     
+<a name="l00328"></a>00328     <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a> = NULL;
+<a name="l00329"></a>00329     <a class="code" href="cs296__base_8cpp.html#a2f3aff76c4208829eda2e05eb79eeae0">je</a> = NULL;
+<a name="l00330"></a>00330     <a class="code" href="cs296__base_8cpp.html#a5341bbd3d45dc1363c763731f7f35126">jf</a> = NULL;
+<a name="l00331"></a>00331     }
+<a name="l00332"></a>00332 }
+<a name="l00333"></a>00333 
+<a name="l00334"></a><a class="code" href="classcs296_1_1base__sim__t.html#a662286c6ecc1a696e1b9621f2e85ee5d">00334</a> <span class="keywordtype">void</span> base_sim_t::changevar(){
+<a name="l00335"></a>00335     <a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>=0;
+<a name="l00336"></a>00336 }   
+<a name="l00337"></a>00337 
+<a name="l00338"></a>00338 
+<a name="l00339"></a>00339     
+<a name="l00340"></a>00340 
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -461,7 +438,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 8 2013 22:23:34 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 10 2013 00:27:18 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

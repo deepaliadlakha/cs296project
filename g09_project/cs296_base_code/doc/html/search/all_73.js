@@ -14,7 +14,6 @@ var searchData=
   ['sim_5ft',['sim_t',['../structcs296_1_1sim__t.html',1,'cs296']]],
   ['single_5fstep',['single_step',['../structcs296_1_1settings__t.html#a5a643bd4484d116a5ef4f0adf6001cb9',1,'cs296::settings_t']]],
   ['single_5fstep_5fcb',['single_step_cb',['../classcs296_1_1callbacks__t.html#a41d928073e4000ad53126a85b0428e33',1,'cs296::callbacks_t']]],
-  ['start_5fcb',['start_cb',['../classcs296_1_1callbacks__t.html#a34710d75ca8db6e5bd262ab245332e9d',1,'cs296::callbacks_t']]],
   ['startcontact',['startContact',['../classcs296_1_1_sci.html#a9bc1fe26349122a05c1e88e8d3bfb042',1,'cs296::Sci']]],
   ['state',['state',['../structcs296_1_1contact__point__t.html#a9e5734ab797b941b47ba7e1eac063bcc',1,'cs296::contact_point_t']]],
   ['step',['step',['../classcs296_1_1base__sim__t.html#af2667e32281a3878c77f4859b1a71b68',1,'cs296::base_sim_t']]]

@@ -114,14 +114,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1_sci.html#a5b380b19e4db32ed4e78c2e613175f91">Sci</a> (b2World *m_world, b2Joint *mj, b2Joint *j1, b2Joint *j2)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1_sci.html#a9bc1fe26349122a05c1e88e8d3bfb042">startContact</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1_sci.html#add96462b5612d355c86d1e9dc0111f06">endContact</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1_sci.html#ad40e5ca93435fa380a01c125eb6d4f86">endContact</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">b2World *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classcs296_1_1_sci.html#a571a791ea3e7435bb9bb4d91f475ad0e">world</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00043">43</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00039">39</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a5b380b19e4db32ed4e78c2e613175f91"></a><!-- doxytag: member="cs296::Sci::Sci" ref="a5b380b19e4db32ed4e78c2e613175f91" args="(b2World *m_world, b2Joint *mj, b2Joint *j1, b2Joint *j2)" -->
 <div class="memitem">
@@ -162,74 +162,62 @@ Private Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00031">31</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">                                                               {
-        <span class="comment">//b2Body* b2;</span>
         <a class="code" href="classcs296_1_1_sci.html#a571a791ea3e7435bb9bb4d91f475ad0e">world</a>=m_world;
         <a class="code" href="cs296__base_8cpp.html#a0ab6eca2278214e153302032d8c274d3">ja</a>=mj;
         <a class="code" href="cs296__base_8cpp.html#a75004ea73f1a07243fec10e13a1464c0">jb</a>=j1;
         <a class="code" href="cs296__base_8cpp.html#a4fc009f21b49ef03479d84c2604a60ea">jc</a>=j2;
-        <span class="comment">/*</span>
-<span class="comment">        //std::cout&lt;&lt;j-&gt;GetAnchorA().x&lt;&lt;std::endl;</span>
-<span class="comment">     // jointdestroy=mj;</span>
-<span class="comment">        b2PolygonShape shape;</span>
-<span class="comment">        shape.SetAsBox(1.5f, .25f);</span>
-<span class="comment">        b2BodyDef bd;</span>
-<span class="comment">        bd.position.Set(-10.0f, 29.0f);</span>
-<span class="comment">        b2 = world-&gt;CreateBody(&amp;bd);</span>
-<span class="comment">        b2-&gt;CreateFixture(&amp;shape, 10.0f);</span>
-<span class="comment">        b2-&gt;SetUserData(this);</span>
-<span class="comment">        */</span>
-        <span class="comment">//myscissor</span>
+    
         {
-            b2Body* sbody;
-      b2PolygonShape poly;
-      b2Vec2 vertices[3];
-      vertices[0].Set(-2.0,-0.25);
-      vertices[1].Set(2.0,0.25);
-      vertices[2].Set(1.0,0.25);
-      poly.Set(vertices, 3);
-      b2FixtureDef wedgefd;
-      wedgefd.shape = &amp;poly;
-      wedgefd.density = 10.0f;
-      wedgefd.friction = 0.0f;
-      wedgefd.restitution = 0.0f;
-      b2BodyDef wedgebd;
-      wedgebd.position.Set(-9.0f, 29.0f);
-      sbody = m_world-&gt;CreateBody(&amp;wedgebd);
-      sbody-&gt;CreateFixture(&amp;wedgefd);
-      sbody-&gt;SetUserData(<span class="keyword">this</span>);
+              b2Body* sbody;
+              b2PolygonShape poly;
+              b2Vec2 vertices[3];
+              vertices[0].Set(-2.0,-0.25);
+              vertices[1].Set(2.0,0.25);
+              vertices[2].Set(1.0,0.25);
+              poly.Set(vertices, 3);
+              b2FixtureDef wedgefd;
+              wedgefd.shape = &amp;poly;
+              wedgefd.density = 10.0f;
+              wedgefd.friction = 0.0f;
+              wedgefd.restitution = 0.0f;
+              b2BodyDef wedgebd;
+              wedgebd.position.Set(-9.0f, 29.0f);
+              sbody = m_world-&gt;CreateBody(&amp;wedgebd);
+              sbody-&gt;CreateFixture(&amp;wedgefd);
+              sbody-&gt;SetUserData(<span class="keyword">this</span>);
         }
         
-        
-        b2Body* sbody;
-      b2PolygonShape poly;
-      b2Vec2 vertices[3];
-      vertices[0].Set(-2.0,0.15);
-      vertices[1].Set(2.0,-0.15);
-      vertices[2].Set(1.0,0.15);
-      poly.Set(vertices, 3);
-      b2FixtureDef wedgefd;
-      wedgefd.shape = &amp;poly;
-      wedgefd.density = 10.0f;
-      wedgefd.friction = 0.0f;
-      wedgefd.restitution = 0.0f;
-      b2BodyDef wedgebd;
-      wedgebd.position.Set(-9.0f, 29.0f);
-      sbody = m_world-&gt;CreateBody(&amp;wedgebd);
-      sbody-&gt;CreateFixture(&amp;wedgefd);
-      sbody-&gt;SetUserData(<span class="keyword">this</span>);
-      
+        {
+              b2Body* sbody;
+              b2PolygonShape poly;
+              b2Vec2 vertices[3];
+              vertices[0].Set(-2.0,0.15);
+              vertices[1].Set(2.0,-0.15);
+              vertices[2].Set(1.0,0.15);
+              poly.Set(vertices, 3);
+              b2FixtureDef wedgefd;
+              wedgefd.shape = &amp;poly;
+              wedgefd.density = 10.0f;
+              wedgefd.friction = 0.0f;
+              wedgefd.restitution = 0.0f;
+              b2BodyDef wedgebd;
+              wedgebd.position.Set(-9.0f, 29.0f);
+              sbody = m_world-&gt;CreateBody(&amp;wedgebd);
+              sbody-&gt;CreateFixture(&amp;wedgefd);
+              sbody-&gt;SetUserData(<span class="keyword">this</span>);
+            }
         
         }
 </pre></div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
-<a class="anchor" id="add96462b5612d355c86d1e9dc0111f06"></a><!-- doxytag: member="cs296::Sci::endContact" ref="add96462b5612d355c86d1e9dc0111f06" args="()" -->
+<a class="anchor" id="ad40e5ca93435fa380a01c125eb6d4f86"></a><!-- doxytag: member="cs296::Sci::endContact" ref="ad40e5ca93435fa380a01c125eb6d4f86" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classcs296_1_1_sci.html#add96462b5612d355c86d1e9dc0111f06">Sci::endContact</a> </td>
+          <td class="memname">void <a class="el" href="classcs296_1_1_sci.html#ad40e5ca93435fa380a01c125eb6d4f86">cs296::Sci::endContact</a> </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -238,11 +226,6 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00107">107</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
-<div class="fragment"><pre class="fragment">                        { 
-        std::cout&lt;&lt;<span class="stringliteral">&quot;you&quot;</span>&lt;&lt;std::endl;
-    }
-</pre></div>
 </div>
 </div>
 <a class="anchor" id="a9bc1fe26349122a05c1e88e8d3bfb042"></a><!-- doxytag: member="cs296::Sci::startContact" ref="a9bc1fe26349122a05c1e88e8d3bfb042" args="()" -->
@@ -259,21 +242,15 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00090">90</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8cpp_source.html#l00078">78</a> of file <a class="el" href="cs296__base_8cpp_source.html">cs296_base.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">                          { 
         <span class="keywordflow">if</span> (<a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>!=2){
-        <a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>=1;
-        
-        std::cout&lt;&lt;<span class="stringliteral">&quot;success&quot;</span>&lt;&lt;std::endl;
-        
-        <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>=<a class="code" href="cs296__base_8cpp.html#a0ab6eca2278214e153302032d8c274d3">ja</a>;
-        <a class="code" href="cs296__base_8cpp.html#a2f3aff76c4208829eda2e05eb79eeae0">je</a>=<a class="code" href="cs296__base_8cpp.html#a75004ea73f1a07243fec10e13a1464c0">jb</a>;
-        <a class="code" href="cs296__base_8cpp.html#a5341bbd3d45dc1363c763731f7f35126">jf</a>=<a class="code" href="cs296__base_8cpp.html#a4fc009f21b49ef03479d84c2604a60ea">jc</a>;
+            <a class="code" href="cs296__base_8cpp.html#a96c77f9f3a7baec84b9b8add26a31787">var</a>=1;
+            <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>=<a class="code" href="cs296__base_8cpp.html#a0ab6eca2278214e153302032d8c274d3">ja</a>;
+            <a class="code" href="cs296__base_8cpp.html#a2f3aff76c4208829eda2e05eb79eeae0">je</a>=<a class="code" href="cs296__base_8cpp.html#a75004ea73f1a07243fec10e13a1464c0">jb</a>;
+            <a class="code" href="cs296__base_8cpp.html#a5341bbd3d45dc1363c763731f7f35126">jf</a>=<a class="code" href="cs296__base_8cpp.html#a4fc009f21b49ef03479d84c2604a60ea">jc</a>;
         }
-        <span class="comment">//if (jod==NULL){std::cout&lt;&lt;&quot;deepali&quot;&lt;&lt;std::endl;}</span>
-        
-
-        }
+    }
 </pre></div>
 </div>
 </div>
@@ -289,7 +266,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00046">46</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
+<p>Definition at line <a class="el" href="cs296__base_8hpp_source.html#l00042">42</a> of file <a class="el" href="cs296__base_8hpp_source.html">cs296_base.hpp</a>.</p>
 
 </div>
 </div>
@@ -315,7 +292,7 @@ Private Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 8 2013 22:23:34 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 10 2013 00:27:18 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

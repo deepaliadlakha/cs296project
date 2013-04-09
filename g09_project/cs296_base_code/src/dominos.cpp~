@@ -55,8 +55,24 @@ namespace cs296
   {
   
      
-	   /*!<ul><li><b>Ground</b> is the static body in this simulation world. It acts as a base for all the dynamics involved.</li>*/
-	    
+	   /*!<ul><li><b>Ground</b> is the static body in this simulation world. It acts as a base for all the dynamics involved.</li>
+	   <li>There is a static <b>platform</b> through which the balls pass and fall into the container attached to the pulley when hit by the pendulum.</li>
+	   <li>The <b>pendulum</b> is a dynamic body that knocks off the ball into the container one by one.</li>
+	   <li>The joint that joins the pendulum bob with the static roof point is a <b>revolute joint</b>.</li>
+	   <li>The <b>cylindrical pipe</b> in which the balls are kept initially is a static body.
+	   <li>The <b>balls</b> to be knocked off are filled in the cylindrical pipe.</li>
+	   <li>The Pulley System consists of two <b>open boxes</b> as containers on both sides.</li>
+	   <li>The <b>pulley joints</b> are of the type b2Joint.</li>
+	   <li>The <b>balls</b> on the other side are placed on sequential <b>dynamic platforms</b> which all are respectively joined to the uppermost static platform through <b>prismatic joints</b>. Prismatic joints allow movement of the parts joined along a specific axis only.</li>
+	   <li>There is a pair of <b>scissors</b> that cuts the string going over the pulley connecting the two open boxes. Technically, there is a <b>contact listener</b> that <b>destroys the pulley joints</b> when there is a contact made to theses scissors.(The scissors itself is a static body)</li>
+	   <li>There are two <b>see-saw systems</b> on the ground. These involve the simple <b>b2Joints</b> between the plank and the triangular wedge.</li>
+	   <li>The see saw system on the right maintains balance with the help of two balls. When the second box filled with the balls falls on one end,it is no longer in equilibrium. The <b>ball on the right arm</b> goes to the respective candidate's block(equal to the number of balls).</li>
+	   <li>The ball on the left arm opens up a <b>curtain</b> declaring the result.The curtain is a dynamic body connected to a <b> Prismatic joint</b> allowing movement along the x axis only. </li>
+	   <li>The <b>candidate blocks</b> on the left are also attached to the <b>prismatic joints</b> allowing movement only along x axis.</li>
+	   
+	   </ul>*/
+	   
+	   //Ground 
 	    {
 	      b2Body* b1;
 	      b2EdgeShape shape;
@@ -67,7 +83,7 @@ namespace cs296
 	      b1->CreateFixture(&shape, 0.0f);
 	    }
 
-	 /*!<li>There is a static <b>platform</b> through which the balls pass and fall into the container attached to the pulley when hit by the pendulum.</li>*/
+	 //Platform
 	   {
 	      b2PolygonShape shape;
 	      shape.SetAsBox(11.0f, 0.25f);
@@ -81,7 +97,7 @@ namespace cs296
 	      body->CreateFixture(fd2);
 	  }
 	  
-        //holder
+         //holder
 	   {
 	      b2PolygonShape shape;
 	      shape.SetAsBox(0.01f, 0.01f);
@@ -94,7 +110,7 @@ namespace cs296
 	      fd2->shape = &shape;
 	      body->CreateFixture(fd2);
 	   }
-    //The pendulum that knocks the dominos off
+    //Pendulum
     {
      
       {
@@ -129,7 +145,7 @@ namespace cs296
       
     }
       
-    //The train of small spheres
+    //the balls on the left side
     {
       b2Body* spherebody1;
 	
@@ -145,7 +161,7 @@ namespace cs296
       ballfd2.restitution =0.6f;
 
 	
-	///newpipe
+	//pipe
 	{
 	      b2PolygonShape shape1;
 	      shape1.SetAsBox(.1f, 2.25f);
@@ -189,7 +205,7 @@ namespace cs296
 	  
 	}
 
-	//beech ki
+	//second ball
 	{
 		  b2FixtureDef ballfd1;
 	      	  ballfd1.shape = &circle;
@@ -207,7 +223,7 @@ namespace cs296
 		  spherebody1->CreateFixture(&ballfd1);
 	}	
 	
-	//sabse upar wali
+	//third ball
 	{
 		  b2FixtureDef ballfd1;
 	      	  ballfd1.shape = &circle;
@@ -225,7 +241,7 @@ namespace cs296
 		  spherebody1->CreateFixture(&ballfd1);
 	}
 	
-	//4th ball
+	//fourth ball
 	{
 		  b2FixtureDef ballfd1;
 	      	  ballfd1.shape = &circle;
@@ -240,7 +256,7 @@ namespace cs296
 		  spherebody1->CreateFixture(&ballfd1);
 	}
 	
-	//uss side wali balls
+	//the balls on the right side
 	for (int i=0; i<3 ; i++)
 	{
 		  b2BodyDef ballbd;
@@ -257,7 +273,7 @@ namespace cs296
       bd->position.Set(-10,17);
       bd->fixedRotation = true;
       
-      //The open box
+      //The open box 1
       b2FixtureDef *fd1 = new b2FixtureDef;
       fd1->density = 5.0;
       fd1->friction = 0.5;
@@ -328,16 +344,16 @@ namespace cs296
 
       // The pulley joint
       b2PulleyJointDef* myjoint = new b2PulleyJointDef();
-      b2Vec2 worldAnchorOnBody1(-10, 15); // Anchor point on body 1 in world axis
-      b2Vec2 worldAnchorOnBody2(2, 15); // Anchor point on body 2 in world axis
-      b2Vec2 worldAnchorGround1(-10, 37); // Anchor point for ground 1 in world axis
-      b2Vec2 worldAnchorGround2(2, 37); // Anchor point for ground 2 in world axis
-      float32 ratio = 1.0f; // Define ratio
+      b2Vec2 worldAnchorOnBody1(-10, 15); 
+      b2Vec2 worldAnchorOnBody2(2, 15);
+      b2Vec2 worldAnchorGround1(-10, 37); 
+      b2Vec2 worldAnchorGround2(2, 37); 
+      float32 ratio = 1.0f; 
       myjoint->Initialize(box1, box2, worldAnchorGround1, worldAnchorGround2, box1->GetWorldCenter(), box2->GetWorldCenter(), ratio);
       b2Joint* mj=m_world->CreateJoint(myjoint);
       
      
-     //first circle
+      //first circle
       b2Body* sbody;
       b2CircleShape circle;
       circle.m_radius = .5;
@@ -352,7 +368,7 @@ namespace cs296
       sbody = m_world->CreateBody(&ballbd);
       sbody->CreateFixture(&ballfd);
         
-     //second circle	
+      //second circle	
       b2Body* sbody1;
       b2CircleShape circle1;
       circle1.m_radius = .5;
@@ -368,7 +384,7 @@ namespace cs296
       sbody1->CreateFixture(&ballfd1);	
     	
 
-	///new Prismatic joints
+	//new Prismatic joints
 	b2PrismaticJointDef jd1,jd2;
 	jd1.bodyA = box1;
 	jd1.bodyB = sbody;
@@ -390,7 +406,7 @@ namespace cs296
 
         	
 	{
-	//shape 1
+	      //shape 1
 	
 	      b2PolygonShape shape1;
 	      shape1.SetAsBox(0.4f, 0.2f);
@@ -405,8 +421,7 @@ namespace cs296
 	      body1->CreateFixture(fd1);
 	
 
-	//shape 2
-	
+	      //shape 2
 	      b2PolygonShape shape2;
 	      shape2.SetAsBox(0.4f, 0.01f);
 	
@@ -421,8 +436,7 @@ namespace cs296
 	      body2->CreateFixture(fd2);
 	
 	
-	//shape 3
-	
+	      //shape 3
 	      b2PolygonShape shape3;
 	      shape3.SetAsBox(0.4f, 0.01f);
 	
@@ -438,7 +452,7 @@ namespace cs296
 	      
 	
 	
-	//shape 4
+	      //shape 4
 	      b2PolygonShape shape4;
 	      shape4.SetAsBox(0.4f, 0.2f);
 	
@@ -453,7 +467,7 @@ namespace cs296
 	      body4->CreateFixture(fd4);
 	
 	
-       //Prismatic joints
+        //Prismatic joints
 	b2PrismaticJointDef jd1,jd2,jd3,jd4;
         jd4.bodyA= body1;
         jd4.bodyB= body4;
@@ -528,7 +542,7 @@ namespace cs296
       jd.Initialize(sbody, body, anchor);
       m_world->CreateJoint(&jd);
      
-     //ball1 on the see saw
+      //ball1 on the see saw
       {
       b2Body* sbody;
       b2CircleShape circle;
@@ -547,7 +561,7 @@ namespace cs296
       sbody->CreateFixture(&ballfd);
       }
       
-     //ball2 on the see saw 
+      //ball2 on the see saw 
       {
       b2Body* sbody;
       b2CircleShape circle;
@@ -567,7 +581,7 @@ namespace cs296
   }
 
     {
-    //right wedge
+      //right wedge
       b2Body* sbody;
       b2PolygonShape poly;
       b2Vec2 vertices[3];
@@ -585,7 +599,7 @@ namespace cs296
       sbody = m_world->CreateBody(&wedgebd);
       sbody->CreateFixture(&wedgefd);
 
-     //The plank on top of the wedge
+      //The plank on top of the wedge
       b2PolygonShape shape;
       shape.SetAsBox(5.0f, 0.01f);
       b2BodyDef bd2;
@@ -618,9 +632,8 @@ namespace cs296
       fd1->density = 1.f;
       fd1->shape = new b2PolygonShape;
       fd1->shape = &shape1;
-     //body1->CreateFixture(fd1);
 	
-    //actual curtain	
+      //actual curtain	
       b2PolygonShape shape2;
       shape2.SetAsBox(2.0f, 5.0f);
 	
@@ -646,7 +659,7 @@ namespace cs296
 	(b2PrismaticJoint*)m_world->CreateJoint( &jd3 );
 	}
 	
-	///candidates
+	//candidates
 	{
 	      b2PolygonShape shape1;
 	      shape1.SetAsBox(1.0f, 0.10f);
@@ -674,17 +687,17 @@ namespace cs296
       fd2->shape = new b2PolygonShape;
       fd2->shape = &shape2;
       body2->CreateFixture(fd2);
-       b2PrismaticJointDef jd3;
+      b2PrismaticJointDef jd3;
       jd3.bodyA= body1;
       jd3.bodyB= body2;
-	jd3.localAnchorA.Set(0,0);
-	jd3.localAnchorB.Set(0,0);
-	jd3.localAxisA.Set(1,0);
-	jd3.enableLimit = false;
-	jd3.lowerTranslation=0.0f;
-	jd3.upperTranslation=0.0f;
-	(b2PrismaticJoint*)m_world->CreateJoint( &jd3 );
-	}
+      jd3.localAnchorA.Set(0,0);
+      jd3.localAnchorB.Set(0,0);
+      jd3.localAxisA.Set(1,0);
+      jd3.enableLimit = false;
+      jd3.lowerTranslation=0.0f;
+      jd3.upperTranslation=0.0f;
+      (b2PrismaticJoint*)m_world->CreateJoint( &jd3 );
+      }
 	
 	
 	{
@@ -712,21 +725,21 @@ namespace cs296
       b2Body* body2 = m_world->CreateBody(&bd2);
       b2FixtureDef *fd2 = new b2FixtureDef;
       fd2->density = 0.0f;
-     // fd2->restitution = 0.2f;
+      // fd2->restitution = 0.2f;
       fd2->shape = new b2PolygonShape;
       fd2->shape = &shape2;
       body2->CreateFixture(fd2);
-       b2PrismaticJointDef jd3;
+      b2PrismaticJointDef jd3;
       jd3.bodyA= body1;
       jd3.bodyB= body2;
-	jd3.localAnchorA.Set(0,0);
-	jd3.localAnchorB.Set(0,0);
-	jd3.localAxisA.Set(1,0);
-	jd3.enableLimit = false;
-	jd3.lowerTranslation=0.0f;
-	jd3.upperTranslation=0.0f;
-	(b2PrismaticJoint*)m_world->CreateJoint( &jd3 );
-	}
+      jd3.localAnchorA.Set(0,0);
+      jd3.localAnchorB.Set(0,0);
+      jd3.localAxisA.Set(1,0);
+      jd3.enableLimit = false;
+      jd3.lowerTranslation=0.0f;
+      jd3.upperTranslation=0.0f;
+      (b2PrismaticJoint*)m_world->CreateJoint( &jd3 );
+      }
 	
 	{
      b2PolygonShape shape1;
@@ -756,16 +769,16 @@ namespace cs296
       fd2->shape = new b2PolygonShape;
       fd2->shape = &shape2;
       body2->CreateFixture(fd2);
-       b2PrismaticJointDef jd3;
+      b2PrismaticJointDef jd3;
       jd3.bodyA= body1;
       jd3.bodyB= body2;
-	jd3.localAnchorA.Set(0,0);
-	jd3.localAnchorB.Set(0,0);
-	jd3.localAxisA.Set(1,0);
-	jd3.enableLimit = false;
-	jd3.lowerTranslation=0.0f;
-	jd3.upperTranslation=0.0f;
-	(b2PrismaticJoint*)m_world->CreateJoint( &jd3 );
+      jd3.localAnchorA.Set(0,0);
+      jd3.localAnchorB.Set(0,0);
+      jd3.localAxisA.Set(1,0);
+      jd3.enableLimit = false;
+      jd3.lowerTranslation=0.0f;
+      jd3.upperTranslation=0.0f;
+      (b2PrismaticJoint*)m_world->CreateJoint( &jd3 );
 	}
 	
     //hitting platform	
