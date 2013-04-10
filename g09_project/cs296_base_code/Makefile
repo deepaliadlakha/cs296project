@@ -15,7 +15,8 @@ DOXYGEN = doxygen
 TARGET = cs296_base
 
 # Project Paths
-PROJECT_ROOT=$(HOME)/Desktop/sem_4/cs296/project/cs296project/g09_project/cs296_base_code
+INSTALL_PATH=$(HOME)/Desktop
+PROJECT_ROOT=$(HOME)/Desktop/sem_4/cs296/project/cs296project/g09_project/place/cs296_base_code
 EXTERNAL_ROOT=$(PROJECT_ROOT)/external
 SRCDIR = $(PROJECT_ROOT)/src
 OBJDIR = $(PROJECT_ROOT)/obj
@@ -104,7 +105,12 @@ install:
 	@make -s setup
 	@make -s $(BINDIR)/$(TARGET)
 	@make -s doc
-	@make -s report
+	##@make -s report
+	@cd $(INSTALL_PATH);mkdir -p cs296_base_code;cd cs296_base_code;mkdir -p bin;mkdir -p doc
+	@cp -R $(BINDIR)/* $(INSTALL_PATH)/cs296_base_code/bin
+	#@cp -R $(DOCDIR)/*.pdf $(INSTALL_PATH)/cs296_base_code/doc/
+	@cp -R $(DOCDIR)/html $(INSTALL_PATH)/cs296_base_code/doc/
+	
 
 #############################################################################################################################
 compbox:
