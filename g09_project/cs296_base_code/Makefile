@@ -67,6 +67,10 @@ OBJS := $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
 all: setup $(BINDIR)/$(TARGET) 
 setup:
+	@if test -d $(EXTERNAL_ROOT)/src/Box2D ;\
+	then $(ECHO) "Box2D already compiled";\
+	else make -s compbox;\
+	fi;
 	@$(ECHO) "Setting up compilation..."
 	@mkdir -p obj
 	@mkdir -p bin
@@ -128,10 +132,6 @@ dist:
 
 
 install:
-	@if test -d $(EXTERNAL_ROOT)/src/Box2D ;\
-	then $(ECHO) "Box2D already compiled";\
-	else make -s compbox;\
-	fi;
 	@make -s setup
 	@make -s $(BINDIR)/$(TARGET)
 	@make -s doc
