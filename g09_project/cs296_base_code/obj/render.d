@@ -21,7 +21,6 @@
  /usr/include/i386-linux-gnu/bits/nan.h \
  /usr/include/i386-linux-gnu/bits/mathdef.h \
  /usr/include/i386-linux-gnu/bits/mathcalls.h \
- /usr/include/i386-linux-gnu/bits/mathinline.h \
  /home/deepali/Desktop/sem_4/cs296/project/cs296project/g09_project/cs296_base_code/external/include/Box2D/Common/b2Draw.h \
  /home/deepali/Desktop/sem_4/cs296/project/cs296project/g09_project/cs296_base_code/external/include/Box2D/Common/b2Math.h \
  /usr/include/c++/4.6/cfloat \
@@ -37,7 +36,6 @@
  /usr/include/i386-linux-gnu/sys/select.h \
  /usr/include/i386-linux-gnu/bits/select.h \
  /usr/include/i386-linux-gnu/bits/sigset.h \
- /usr/include/i386-linux-gnu/bits/select2.h \
  /home/deepali/Desktop/sem_4/cs296/project/cs296project/g09_project/cs296_base_code/external/include/Box2D/Collision/Shapes/b2CircleShape.h \
  /home/deepali/Desktop/sem_4/cs296/project/cs296project/g09_project/cs296_base_code/external/include/Box2D/Collision/Shapes/b2Shape.h \
  /home/deepali/Desktop/sem_4/cs296/project/cs296project/g09_project/cs296_base_code/external/include/Box2D/Common/b2BlockAllocator.h \
@@ -57,9 +55,8 @@
  /home/deepali/Desktop/sem_4/cs296/project/cs296project/g09_project/cs296_base_code/external/include/Box2D/Collision/b2DynamicTree.h \
  /home/deepali/Desktop/sem_4/cs296/project/cs296project/g09_project/cs296_base_code/external/include/Box2D/Common/b2GrowableStack.h \
  /usr/include/c++/4.6/cstring /usr/include/string.h \
- /usr/include/xlocale.h /usr/include/i386-linux-gnu/bits/string3.h \
- /usr/include/c++/4.6/algorithm /usr/include/c++/4.6/utility \
- /usr/include/c++/4.6/bits/stl_relops.h \
+ /usr/include/xlocale.h /usr/include/c++/4.6/algorithm \
+ /usr/include/c++/4.6/utility /usr/include/c++/4.6/bits/stl_relops.h \
  /usr/include/c++/4.6/bits/stl_pair.h /usr/include/c++/4.6/bits/move.h \
  /usr/include/c++/4.6/bits/concept_check.h \
  /usr/include/c++/4.6/bits/stl_algobase.h \
@@ -78,7 +75,6 @@
  /usr/include/i386-linux-gnu/sys/types.h \
  /usr/include/i386-linux-gnu/sys/sysmacros.h \
  /usr/include/i386-linux-gnu/bits/pthreadtypes.h /usr/include/alloca.h \
- /usr/include/i386-linux-gnu/bits/stdlib.h \
  /usr/include/c++/4.6/bits/algorithmfwd.h \
  /usr/include/c++/4.6/initializer_list \
  /usr/include/c++/4.6/bits/stl_heap.h \
@@ -120,5 +116,4 @@
  /usr/include/stdio.h /usr/include/libio.h /usr/include/_G_config.h \
  /usr/include/wchar.h /usr/lib/gcc/i686-linux-gnu/4.6/include/stdarg.h \
  /usr/include/i386-linux-gnu/bits/sys_errlist.h \
- /usr/include/i386-linux-gnu/bits/stdio.h \
- /usr/include/i386-linux-gnu/bits/stdio2.h /usr/include/c++/4.6/cstdarg
+ /usr/include/c++/4.6/cstdarg

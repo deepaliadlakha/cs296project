@@ -1,0 +1,15 @@
+set datafile separator ","
+set autoscale
+set term png
+set output "./plots/g09_plot06.png"
+
+
+set title "Plot 6"
+set xlabel "Step time"
+set ylabel "Frequency"
+bin_width = .05;
+
+bin_number(x)=floor(x/bin_width)
+rounded(x)=bin_width*(bin_number(x) )+ bin_width/2
+plot "./data/g09_data2.csv" using (rounded($3)):(1.0) smooth frequency with boxes title "frequency bar graph",\
+"./data/lab05_g09_data2.csv" using ($3):(1) smooth cumulative ti 'cumulative' w lines

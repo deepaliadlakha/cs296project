@@ -1,0 +1,24 @@
+set datafile separator ","
+set autoscale
+set term png
+set output "./plots/g09_plot05.png"
+sqr(x)=x*x;
+
+set table "./data/average_data.txt" 
+plot "./data/g09_data.csv" using 2:3 smooth unique
+unset table
+
+set table "./data/average_data2.txt"
+plot "./data/g09_data.csv" using 2:(sqr($3)) smooth unique
+unset table
+
+set table "./data/deviation.txt"
+set datafile separator " "
+plot "< join ./data/average_data.txt ./data/average_data2.txt" using 2:4
+unset table
+
+set title "Plot 05"
+set xlabel "Iteration Values"
+set ylabel "Deviation in the time measurement"
+
+plot './data/deviation.txt' u 0:1:(sqrt($2-(sqr($1)))) with yerrorbars title "Deviation in the time measurement"

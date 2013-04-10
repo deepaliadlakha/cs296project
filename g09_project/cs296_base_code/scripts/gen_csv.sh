@@ -1,0 +1,18 @@
+#!/bin/bash
+touch ./data/lab05_g09_data.csv
+rm ./data/lab05_g09_data.csv
+
+
+for i in {1..100}
+	do
+	for j in {1..100}
+		do
+		awk 'BEGIN {print '"$i"'}
+			{if (NR == 1){ print $NF;}
+			else if (NR == 6){}
+			else { print ( $(NF-1) );} }' ./data/out-$j-$i.txt | 
+			awk 'NR==1 {x=$0; next} NF {x=x","$0} END {print x}' >> ./data/lab05_g09_data.csv
+	done
+done
+
+exit

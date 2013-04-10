@@ -657,8 +657,7 @@ namespace cs296
 	jd3.upperTranslation=10.0f;
 	(b2PrismaticJoint*)m_world->CreateJoint( &jd3 );
 	}
-	
-	///candidates
+	/*candidates*/
 	{
 	      b2PolygonShape shape1;
 	      shape1.SetAsBox(1.0f, 0.1f);
