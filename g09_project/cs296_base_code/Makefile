@@ -57,7 +57,7 @@ INCS := $(wildcard $(SRCDIR)/*.hpp)
 OBJS := $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
 
-.PHONY: all setup doc clean distclean
+.PHONY: all setup doc clean dist install
 
 all: setup $(BINDIR)/$(TARGET)
 
@@ -89,6 +89,40 @@ $(OBJS): $(OBJDIR)/%.o : $(SRCDIR)/%.cpp
 	else printf "${OK_COLOR}%30s\n${NO_COLOR}" "[OK]"; \
 	fi;
 	@$(RM) -f temp.log temp.err
+#############################################################################################################################
+
+dist:
+	@make -s clean
+	@cd ../;tar -czf cs296_g09_project.tar.gz cs296_base_code	
+#############################################################################################################################
+
+install:
+	@if test -d $(EXTERNAL_ROOT)/src/Box2D ;\
+	then $(ECHO) "Box2D already compiled";\
+	else make -s compbox;\
+	fi;
+	@make -s setup
+	@make -s $(BINDIR)/$(TARGET)
+	@make -s doc
+	@make -s report
+
+#############################################################################################################################
+compbox:
+	@cd $(EXTERNAL_ROOT)/src;tar xf $(EXTERNAL_ROOT)/src/Box2D.tgz
+	@cd $(EXTERNAL_ROOT)/src/Box2D;mkdir -p build296
+	@cd $(EXTERNAL_ROOT)/src/Box2D/build296;cmake ../;make;make install
+#############################################################################################################################
+
+report: $(DOCDIR)/$(INPUTLATEX)
+	@latex $(DOCDIR)/$(INPUTLATEX)
+	@bibtex $(INPUTAUX)
+	@latex $(DOCDIR)/$(INPUTLATEX)
+	@latex $(DOCDIR)/$(INPUTLATEX)
+	@dvips $(TARGETDVI)
+	@ps2pdf $(TARGETPS) $(TARGETLATEX)
+	@rm *.dvi *.ps *.aux *.bbl *.blg *.log
+	
+#############################################################################################################################
 
 doc:
 	@$(ECHO) -n "Generating Doxygen Documentation ...  "
@@ -96,10 +130,11 @@ doc:
 	@$(DOXYGEN) $(DOCDIR)/Doxyfile 2 > /dev/null
 	@$(ECHO) "Done"
 
-clean:
-	@$(ECHO) -n "Cleaning up..."
-	@$(RM) -rf $(OBJDIR) *~ $(DEPS) $(SRCDIR)/*~
-	@$(ECHO) "Done"
+##############################################################################################################################
 
-distclean: clean
-	@$(RM) -rf $(BINDIR) $(DOCDIR)/html
+clean:
+	@$(RM) -rf $(DOCDIR)/*.dvi *.ps *.aux *.bbl *.blg *.log *.pdf
+	@$(RM) -rf $(OBJDIR) *~ $(DEPS) $(SRCDIR)/*~ $(BINDIR) $(LIBDIR) $(DOCDIR)/html $(TARGETLATEX) $(DOCDIR)/*.pdf
+	
+	
+##############################################################################################################################
