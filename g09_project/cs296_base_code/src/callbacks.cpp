@@ -252,7 +252,8 @@ namespace cs296
     test->set_text_line(30);
     b2Vec2 old_center = settings.view_center;
     settings.hz = settings_hz;
-    
+    GLUI_Master.get_viewport_area(&tx, &ty, &tw, &th);
+    test->drawtxt((3*tw)/7, 20);
     test->step(&settings);
     test->dest();
     if (old_center.x != settings.view_center.x || old_center.y != settings.view_center.y)
@@ -270,7 +271,6 @@ namespace cs296
 	delete test;
 	entry = cs296::sim;
 	test = entry->create_fcn();
-	test->drawtxt(30.0f, 20.0f);
 	view_zoom = 1.0f;
 	settings.view_center.Set(0.0f, 20.0f);
       resize_cb(width, height);

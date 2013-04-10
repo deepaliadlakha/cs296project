@@ -16,7 +16,7 @@ TARGET = cs296_base
 
 # Project Paths
 INSTALL_PATH=$(HOME)/Desktop
-PROJECT_ROOT=$(HOME)/Desktop/sem_4/cs296/project/cs296project/g09_project/place/cs296_base_code
+PROJECT_ROOT=$(HOME)/Desktop/sem_4/cs296/project/cs296project/g09_project/cs296_base_code
 EXTERNAL_ROOT=$(PROJECT_ROOT)/external
 SRCDIR = $(PROJECT_ROOT)/src
 OBJDIR = $(PROJECT_ROOT)/obj

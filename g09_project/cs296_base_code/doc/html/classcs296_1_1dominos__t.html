@@ -180,10 +180,15 @@ The see saw system on the right maintains balance with the help of two balls. Wh
 <li>
 The ball on the left arm opens up a <b>curtain</b> declaring the result.The curtain is a dynamic body connected to a <b> Prismatic joint</b> allowing movement along the x axis only.  </li>
 <li>
-<p class="startli">The <b>candidate blocks</b> on the left are also attached to the <b>prismatic joints</b> allowing movement only along x axis.</p>
+The <b>candidate blocks</b> on the left are also attached to the <b>prismatic joints</b> allowing movement only along x axis. </li>
+<li>
+The ball on the corresponding candidate's block rolls down the <b>static platform</b>, knocks off elements like dominoes and enters the box,pushes it down and the corresponding candidate's hand is raised. </li>
+<li>
+<p class="startli"><b>Pulley Joint</b> and <b>Prismatic Joint</b>(for movement along one axis only) are used in this process.</p>
 <p class="endli"></p>
 </li>
 </ul>
+<p>candidates </p>
 
 <p>Definition at line <a class="el" href="dominos_8cpp_source.html#l00054">54</a> of file <a class="el" href="dominos_8cpp_source.html">dominos.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">  {
@@ -334,7 +339,7 @@ The ball on the left arm opens up a <b>curtain</b> declaring the result.The curt
           spherebody1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd1);
           spherebody1-&gt;SetLinearDamping(.03);
           spherebody1-&gt;SetLinearDamping(<a class="code" href="namespacecs296.html#acc8b716d1cf9372d0bdbe9dc0abffab3" title="Elements in the Box2D Simulation World.">globalx</a>);
-          std::cout&lt;&lt;<a class="code" href="namespacecs296.html#acc8b716d1cf9372d0bdbe9dc0abffab3" title="Elements in the Box2D Simulation World.">globalx</a>&lt;&lt;std::endl;
+        <span class="comment">//  std::cout&lt;&lt;globalx&lt;&lt;std::endl;</span>
           spherebody1-&gt;CreateFixture(&amp;ballfd1);
     }   
     
@@ -352,7 +357,7 @@ The ball on the left arm opens up a <b>curtain</b> declaring the result.The curt
           spherebody1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd1);
           spherebody1-&gt;SetLinearDamping(.06);
           spherebody1-&gt;SetLinearDamping(<a class="code" href="namespacecs296.html#a7111e478972f5d7e9134befa7cdbff5f">globaly</a>);
-          std::cout&lt;&lt;<a class="code" href="namespacecs296.html#acc8b716d1cf9372d0bdbe9dc0abffab3" title="Elements in the Box2D Simulation World.">globalx</a>&lt;&lt;std::endl;
+         <span class="comment">// std::cout&lt;&lt;globalx&lt;&lt;std::endl;</span>
           spherebody1-&gt;CreateFixture(&amp;ballfd1);
     }
     
@@ -774,16 +779,16 @@ The ball on the left arm opens up a <b>curtain</b> declaring the result.The curt
     (b2PrismaticJoint*)<a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint( &amp;jd3 );
     }
     
-    <span class="comment">//candidates</span>
     {
           b2PolygonShape shape1;
-          shape1.SetAsBox(1.0f, 0.10f);
+          shape1.SetAsBox(1.0f, 0.1f);
     
           b2BodyDef bd1;
-          bd1.position.Set(38.0f, 20.6f);
+          bd1.position.Set(38.0f, 21.3f);
           b2Body* body1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd1);
           b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
           fd1-&gt;density = 1.f;
+        <span class="comment">//  fd1-&gt;restitution = .5f;</span>
           fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
           fd1-&gt;shape = &amp;shape1;
           body1-&gt;CreateFixture(fd1);
@@ -799,20 +804,21 @@ The ball on the left arm opens up a <b>curtain</b> declaring the result.The curt
       b2Body* body2 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd2);
       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
       fd2-&gt;density = 0.0f;
+     <span class="comment">// fd1-&gt;restitution = .5f;</span>
       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
       fd2-&gt;shape = &amp;shape2;
       body2-&gt;CreateFixture(fd2);
-      b2PrismaticJointDef jd3;
+       b2PrismaticJointDef jd3;
       jd3.bodyA= body1;
       jd3.bodyB= body2;
-      jd3.localAnchorA.Set(0,0);
-      jd3.localAnchorB.Set(0,0);
-      jd3.localAxisA.Set(1,0);
-      jd3.enableLimit = <span class="keyword">false</span>;
-      jd3.lowerTranslation=0.0f;
-      jd3.upperTranslation=0.0f;
-      (b2PrismaticJoint*)<a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint( &amp;jd3 );
-      }
+    jd3.localAnchorA.Set(0,0);
+    jd3.localAnchorB.Set(0,.5f);
+    jd3.localAxisA.Set(1,0);
+    jd3.enableLimit = <span class="keyword">true</span>;
+    jd3.lowerTranslation=-3.0f;
+    jd3.upperTranslation=3.0f;
+    (b2PrismaticJoint*)<a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint( &amp;jd3 );
+    }
     
     
     {
@@ -820,11 +826,12 @@ The ball on the left arm opens up a <b>curtain</b> declaring the result.The curt
       shape1.SetAsBox(1.0f, 0.1f);
     
       b2BodyDef bd1;
-      bd1.position.Set(38.0f, 18.9f);
+      bd1.position.Set(38.0f, 19.5f);
       <span class="comment">//bd1.type = b2_dynamicBody;</span>
       b2Body* body1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd1);
       b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
       fd1-&gt;density = 1.f;
+<span class="comment">//  fd1-&gt;restitution = .5f;</span>
       fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
       fd1-&gt;shape = &amp;shape1;
       body1-&gt;CreateFixture(fd1);
@@ -840,32 +847,34 @@ The ball on the left arm opens up a <b>curtain</b> declaring the result.The curt
       b2Body* body2 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd2);
       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
       fd2-&gt;density = 0.0f;
-      <span class="comment">// fd2-&gt;restitution = 0.2f;</span>
+<span class="comment">//  fd1-&gt;restitution = .5f;</span>
+     <span class="comment">// fd2-&gt;restitution = 0.2f;</span>
       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
       fd2-&gt;shape = &amp;shape2;
       body2-&gt;CreateFixture(fd2);
-      b2PrismaticJointDef jd3;
+       b2PrismaticJointDef jd3;
       jd3.bodyA= body1;
       jd3.bodyB= body2;
-      jd3.localAnchorA.Set(0,0);
-      jd3.localAnchorB.Set(0,0);
-      jd3.localAxisA.Set(1,0);
-      jd3.enableLimit = <span class="keyword">false</span>;
-      jd3.lowerTranslation=0.0f;
-      jd3.upperTranslation=0.0f;
-      (b2PrismaticJoint*)<a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint( &amp;jd3 );
-      }
+    jd3.localAnchorA.Set(0,0);
+    jd3.localAnchorB.Set(0,.5f);
+    jd3.localAxisA.Set(1,0);
+    jd3.enableLimit = <span class="keyword">true</span>;
+    jd3.lowerTranslation=-3.0f;
+    jd3.upperTranslation=3.0f;
+    (b2PrismaticJoint*)<a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint( &amp;jd3 );
+    }
     
     {
      b2PolygonShape shape1;
       shape1.SetAsBox(1.0f, 0.1f);
     
       b2BodyDef bd1;
-      bd1.position.Set(38.0f, 17.2f);
+      bd1.position.Set(38.0f, 17.8f);
       <span class="comment">//bd1.type = b2_dynamicBody;</span>
       b2Body* body1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd1);
       b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
       fd1-&gt;density = 1.f;
+    <span class="comment">//fd1-&gt;restitution = .5f;</span>
       fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
       fd1-&gt;shape = &amp;shape1;
       body1-&gt;CreateFixture(fd1);
@@ -881,19 +890,20 @@ The ball on the left arm opens up a <b>curtain</b> declaring the result.The curt
       b2Body* body2 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd2);
       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
       fd2-&gt;density = 0.0f;
+    <span class="comment">//fd1-&gt;restitution = .5f;</span>
       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
       fd2-&gt;shape = &amp;shape2;
       body2-&gt;CreateFixture(fd2);
-      b2PrismaticJointDef jd3;
+       b2PrismaticJointDef jd3;
       jd3.bodyA= body1;
       jd3.bodyB= body2;
-      jd3.localAnchorA.Set(0,0);
-      jd3.localAnchorB.Set(0,0);
-      jd3.localAxisA.Set(1,0);
-      jd3.enableLimit = <span class="keyword">false</span>;
-      jd3.lowerTranslation=0.0f;
-      jd3.upperTranslation=0.0f;
-      (b2PrismaticJoint*)<a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint( &amp;jd3 );
+    jd3.localAnchorA.Set(0,0);
+    jd3.localAnchorB.Set(0,.5f);
+    jd3.localAxisA.Set(1,0);
+    jd3.enableLimit = <span class="keyword">true</span>;
+    jd3.lowerTranslation=-3.0f;
+    jd3.upperTranslation=3.0f;
+    (b2PrismaticJoint*)<a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint( &amp;jd3 );
     }
     
     <span class="comment">//hitting platform  </span>
@@ -913,7 +923,651 @@ The ball on the left arm opens up a <b>curtain</b> declaring the result.The curt
           fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
           fd1-&gt;shape = &amp;shape1;
           body1-&gt;CreateFixture(fd1);
-        }    
+        }
+
+    <span class="comment">//platform 1</span>
+    
+    {
+          b2PolygonShape shape;
+          shape.SetAsBox(3.0f, 0.05f);
+          b2BodyDef bd2;
+          bd2.position.Set(44.0f, 19.7f);
+          b2Body* body = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd2);
+          b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+          fd2-&gt;density = 1.f;
+          fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+          fd2-&gt;shape = &amp;shape;
+          body-&gt;CreateFixture(fd2);
+    
+    
+          b2PolygonShape shape1;
+          shape1.SetAsBox(5.0f, 0.05f);
+          b2BodyDef bd;
+          bd.position.Set(50.0f, 15.5f);
+        bd.angle = -70*180/3.14;
+          b2Body* body1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd);
+          <span class="comment">//body1-&gt;SetTransrm(body1-&gt;GetPosition(),45);</span>
+          b2FixtureDef *fd = <span class="keyword">new</span> b2FixtureDef;
+          fd-&gt;density = 1.f;
+          fd-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+          fd-&gt;shape = &amp;shape1;
+          body1-&gt;CreateFixture(fd);
+
+         b2PolygonShape shape3;
+          shape3.SetAsBox(8.0f, 0.05f);
+          b2BodyDef bd3;
+          bd3.position.Set(61.0f, 11.3f);
+          b2Body* body3 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd3);
+          b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
+          fd3-&gt;density = 1.f;
+          fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+          fd3-&gt;shape = &amp;shape3;
+          body3-&gt;CreateFixture(fd3);
+      }
+
+    <span class="comment">//platform 2</span>
+    
+    {
+          b2PolygonShape shape;
+          shape.SetAsBox(2.0f, 0.05f);
+          b2BodyDef bd2;
+          bd2.position.Set(43.0f, 18.1f);
+          b2Body* body = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd2);
+          b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+          fd2-&gt;density = 1.f;
+          fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+          fd2-&gt;shape = &amp;shape;
+          body-&gt;CreateFixture(fd2);
+
+         b2PolygonShape shape1;
+          shape1.SetAsBox(6.5f, 0.05f);
+          b2BodyDef bd;
+          bd.position.Set(49.0f, 12.90f);
+        bd.angle = -70*180/3.14;
+          b2Body* body1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd);
+          <span class="comment">//body1-&gt;SetTransrm(body1-&gt;GetPosition(),45);</span>
+          b2FixtureDef *fd = <span class="keyword">new</span> b2FixtureDef;
+          fd-&gt;density = 1.f;
+          fd-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+          fd-&gt;shape = &amp;shape1;
+          body1-&gt;CreateFixture(fd);
+
+         b2PolygonShape shape3;
+          shape3.SetAsBox(11.0f, 0.05f);
+          b2BodyDef bd3;
+          bd3.position.Set(64.0f, 7.5f);
+          b2Body* body3 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd3);
+          b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
+          fd3-&gt;density = 1.f;
+          fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+          fd3-&gt;shape = &amp;shape3;
+          body3-&gt;CreateFixture(fd3);
+      }
+
+    <span class="comment">//platform 3</span>
+
+    {
+          b2PolygonShape shape;
+          shape.SetAsBox(1.0f, 0.05f);
+          b2BodyDef bd2;
+          bd2.position.Set(42.0f, 16.4f);
+          b2Body* body = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd2);
+          b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+          fd2-&gt;density = 1.f;
+          fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+          fd2-&gt;shape = &amp;shape;
+          body-&gt;CreateFixture(fd2);
+
+         b2PolygonShape shape1;
+          shape1.SetAsBox(8.0f, 0.05f);
+          b2BodyDef bd;
+          bd.position.Set(48.0f, 10.00f);
+        bd.angle = -70*180/3.14;
+          b2Body* body1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd);
+          <span class="comment">//body1-&gt;SetTransrm(body1-&gt;GetPosition(),45);</span>
+          b2FixtureDef *fd = <span class="keyword">new</span> b2FixtureDef;
+          fd-&gt;density = 1.f;
+          fd-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+          fd-&gt;shape = &amp;shape1;
+          body1-&gt;CreateFixture(fd);
+
+         b2PolygonShape shape3;
+          shape3.SetAsBox(14.0f, 0.05f);
+          b2BodyDef bd3;
+          bd3.position.Set(67.0f, 3.7f);
+          b2Body* body3 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd3);
+          b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
+          fd3-&gt;density = 1.f;
+          fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+          fd3-&gt;shape = &amp;shape3;
+          body3-&gt;CreateFixture(fd3);
+
+      }
+
+    <span class="comment">//Ball on platform 1</span>
+    
+     {
+      b2Body* sbody;
+      b2CircleShape circle;
+      circle.m_radius = .65;
+    
+      b2FixtureDef ballfd;
+      ballfd.shape = &amp;circle;
+      ballfd.density = 0.05f;
+      ballfd.friction = 0.0f;
+      ballfd.restitution = 0.0f;
+      b2BodyDef ballbd;
+      ballbd.type = b2_dynamicBody;
+      ballbd.position.Set(42.0f,20.75f);
+      sbody = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd);
+      sbody-&gt;CreateFixture(&amp;ballfd);
+      }
+
+    <span class="comment">//Ball on platform 2</span>
+     {
+      b2Body* sbody;
+      b2CircleShape circle;
+      circle.m_radius = .65;
+    
+      b2FixtureDef ballfd;
+      ballfd.shape = &amp;circle;
+      ballfd.density = 1.f;
+      ballfd.friction = 0.0f;
+      ballfd.restitution = 0.0f;
+      b2BodyDef ballbd;
+      ballbd.type = b2_dynamicBody;
+      ballbd.position.Set(42.0f,19.0f);
+      sbody = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd);
+      sbody-&gt;CreateFixture(&amp;ballfd);
+      }
+
+    <span class="comment">//Ball on platform 3</span>
+     {
+      b2Body* sbody;
+      b2CircleShape circle;
+      circle.m_radius = .65;
+    
+      b2FixtureDef ballfd;
+      ballfd.shape = &amp;circle;
+      ballfd.density = 2.f;
+      ballfd.friction = 0.0f;
+      ballfd.restitution = 0.0f;
+      b2BodyDef ballbd;
+      ballbd.type = b2_dynamicBody;
+      ballbd.position.Set(42.0f,17.25f);
+      sbody = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd);
+      sbody-&gt;CreateFixture(&amp;ballfd);
+      }
+    
+    <span class="comment">//Dominos on platform 1</span>
+        {
+      b2PolygonShape shape;
+      shape.SetAsBox(0.1f, 1.00f);
+    
+      b2FixtureDef fd;
+      fd.shape = &amp;shape;
+      fd.density = .50f;
+      fd.friction = 0.4f;
+      <span class="comment">//fd.restitution=1.f;</span>
+        
+      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 10; ++i)
+    {
+      b2BodyDef bd;
+      bd.type = b2_dynamicBody;
+      bd.position.Set(57.0f + .50f * i, 12.35f);
+      b2Body* body = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd);
+      body-&gt;CreateFixture(&amp;fd);
+    }
+    }
+
+    <span class="comment">//second ball on platform 1</span>
+         {
+      b2Body* sbody;
+      b2CircleShape circle;
+      circle.m_radius = .65;
+    
+      b2FixtureDef ballfd;
+      ballfd.shape = &amp;circle;
+      ballfd.density = 2.0f;
+      ballfd.friction = 0.0f;
+      ballfd.restitution = 0.0f;
+      b2BodyDef ballbd;
+      ballbd.type = b2_dynamicBody;
+      ballbd.position.Set(63.0f,11.95f);
+      sbody = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd);
+      sbody-&gt;CreateFixture(&amp;ballfd);
+      }
+
+    <span class="comment">//balls on platform 2</span>
+         {
+      b2Body* sbody;
+      b2CircleShape circle;
+      circle.m_radius = .65;
+    
+      b2FixtureDef ballfd,ballfd1;
+      ballfd.shape = &amp;circle;
+      ballfd.density = 1.f;
+      ballfd.friction = 0.0f;
+      ballfd.restitution = 1.f;
+
+    ballfd1.shape = &amp;circle;
+      ballfd1.density = 1.f;
+      ballfd1.friction = 0.0f;
+      ballfd1.restitution = 0.f;
+      b2BodyDef ballbd;
+      ballbd.type = b2_dynamicBody;
+    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;3 ; i++){
+      ballbd.position.Set(56.0f +3*i,8.25f);
+      sbody = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd);
+      sbody-&gt;CreateFixture(&amp;ballfd);
+    }
+    ballbd.position.Set(65.0f ,8.25f);
+      sbody = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd);
+      sbody-&gt;CreateFixture(&amp;ballfd1);
+    
+      }
+
+    <span class="comment">//holder1</span>
+    {
+    
+     b2BodyDef *bd = <span class="keyword">new</span> b2BodyDef;
+      bd-&gt;type = b2_dynamicBody;
+      bd-&gt;position.Set(82.5,5.0);
+      bd-&gt;fixedRotation = <span class="keyword">true</span>;
+        
+    b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+      fd1-&gt;density = 1.0;
+      fd1-&gt;friction = 0.5;
+      fd1-&gt;restitution = 0.0f;
+      fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+      b2PolygonShape bs1;
+      bs1.SetAsBox(1,0.1, b2Vec2(0.f,-.9f), 0);
+      fd1-&gt;shape = &amp;bs1;
+      b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+      fd2-&gt;density = 1.0;
+      fd2-&gt;friction = 0.5;
+      fd2-&gt;restitution = 0.f;
+      fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+      b2PolygonShape bs2;
+      bs2.SetAsBox(1,0.1, b2Vec2(0.0f,.9f), 0);
+      fd2-&gt;shape = &amp;bs2;
+      b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
+      fd3-&gt;density = 0.0;
+      fd3-&gt;friction = 0.5;
+      fd3-&gt;restitution = 0.f;
+      fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+      b2PolygonShape bs3;
+      bs3.SetAsBox(0.1,1.0, b2Vec2(.9f,0.f), 0);
+      fd3-&gt;shape = &amp;bs3;
+       
+      b2Body* box1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(bd);
+      box1-&gt;CreateFixture(fd1);
+      box1-&gt;CreateFixture(fd2);
+      box1-&gt;CreateFixture(fd3);
+
+
+        <span class="comment">//member 1</span>
+     
+      b2Body* sbody;
+      b2CircleShape circle;
+      circle.m_radius = 1.00;
+    
+      b2FixtureDef ballfd;
+      ballfd.shape = &amp;circle;
+      ballfd.density = 0.05f;
+      ballfd.friction = 0.0f;
+      ballfd.restitution = 0.2f;
+      b2BodyDef ballbd,ballbd1;
+    <span class="comment">//  ballbd.type = b2_dynamicBody;</span>
+      ballbd.position.Set(88.0f ,2.00f);
+      ballbd1.position.Set(82.5f ,20.00f);
+      sbody = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd);
+      sbody1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd1);
+      sbody-&gt;CreateFixture(&amp;ballfd);
+    sbody1-&gt;CreateFixture(&amp;ballfd);
+
+    b2PolygonShape shape1;
+      shape1.SetAsBox(1.5f, 1.5f);
+    
+      b2BodyDef bd1;
+      bd1.position.Set(88.0f , -0.5f);
+      b2Body* body1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd1);
+      b2FixtureDef *fds1 = <span class="keyword">new</span> b2FixtureDef;
+      fds1-&gt;density = 1.f;
+      fds1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+      fds1-&gt;shape = &amp;shape1;
+    body1-&gt;CreateFixture(fds1);
+
+    b2PolygonShape shape2;
+      shape2.SetAsBox(.25f, 1.6f);
+    
+      b2BodyDef bd2, bd3,bd4;
+    bd4.type=b2_dynamicBody;
+      bd2.position.Set(89.0f  , -3.8f);
+    bd3.position.Set(87.0f  , -3.8f);
+    bd4.position.Set(90.0f  , -0.8f);
+      b2Body* body2 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd2);
+    b2Body* body3 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd3);
+    b2Body* body4 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd4);
+      b2FixtureDef *fds2 = <span class="keyword">new</span> b2FixtureDef;
+      fds2-&gt;density = 1.f;
+      fds2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+      fds2-&gt;shape = &amp;shape2;
+    body2-&gt;CreateFixture(fds2);
+    body3-&gt;CreateFixture(fds2);
+    body4-&gt;CreateFixture(fds2);
+     
+    b2RevoluteJointDef <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>;
+      jd.bodyA=body1;
+    jd.bodyB=body4;
+      <span class="comment">//anchor.Set(91.0f, -3.8f);</span>
+      jd.localAnchorA.Set(1.5,1.5);
+    jd.localAnchorB.Set(.25,1.6);
+      <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint(&amp;jd);
+
+
+     b2PulleyJointDef* myjoint = <span class="keyword">new</span> b2PulleyJointDef();
+      b2Vec2 worldAnchorOnBody1(82.5, 5.0); <span class="comment">// Anchor point on body 1 in world axis</span>
+      b2Vec2 worldAnchorOnBody2(89.5, -2.0); <span class="comment">// Anchor point on body 2 in world axis</span>
+      b2Vec2 worldAnchorGround1(82.5, 20.0); <span class="comment">// Anchor point for ground 1 in world axis</span>
+      b2Vec2 worldAnchorGround2(89.5, 20.0); <span class="comment">// Anchor point for ground 2 in world axis</span>
+      float32 ratio = 1.0f; <span class="comment">// Define ratio</span>
+      myjoint-&gt;Initialize(box1, body4, worldAnchorGround1, worldAnchorGround2, box1-&gt;GetWorldCenter(), body4-&gt;GetWorldCenter(), ratio);
+      <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint(myjoint);
+
+    b2PrismaticJointDef jd1;
+        jd1.bodyA= sbody1;
+        jd1.bodyB= box1;
+    jd1.localAnchorA.Set(0,0);
+    jd1.localAnchorB.Set(0,0);
+    jd1.localAxisA.Set(0,1);
+    (b2PrismaticJoint*)<a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint( &amp;jd1 );    
+
+    }
+    
+
+    <span class="comment">//holder 2</span>
+    {
+    
+     b2BodyDef *bd = <span class="keyword">new</span> b2BodyDef;
+      bd-&gt;type = b2_dynamicBody;
+      bd-&gt;position.Set(76.5,8.6);
+      bd-&gt;fixedRotation = <span class="keyword">true</span>;
+        
+    b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+      fd1-&gt;density = 1.0;
+      fd1-&gt;friction = 0.5;
+      fd1-&gt;restitution = 0.0f;
+      fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+      b2PolygonShape bs1;
+      bs1.SetAsBox(1,0.1, b2Vec2(0.f,-.9f), 0);
+      fd1-&gt;shape = &amp;bs1;
+      b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+      fd2-&gt;density = 1.0;
+      fd2-&gt;friction = 0.5;
+      fd2-&gt;restitution = 0.f;
+      fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+      b2PolygonShape bs2;
+      bs2.SetAsBox(1,0.1, b2Vec2(0.0f,.9f), 0);
+      fd2-&gt;shape = &amp;bs2;
+      b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
+      fd3-&gt;density = 0.0;
+      fd3-&gt;friction = 0.5;
+      fd3-&gt;restitution = 0.f;
+      fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+      b2PolygonShape bs3;
+      bs3.SetAsBox(0.1,1.0, b2Vec2(.9f,0.f), 0);
+      fd3-&gt;shape = &amp;bs3;
+       
+      b2Body* box1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(bd);
+      box1-&gt;CreateFixture(fd1);
+      box1-&gt;CreateFixture(fd2);
+      box1-&gt;CreateFixture(fd3);
+
+    <span class="comment">//member 2</span>
+
+    
+      b2Body* sbody;
+
+      b2CircleShape circle;
+
+      circle.m_radius = 1.00;
+
+    
+
+      b2FixtureDef ballfd;
+
+      ballfd.shape = &amp;circle;
+
+      ballfd.density = 0.05f;
+
+      ballfd.friction = 0.0f;
+
+      ballfd.restitution = 0.2f;
+      b2BodyDef ballbd, ballbd1;
+    <span class="comment">//  ballbd.type = b2_dynamicBody;</span>
+
+      ballbd.position.Set(98.0f ,2.00f);
+    ballbd1.position.Set(76.5f ,22.50f);
+      sbody = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd);
+
+      sbody-&gt;CreateFixture(&amp;ballfd);
+
+     sbody1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd1);
+
+      sbody1-&gt;CreateFixture(&amp;ballfd);
+
+    b2PolygonShape shape1;
+
+      shape1.SetAsBox(1.5f, 1.5f);
+    
+
+      b2BodyDef bd1;
+      bd1.position.Set(98.0f , -0.5f);
+      b2Body* body1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd1);
+
+      b2FixtureDef *fds1 = <span class="keyword">new</span> b2FixtureDef;
+      fds1-&gt;density = 1.f;
+
+      fds1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+
+      fds1-&gt;shape = &amp;shape1;
+    body1-&gt;CreateFixture(fds1);
+
+    b2PolygonShape shape2;
+      shape2.SetAsBox(.25f, 1.6f);
+    
+      b2BodyDef bd2, bd3,bd4;
+    bd4.type=b2_dynamicBody;
+      bd2.position.Set(99.0f  , -3.8f);
+    bd3.position.Set(97.0f  , -3.8f);
+    bd4.position.Set(100.0f  , -0.8f);
+      b2Body* body2 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd2);
+    b2Body* body3 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd3);
+    b2Body* body4 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd4);
+      b2FixtureDef *fds2 = <span class="keyword">new</span> b2FixtureDef;
+      fds2-&gt;density = .5f;
+      fds2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+      fds2-&gt;shape = &amp;shape2;
+    body2-&gt;CreateFixture(fds2);
+    body3-&gt;CreateFixture(fds2);
+    body4-&gt;CreateFixture(fds2);
+    
+
+
+     b2PulleyJointDef* myjoint = <span class="keyword">new</span> b2PulleyJointDef();
+      b2Vec2 worldAnchorOnBody1(76.5, 8.6); <span class="comment">// Anchor point on body 1 in world axis</span>
+      b2Vec2 worldAnchorOnBody2(99.5, -2.0); <span class="comment">// Anchor point on body 2 in world axis</span>
+      b2Vec2 worldAnchorGround1(76.5, 22.5); <span class="comment">// Anchor point for ground 1 in world axis</span>
+      b2Vec2 worldAnchorGround2(99.5, 22.5); <span class="comment">// Anchor point for ground 2 in world axis</span>
+      float32 ratio = 1.0f; <span class="comment">// Define ratio</span>
+      myjoint-&gt;Initialize(box1, body4, worldAnchorGround1, worldAnchorGround2, box1-&gt;GetWorldCenter(), body4-&gt;GetWorldCenter(), ratio);
+      <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint(myjoint);
+
+
+    
+    b2PrismaticJointDef jd1;
+        jd1.bodyA= sbody1;
+        jd1.bodyB= box1;
+    jd1.localAnchorA.Set(0,0);
+    jd1.localAnchorB.Set(0,0);
+    jd1.localAxisA.Set(0,1);
+    (b2PrismaticJoint*)<a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint( &amp;jd1 );
+    
+     
+    b2RevoluteJointDef <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>;
+      jd.bodyA=body1;
+    jd.bodyB=body4;
+      <span class="comment">//anchor.Set(91.0f, -3.8f);</span>
+      jd.localAnchorA.Set(1.5,1.5);
+    jd.localAnchorB.Set(.25,1.6);
+      <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint(&amp;jd);    
+
+    }
+
+    
+
+
+    <span class="comment">//holder 3</span>
+
+    {
+    
+     b2BodyDef *bd = <span class="keyword">new</span> b2BodyDef;
+      bd-&gt;type = b2_dynamicBody;
+      bd-&gt;position.Set(70.5,12.2);
+      bd-&gt;fixedRotation = <span class="keyword">true</span>;
+        
+    b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+      fd1-&gt;density = 2.0;
+      fd1-&gt;friction = 0.5;
+      fd1-&gt;restitution = 0.0f;
+      fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+      b2PolygonShape bs1;
+      bs1.SetAsBox(1,0.1, b2Vec2(0.f,-.9f), 0);
+      fd1-&gt;shape = &amp;bs1;
+      b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+      fd2-&gt;density = 2.0;
+      fd2-&gt;friction = 0.5;
+      fd2-&gt;restitution = 0.f;
+      fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+      b2PolygonShape bs2;
+      bs2.SetAsBox(1,0.1, b2Vec2(0.0f,.9f), 0);
+      fd2-&gt;shape = &amp;bs2;
+      b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
+      fd3-&gt;density = 0.0;
+      fd3-&gt;friction = 0.5;
+      fd3-&gt;restitution = 0.f;
+      fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+      b2PolygonShape bs3;
+      bs3.SetAsBox(0.1,1.0, b2Vec2(.9f,0.f), 0);
+      fd3-&gt;shape = &amp;bs3;
+       
+      b2Body* box1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(bd);
+      box1-&gt;CreateFixture(fd1);
+      box1-&gt;CreateFixture(fd2);
+      box1-&gt;CreateFixture(fd3);
+    
+    <span class="comment">//member 3</span>
+
+            
+     
+      b2Body* sbody;
+
+      b2CircleShape circle;
+
+      circle.m_radius = 1.00;
+
+    
+
+      b2FixtureDef ballfd;
+
+      ballfd.shape = &amp;circle;
+
+      ballfd.density = 0.05f;
+
+      ballfd.friction = 0.0f;
+
+      ballfd.restitution = 0.2f;
+      b2BodyDef ballbd,ballbd1;
+    <span class="comment">//  ballbd.type = b2_dynamicBody;</span>
+
+      ballbd.position.Set(108.0f ,2.00f);
+    ballbd1.position.Set(70.5f ,25.00f);
+      sbody = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd);
+    sbody1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;ballbd1);
+    
+      sbody-&gt;CreateFixture(&amp;ballfd);
+    sbody1-&gt;CreateFixture(&amp;ballfd);
+    b2PolygonShape shape1;
+
+      shape1.SetAsBox(1.5f, 1.5f);
+    
+
+      b2BodyDef bd1;
+      bd1.position.Set(108.0f , -0.5f);
+      b2Body* body1 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd1);
+
+      b2FixtureDef *fds1 = <span class="keyword">new</span> b2FixtureDef;
+      fds1-&gt;density = 1.f;
+
+      fds1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+
+      fds1-&gt;shape = &amp;shape1;
+    body1-&gt;CreateFixture(fds1);
+
+    b2PolygonShape shape2;
+      shape2.SetAsBox(.25f, 1.6f);
+    
+      b2BodyDef bd2, bd3,bd4;
+    bd4.type=b2_dynamicBody;
+      bd2.position.Set(109.0f  , -3.8f);
+    bd3.position.Set(107.0f  , -3.8f);
+    bd4.position.Set(110.0f  , -0.8f);
+      b2Body* body2 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd2);
+    b2Body* body3 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd3);
+    b2Body* body4 = <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateBody(&amp;bd4);
+      b2FixtureDef *fds2 = <span class="keyword">new</span> b2FixtureDef;
+      fds2-&gt;density = 1.50f;
+      fds2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+      fds2-&gt;shape = &amp;shape2;
+    body2-&gt;CreateFixture(fds2);
+    body3-&gt;CreateFixture(fds2);
+    body4-&gt;CreateFixture(fds2);
+     
+    b2RevoluteJointDef <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>;
+      jd.bodyA=body1;
+    jd.bodyB=body4;
+      <span class="comment">//anchor.Set(91.0f, -3.8f);</span>
+      jd.localAnchorA.Set(1.5,1.5);
+    jd.localAnchorB.Set(.25,1.6);
+      <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint(&amp;jd);
+
+
+     b2PulleyJointDef* myjoint = <span class="keyword">new</span> b2PulleyJointDef();
+      b2Vec2 worldAnchorOnBody1(70.5, 12.2); <span class="comment">// Anchor point on body 1 in world axis</span>
+      b2Vec2 worldAnchorOnBody2(109.5, -2.0); <span class="comment">// Anchor point on body 2 in world axis</span>
+      b2Vec2 worldAnchorGround1(70.5, 25.0); <span class="comment">// Anchor point for ground 1 in world axis</span>
+      b2Vec2 worldAnchorGround2(109.5, 25.0); <span class="comment">// Anchor point for ground 2 in world axis</span>
+      float32 ratio = 1.0f; <span class="comment">// Define ratio</span>
+      myjoint-&gt;Initialize(box1, body4, worldAnchorGround1, worldAnchorGround2, box1-&gt;GetWorldCenter(), body4-&gt;GetWorldCenter(), ratio);
+      <a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint(myjoint);
+
+    
+    b2PrismaticJointDef jd1;
+        jd1.bodyA= sbody1;
+        jd1.bodyB= box1;
+    jd1.localAnchorA.Set(0,0);
+    jd1.localAnchorB.Set(0,0);
+    jd1.localAxisA.Set(0,1);
+    (b2PrismaticJoint*)<a class="code" href="classcs296_1_1base__sim__t.html#ad98b4d74272dba763e3b64720fc0dd9b">m_world</a>-&gt;CreateJoint( &amp;jd1 );    
+
+    }
+
+
+      
+
+    
+
   }
 </pre></div>
 </div>
@@ -964,7 +1618,7 @@ The ball on the left arm opens up a <b>curtain</b> declaring the result.The curt
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 10 2013 15:50:46 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 10 2013 19:41:22 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

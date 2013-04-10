@@ -319,25 +319,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00252"></a>00252     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>-&gt;<a class="code" href="classcs296_1_1base__sim__t.html#af31dc6131a713b79bed87fb09c95c58e">set_text_line</a>(30);
 <a name="l00253"></a>00253     b2Vec2 old_center = <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>;
 <a name="l00254"></a>00254     <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#a982922808e2e898eccf04d23a864262a">hz</a> = <a class="code" href="namespacecs296.html#a9229268724607698b8407ea9af256693">settings_hz</a>;
-<a name="l00255"></a>00255     
-<a name="l00256"></a>00256     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>-&gt;<a class="code" href="classcs296_1_1base__sim__t.html#af2667e32281a3878c77f4859b1a71b68">step</a>(&amp;<a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>);
-<a name="l00257"></a>00257     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>-&gt;<a class="code" href="classcs296_1_1base__sim__t.html#a81f0b588ed0ef5d7e4c0f1843b8eff35">dest</a>();
-<a name="l00258"></a>00258     <span class="keywordflow">if</span> (old_center.x != <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>.x || old_center.y != <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>.y)
-<a name="l00259"></a>00259       {
-<a name="l00260"></a>00260     <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height.">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
-<a name="l00261"></a>00261       }
-<a name="l00262"></a>00262     
-<a name="l00263"></a>00263     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>-&gt;<a class="code" href="classcs296_1_1base__sim__t.html#ab1019cd5117fd02f705dcbc1b160d53f">draw_title</a>(5, 15, <a class="code" href="namespacecs296.html#a1b96cdf5ee75c73ecbd3c79a0a04d82b">entry</a>-&gt;<a class="code" href="structcs296_1_1sim__t.html#a53aad8202cf04343d42d436b97d3bee7">name</a>);
-<a name="l00264"></a>00264     
-<a name="l00265"></a>00265     glutSwapBuffers();
-<a name="l00266"></a>00266     
-<a name="l00267"></a>00267     <span class="keywordflow">if</span> (<a class="code" href="namespacecs296.html#ac9c49bac91bcf05c2939d7dda09ce6bd">test_selection</a> != <a class="code" href="namespacecs296.html#a53655d86d4c7eaebf4a929862e3fe4b1">test_index</a>)
-<a name="l00268"></a>00268       {
-<a name="l00269"></a>00269     <a class="code" href="namespacecs296.html#a53655d86d4c7eaebf4a929862e3fe4b1">test_index</a> = <a class="code" href="namespacecs296.html#ac9c49bac91bcf05c2939d7dda09ce6bd">test_selection</a>;
-<a name="l00270"></a>00270     <span class="keyword">delete</span> <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>;
-<a name="l00271"></a>00271     <a class="code" href="namespacecs296.html#a1b96cdf5ee75c73ecbd3c79a0a04d82b">entry</a> = <a class="code" href="namespacecs296.html#a6a02c1b92c2165c5e723308bcb9c340c">cs296::sim</a>;
-<a name="l00272"></a>00272     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a> = <a class="code" href="namespacecs296.html#a1b96cdf5ee75c73ecbd3c79a0a04d82b">entry</a>-&gt;<a class="code" href="structcs296_1_1sim__t.html#a9df5092a72b8586338c0df1888c6cb75">create_fcn</a>();
-<a name="l00273"></a>00273     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>-&gt;<a class="code" href="classcs296_1_1base__sim__t.html#a55e7af5fe10fb31f187077547b11a2eb">drawtxt</a>(30.0f, 20.0f);
+<a name="l00255"></a>00255     GLUI_Master.get_viewport_area(&amp;<a class="code" href="namespacecs296.html#a5f35f04e73c2962fc7897b5ad7be1a79">tx</a>, &amp;<a class="code" href="namespacecs296.html#ab09a02211e7811ff8f9464c058ac42df">ty</a>, &amp;<a class="code" href="namespacecs296.html#a7006acc96d25bc2ecbf7b2d82cdb432c">tw</a>, &amp;<a class="code" href="namespacecs296.html#ae721ed2f829aed2546386188b4295146">th</a>);
+<a name="l00256"></a>00256     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>-&gt;<a class="code" href="classcs296_1_1base__sim__t.html#a55e7af5fe10fb31f187077547b11a2eb">drawtxt</a>((3*<a class="code" href="namespacecs296.html#a7006acc96d25bc2ecbf7b2d82cdb432c">tw</a>)/7, 20);
+<a name="l00257"></a>00257     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>-&gt;<a class="code" href="classcs296_1_1base__sim__t.html#af2667e32281a3878c77f4859b1a71b68">step</a>(&amp;<a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>);
+<a name="l00258"></a>00258     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>-&gt;<a class="code" href="classcs296_1_1base__sim__t.html#a81f0b588ed0ef5d7e4c0f1843b8eff35">dest</a>();
+<a name="l00259"></a>00259     <span class="keywordflow">if</span> (old_center.x != <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>.x || old_center.y != <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>.y)
+<a name="l00260"></a>00260       {
+<a name="l00261"></a>00261     <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height.">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
+<a name="l00262"></a>00262       }
+<a name="l00263"></a>00263     
+<a name="l00264"></a>00264     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>-&gt;<a class="code" href="classcs296_1_1base__sim__t.html#ab1019cd5117fd02f705dcbc1b160d53f">draw_title</a>(5, 15, <a class="code" href="namespacecs296.html#a1b96cdf5ee75c73ecbd3c79a0a04d82b">entry</a>-&gt;<a class="code" href="structcs296_1_1sim__t.html#a53aad8202cf04343d42d436b97d3bee7">name</a>);
+<a name="l00265"></a>00265     
+<a name="l00266"></a>00266     glutSwapBuffers();
+<a name="l00267"></a>00267     
+<a name="l00268"></a>00268     <span class="keywordflow">if</span> (<a class="code" href="namespacecs296.html#ac9c49bac91bcf05c2939d7dda09ce6bd">test_selection</a> != <a class="code" href="namespacecs296.html#a53655d86d4c7eaebf4a929862e3fe4b1">test_index</a>)
+<a name="l00269"></a>00269       {
+<a name="l00270"></a>00270     <a class="code" href="namespacecs296.html#a53655d86d4c7eaebf4a929862e3fe4b1">test_index</a> = <a class="code" href="namespacecs296.html#ac9c49bac91bcf05c2939d7dda09ce6bd">test_selection</a>;
+<a name="l00271"></a>00271     <span class="keyword">delete</span> <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a>;
+<a name="l00272"></a>00272     <a class="code" href="namespacecs296.html#a1b96cdf5ee75c73ecbd3c79a0a04d82b">entry</a> = <a class="code" href="namespacecs296.html#a6a02c1b92c2165c5e723308bcb9c340c">cs296::sim</a>;
+<a name="l00273"></a>00273     <a class="code" href="namespacecs296.html#a4c4f88fed02783cb7b52d0bbaa30fb2e">test</a> = <a class="code" href="namespacecs296.html#a1b96cdf5ee75c73ecbd3c79a0a04d82b">entry</a>-&gt;<a class="code" href="structcs296_1_1sim__t.html#a9df5092a72b8586338c0df1888c6cb75">create_fcn</a>();
 <a name="l00274"></a>00274     <a class="code" href="namespacecs296.html#acd94f8ca6c6ebfd23f6742211acfe446">view_zoom</a> = 1.0f;
 <a name="l00275"></a>00275     <a class="code" href="namespacecs296.html#ab854b1dda9be7300d5685ae8471c662d">settings</a>.<a class="code" href="structcs296_1_1settings__t.html#ad441969bd9f72a0e8cabcdbd2072b05d">view_center</a>.Set(0.0f, 20.0f);
 <a name="l00276"></a>00276       <a class="code" href="classcs296_1_1callbacks__t.html#a54aa6b624b64d010ee90e9fbbaba6452" title="GLUT resize callback. This is set via GLUI. This gets called when the window is resized. Passed as parameters are the current window width and height.">resize_cb</a>(<a class="code" href="namespacecs296.html#a516872b5a4e9337df516c4e5af58b3da">width</a>, <a class="code" href="namespacecs296.html#a404fa31fd251cd9fc0445918d2e9b006">height</a>);
@@ -402,7 +402,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 10 2013 15:50:46 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 10 2013 19:41:22 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

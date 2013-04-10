@@ -135,734 +135,1383 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00055"></a>00055   {
 <a name="l00056"></a>00056   
 <a name="l00057"></a>00057      
-<a name="l00075"></a>00075       <span class="comment">//Ground </span>
-<a name="l00076"></a>00076         {
-<a name="l00077"></a>00077           b2Body* b1;
-<a name="l00078"></a>00078           b2EdgeShape shape;
-<a name="l00079"></a>00079           shape.Set(b2Vec2(-90.0f, -5.0f), b2Vec2(90.0f, -5.0f));
-<a name="l00080"></a>00080     
-<a name="l00081"></a>00081           b2BodyDef bd;
-<a name="l00082"></a>00082           b1 = m_world-&gt;CreateBody(&amp;bd);
-<a name="l00083"></a>00083           b1-&gt;CreateFixture(&amp;shape, 0.0f);
-<a name="l00084"></a>00084         }
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086      <span class="comment">//Platform</span>
-<a name="l00087"></a>00087         {
-<a name="l00088"></a>00088             b2PolygonShape shape;
-<a name="l00089"></a>00089             shape.SetAsBox(11.0f, 0.25f);
-<a name="l00090"></a>00090             b2BodyDef bd2;
-<a name="l00091"></a>00091             bd2.position.Set(-24.0f, 26.0f);
-<a name="l00092"></a>00092             b2Body* body = m_world-&gt;CreateBody(&amp;bd2);
-<a name="l00093"></a>00093             b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00094"></a>00094             fd2-&gt;density = 1.f;
-<a name="l00095"></a>00095             fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00096"></a>00096             fd2-&gt;shape = &amp;shape;
-<a name="l00097"></a>00097             body-&gt;CreateFixture(fd2);
-<a name="l00098"></a>00098         }
-<a name="l00099"></a>00099       
-<a name="l00100"></a>00100          <span class="comment">//holder</span>
-<a name="l00101"></a>00101         {
-<a name="l00102"></a>00102             b2PolygonShape shape;
-<a name="l00103"></a>00103             shape.SetAsBox(0.01f, 0.01f);
-<a name="l00104"></a>00104             b2BodyDef bd2;
-<a name="l00105"></a>00105             bd2.position.Set(-33.75f, 26.26f);
-<a name="l00106"></a>00106             b2Body* body = m_world-&gt;CreateBody(&amp;bd2);
-<a name="l00107"></a>00107             b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00108"></a>00108             fd2-&gt;density = 1.f;
-<a name="l00109"></a>00109             fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00110"></a>00110             fd2-&gt;shape = &amp;shape;
-<a name="l00111"></a>00111             body-&gt;CreateFixture(fd2);
-<a name="l00112"></a>00112         }
-<a name="l00113"></a>00113         <span class="comment">//Pendulum</span>
-<a name="l00114"></a>00114         {
-<a name="l00115"></a>00115      
-<a name="l00116"></a>00116            {
-<a name="l00117"></a>00117         b2Body* b2;
-<a name="l00118"></a>00118         b2PolygonShape shape;
-<a name="l00119"></a>00119         shape.SetAsBox(0.25f, 1.5f);
-<a name="l00120"></a>00120           
-<a name="l00121"></a>00121         b2BodyDef bd;
-<a name="l00122"></a>00122         bd.position.Set(-37.0f, 23.0f);
-<a name="l00123"></a>00123         b2 = m_world-&gt;CreateBody(&amp;bd);
-<a name="l00124"></a>00124         b2-&gt;CreateFixture(&amp;shape, 10.0f);
-<a name="l00125"></a>00125             
-<a name="l00126"></a>00126         b2Body* b4;
-<a name="l00127"></a>00127         b2FixtureDef *bobf = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00128"></a>00128         bobf-&gt;restitution=0.0f;
-<a name="l00129"></a>00129         bobf-&gt;density=2.0f;
-<a name="l00130"></a>00130         shape.SetAsBox(.25f, .25f);
-<a name="l00131"></a>00131         bobf-&gt;shape=&amp;shape;
-<a name="l00132"></a>00132         b2BodyDef bd2;
-<a name="l00133"></a>00133         bd2.type = b2_dynamicBody;
-<a name="l00134"></a>00134         bd2.position.Set(-45.0f, 38.0f);
-<a name="l00135"></a>00135         b4 = m_world-&gt;CreateBody(&amp;bd2);
-<a name="l00136"></a>00136         b4-&gt;CreateFixture(bobf);
-<a name="l00137"></a>00137     
-<a name="l00138"></a>00138       
-<a name="l00139"></a>00139             b2RevoluteJointDef <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>;
-<a name="l00140"></a>00140             b2Vec2 anchor;
-<a name="l00141"></a>00141             anchor.Set(-37.0f, 35.0f);
-<a name="l00142"></a>00142             jd.Initialize(b2, b4, anchor);
-<a name="l00143"></a>00143             m_world-&gt;CreateJoint(&amp;jd);
-<a name="l00144"></a>00144            }
-<a name="l00145"></a>00145       
-<a name="l00146"></a>00146         }
+<a name="l00077"></a>00077       <span class="comment">//Ground </span>
+<a name="l00078"></a>00078         {
+<a name="l00079"></a>00079           b2Body* b1;
+<a name="l00080"></a>00080           b2EdgeShape shape;
+<a name="l00081"></a>00081           shape.Set(b2Vec2(-90.0f, -5.0f), b2Vec2(90.0f, -5.0f));
+<a name="l00082"></a>00082     
+<a name="l00083"></a>00083           b2BodyDef bd;
+<a name="l00084"></a>00084           b1 = m_world-&gt;CreateBody(&amp;bd);
+<a name="l00085"></a>00085           b1-&gt;CreateFixture(&amp;shape, 0.0f);
+<a name="l00086"></a>00086         }
+<a name="l00087"></a>00087 
+<a name="l00088"></a>00088      <span class="comment">//Platform</span>
+<a name="l00089"></a>00089         {
+<a name="l00090"></a>00090             b2PolygonShape shape;
+<a name="l00091"></a>00091             shape.SetAsBox(11.0f, 0.25f);
+<a name="l00092"></a>00092             b2BodyDef bd2;
+<a name="l00093"></a>00093             bd2.position.Set(-24.0f, 26.0f);
+<a name="l00094"></a>00094             b2Body* body = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l00095"></a>00095             b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00096"></a>00096             fd2-&gt;density = 1.f;
+<a name="l00097"></a>00097             fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00098"></a>00098             fd2-&gt;shape = &amp;shape;
+<a name="l00099"></a>00099             body-&gt;CreateFixture(fd2);
+<a name="l00100"></a>00100         }
+<a name="l00101"></a>00101       
+<a name="l00102"></a>00102          <span class="comment">//holder</span>
+<a name="l00103"></a>00103         {
+<a name="l00104"></a>00104             b2PolygonShape shape;
+<a name="l00105"></a>00105             shape.SetAsBox(0.01f, 0.01f);
+<a name="l00106"></a>00106             b2BodyDef bd2;
+<a name="l00107"></a>00107             bd2.position.Set(-33.75f, 26.26f);
+<a name="l00108"></a>00108             b2Body* body = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l00109"></a>00109             b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00110"></a>00110             fd2-&gt;density = 1.f;
+<a name="l00111"></a>00111             fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00112"></a>00112             fd2-&gt;shape = &amp;shape;
+<a name="l00113"></a>00113             body-&gt;CreateFixture(fd2);
+<a name="l00114"></a>00114         }
+<a name="l00115"></a>00115         <span class="comment">//Pendulum</span>
+<a name="l00116"></a>00116         {
+<a name="l00117"></a>00117      
+<a name="l00118"></a>00118            {
+<a name="l00119"></a>00119         b2Body* b2;
+<a name="l00120"></a>00120         b2PolygonShape shape;
+<a name="l00121"></a>00121         shape.SetAsBox(0.25f, 1.5f);
+<a name="l00122"></a>00122           
+<a name="l00123"></a>00123         b2BodyDef bd;
+<a name="l00124"></a>00124         bd.position.Set(-37.0f, 23.0f);
+<a name="l00125"></a>00125         b2 = m_world-&gt;CreateBody(&amp;bd);
+<a name="l00126"></a>00126         b2-&gt;CreateFixture(&amp;shape, 10.0f);
+<a name="l00127"></a>00127             
+<a name="l00128"></a>00128         b2Body* b4;
+<a name="l00129"></a>00129         b2FixtureDef *bobf = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00130"></a>00130         bobf-&gt;restitution=0.0f;
+<a name="l00131"></a>00131         bobf-&gt;density=2.0f;
+<a name="l00132"></a>00132         shape.SetAsBox(.25f, .25f);
+<a name="l00133"></a>00133         bobf-&gt;shape=&amp;shape;
+<a name="l00134"></a>00134         b2BodyDef bd2;
+<a name="l00135"></a>00135         bd2.type = b2_dynamicBody;
+<a name="l00136"></a>00136         bd2.position.Set(-45.0f, 38.0f);
+<a name="l00137"></a>00137         b4 = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l00138"></a>00138         b4-&gt;CreateFixture(bobf);
+<a name="l00139"></a>00139     
+<a name="l00140"></a>00140       
+<a name="l00141"></a>00141             b2RevoluteJointDef <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>;
+<a name="l00142"></a>00142             b2Vec2 anchor;
+<a name="l00143"></a>00143             anchor.Set(-37.0f, 35.0f);
+<a name="l00144"></a>00144             jd.Initialize(b2, b4, anchor);
+<a name="l00145"></a>00145             m_world-&gt;CreateJoint(&amp;jd);
+<a name="l00146"></a>00146            }
 <a name="l00147"></a>00147       
-<a name="l00148"></a>00148         <span class="comment">//the balls on the left side</span>
-<a name="l00149"></a>00149         {
-<a name="l00150"></a>00150             b2Body* spherebody1;
-<a name="l00151"></a>00151     
-<a name="l00152"></a>00152             b2CircleShape circle;
-<a name="l00153"></a>00153             circle.m_radius = 0.75;
-<a name="l00154"></a>00154         b2FixtureDef ballfd2;
-<a name="l00155"></a>00155             ballfd2.shape = &amp;circle;
-<a name="l00156"></a>00156             ballfd2.density = 4.0f;
-<a name="l00157"></a>00157             ballfd2.friction = 0.0f;
-<a name="l00158"></a>00158             ballfd2.restitution =0.6f;
-<a name="l00159"></a>00159 
-<a name="l00160"></a>00160     
-<a name="l00161"></a>00161     <span class="comment">//pipe</span>
-<a name="l00162"></a>00162     {
-<a name="l00163"></a>00163             b2PolygonShape shape1;
-<a name="l00164"></a>00164             shape1.SetAsBox(.1f, 2.25f);
-<a name="l00165"></a>00165     
-<a name="l00166"></a>00166             b2BodyDef bd1;
-<a name="l00167"></a>00167             bd1.position.Set(-34.35f, 30.1f);
-<a name="l00168"></a>00168             b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
-<a name="l00169"></a>00169             b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00170"></a>00170             fd1-&gt;density = 0.f;
-<a name="l00171"></a>00171             fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00172"></a>00172             fd1-&gt;shape = &amp;shape1;
-<a name="l00173"></a>00173             body1-&gt;CreateFixture(fd1);
-<a name="l00174"></a>00174     }
-<a name="l00175"></a>00175     
-<a name="l00176"></a>00176     
-<a name="l00177"></a>00177     {
-<a name="l00178"></a>00178             b2PolygonShape shape1;
-<a name="l00179"></a>00179             shape1.SetAsBox(.1f, 2.25f);
-<a name="l00180"></a>00180             b2BodyDef bd1;
-<a name="l00181"></a>00181             bd1.position.Set(-32.65f, 30.1f);
-<a name="l00182"></a>00182             b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
-<a name="l00183"></a>00183             b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00184"></a>00184             fd1-&gt;density = 0.f;
-<a name="l00185"></a>00185             fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00186"></a>00186             fd1-&gt;shape = &amp;shape1;
-<a name="l00187"></a>00187             body1-&gt;CreateFixture(fd1);
-<a name="l00188"></a>00188     }
-<a name="l00189"></a>00189 
-<a name="l00190"></a>00190     <span class="comment">//bottom-most ball</span>
-<a name="l00191"></a>00191     {
-<a name="l00192"></a>00192             b2FixtureDef ballfd1;
-<a name="l00193"></a>00193             ballfd1.shape = &amp;circle;
-<a name="l00194"></a>00194             ballfd1.density = 4.0f;
-<a name="l00195"></a>00195             ballfd1.friction = 0.0f;
-<a name="l00196"></a>00196             ballfd1.restitution =0.3f;
-<a name="l00197"></a>00197             b2BodyDef ballbd1;
-<a name="l00198"></a>00198             ballbd1.type = b2_dynamicBody;
-<a name="l00199"></a>00199             ballbd1.position.Set(-33.5f , 27.0f);
-<a name="l00200"></a>00200             spherebody1 = m_world-&gt;CreateBody(&amp;ballbd1);
-<a name="l00201"></a>00201             spherebody1-&gt;CreateFixture(&amp;ballfd1);
-<a name="l00202"></a>00202       
-<a name="l00203"></a>00203     }
-<a name="l00204"></a>00204 
-<a name="l00205"></a>00205     <span class="comment">//second ball</span>
-<a name="l00206"></a>00206     {
-<a name="l00207"></a>00207           b2FixtureDef ballfd1;
-<a name="l00208"></a>00208               ballfd1.shape = &amp;circle;
-<a name="l00209"></a>00209               ballfd1.density = 4.0f;
-<a name="l00210"></a>00210               ballfd1.friction = 0.0f;
-<a name="l00211"></a>00211           ballfd1.restitution =0.0f;
-<a name="l00212"></a>00212           
-<a name="l00213"></a>00213           b2BodyDef ballbd1;
-<a name="l00214"></a>00214           ballbd1.type = b2_dynamicBody;
-<a name="l00215"></a>00215           ballbd1.position.Set(-33.5f, 28.5f);
-<a name="l00216"></a>00216           spherebody1 = m_world-&gt;CreateBody(&amp;ballbd1);
-<a name="l00217"></a>00217           spherebody1-&gt;SetLinearDamping(.03);
-<a name="l00218"></a>00218           spherebody1-&gt;SetLinearDamping(<a class="code" href="namespacecs296.html#acc8b716d1cf9372d0bdbe9dc0abffab3" title="Elements in the Box2D Simulation World.">globalx</a>);
-<a name="l00219"></a>00219           std::cout&lt;&lt;<a class="code" href="namespacecs296.html#acc8b716d1cf9372d0bdbe9dc0abffab3" title="Elements in the Box2D Simulation World.">globalx</a>&lt;&lt;std::endl;
-<a name="l00220"></a>00220           spherebody1-&gt;CreateFixture(&amp;ballfd1);
-<a name="l00221"></a>00221     }   
-<a name="l00222"></a>00222     
-<a name="l00223"></a>00223     <span class="comment">//third ball</span>
-<a name="l00224"></a>00224     {
-<a name="l00225"></a>00225           b2FixtureDef ballfd1;
-<a name="l00226"></a>00226               ballfd1.shape = &amp;circle;
-<a name="l00227"></a>00227               ballfd1.density = 4.0f;
-<a name="l00228"></a>00228               ballfd1.friction = 0.0f;
-<a name="l00229"></a>00229           ballfd1.restitution =0.0f;
-<a name="l00230"></a>00230           
-<a name="l00231"></a>00231           b2BodyDef ballbd1;
-<a name="l00232"></a>00232           ballbd1.type = b2_dynamicBody;
-<a name="l00233"></a>00233           ballbd1.position.Set(-33.5f , 30.0f);
-<a name="l00234"></a>00234           spherebody1 = m_world-&gt;CreateBody(&amp;ballbd1);
-<a name="l00235"></a>00235           spherebody1-&gt;SetLinearDamping(.06);
-<a name="l00236"></a>00236           spherebody1-&gt;SetLinearDamping(<a class="code" href="namespacecs296.html#a7111e478972f5d7e9134befa7cdbff5f">globaly</a>);
-<a name="l00237"></a>00237           std::cout&lt;&lt;<a class="code" href="namespacecs296.html#acc8b716d1cf9372d0bdbe9dc0abffab3" title="Elements in the Box2D Simulation World.">globalx</a>&lt;&lt;std::endl;
-<a name="l00238"></a>00238           spherebody1-&gt;CreateFixture(&amp;ballfd1);
-<a name="l00239"></a>00239     }
-<a name="l00240"></a>00240     
-<a name="l00241"></a>00241     <span class="comment">//fourth ball</span>
-<a name="l00242"></a>00242     {
-<a name="l00243"></a>00243           b2FixtureDef ballfd1;
-<a name="l00244"></a>00244               ballfd1.shape = &amp;circle;
-<a name="l00245"></a>00245               ballfd1.density = 4.0f;
-<a name="l00246"></a>00246               ballfd1.friction = 0.0f;
-<a name="l00247"></a>00247           ballfd1.restitution =0.0f;
-<a name="l00248"></a>00248           
-<a name="l00249"></a>00249           b2BodyDef ballbd1;
-<a name="l00250"></a>00250           ballbd1.type = b2_dynamicBody;
-<a name="l00251"></a>00251           ballbd1.position.Set(-33.5f , 31.5f);
-<a name="l00252"></a>00252           spherebody1 = m_world-&gt;CreateBody(&amp;ballbd1);
-<a name="l00253"></a>00253           spherebody1-&gt;CreateFixture(&amp;ballfd1);
-<a name="l00254"></a>00254     }
-<a name="l00255"></a>00255     
-<a name="l00256"></a>00256     <span class="comment">//the balls on the right side</span>
-<a name="l00257"></a>00257     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;3 ; i++)
-<a name="l00258"></a>00258     {
-<a name="l00259"></a>00259           b2BodyDef ballbd;
-<a name="l00260"></a>00260           ballbd.type = b2_dynamicBody;
-<a name="l00261"></a>00261           ballbd.position.Set(3.1f, 20.95f+6*i);
-<a name="l00262"></a>00262           spherebody1 = m_world-&gt;CreateBody(&amp;ballbd);
-<a name="l00263"></a>00263           spherebody1-&gt;CreateFixture(&amp;ballfd2);
-<a name="l00264"></a>00264     }
-<a name="l00265"></a>00265 }
-<a name="l00266"></a>00266 
-<a name="l00267"></a>00267       <span class="comment">//The pulley system</span>
-<a name="l00268"></a>00268       b2BodyDef *bd = <span class="keyword">new</span> b2BodyDef;
-<a name="l00269"></a>00269       bd-&gt;type = b2_dynamicBody;
-<a name="l00270"></a>00270       bd-&gt;position.Set(-10,17);
-<a name="l00271"></a>00271       bd-&gt;fixedRotation = <span class="keyword">true</span>;
-<a name="l00272"></a>00272       
-<a name="l00273"></a>00273       <span class="comment">//The open box 1</span>
-<a name="l00274"></a>00274       b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00275"></a>00275       fd1-&gt;density = 5.0;
-<a name="l00276"></a>00276       fd1-&gt;friction = 0.5;
-<a name="l00277"></a>00277       fd1-&gt;restitution = 0.0f;
-<a name="l00278"></a>00278       fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00279"></a>00279       b2PolygonShape bs1;
-<a name="l00280"></a>00280       bs1.SetAsBox(2,0.2, b2Vec2(0.f,-1.2f), 0);
-<a name="l00281"></a>00281       fd1-&gt;shape = &amp;bs1;
-<a name="l00282"></a>00282       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00283"></a>00283       fd2-&gt;density = 5.0;
-<a name="l00284"></a>00284       fd2-&gt;friction = 0.5;
-<a name="l00285"></a>00285       fd2-&gt;restitution = 0.f;
-<a name="l00286"></a>00286       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00287"></a>00287       b2PolygonShape bs2;
-<a name="l00288"></a>00288       bs2.SetAsBox(0.2,1.3, b2Vec2(1.9f,0.f), 0);
-<a name="l00289"></a>00289       fd2-&gt;shape = &amp;bs2;
-<a name="l00290"></a>00290       b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00291"></a>00291       fd3-&gt;density = 5.0;
-<a name="l00292"></a>00292       fd3-&gt;friction = 0.5;
-<a name="l00293"></a>00293       fd3-&gt;restitution = 0.f;
-<a name="l00294"></a>00294       fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00295"></a>00295       b2PolygonShape bs3;
-<a name="l00296"></a>00296       bs3.SetAsBox(0.2,1.3, b2Vec2(-1.9f,0.f), 0);
-<a name="l00297"></a>00297       fd3-&gt;shape = &amp;bs3;
-<a name="l00298"></a>00298        
-<a name="l00299"></a>00299       b2Body* box1 = m_world-&gt;CreateBody(bd);
-<a name="l00300"></a>00300       box1-&gt;CreateFixture(fd1);
-<a name="l00301"></a>00301       box1-&gt;CreateFixture(fd2);
-<a name="l00302"></a>00302       box1-&gt;CreateFixture(fd3);
-<a name="l00303"></a>00303       
-<a name="l00304"></a>00304       <span class="comment">//The open box 2</span>
-<a name="l00305"></a>00305       b2FixtureDef *fd1a = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00306"></a>00306       fd1a-&gt;density = 5.0;
-<a name="l00307"></a>00307       fd1a-&gt;friction = 0.5;
-<a name="l00308"></a>00308 
-<a name="l00309"></a>00309       fd1a-&gt;restitution = 0.f;
-<a name="l00310"></a>00310       fd1a-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00311"></a>00311       b2PolygonShape bs1a;
-<a name="l00312"></a>00312       bs1a.SetAsBox(2,0.2, b2Vec2(0.f,-1.2f), 0);
-<a name="l00313"></a>00313       fd1a-&gt;shape = &amp;bs1a;
-<a name="l00314"></a>00314       b2FixtureDef *fd2a = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00315"></a>00315       fd2a-&gt;density = 5.0;
-<a name="l00316"></a>00316       fd2a-&gt;friction = 0.5;
-<a name="l00317"></a>00317       fd2a-&gt;restitution = 1.f;
-<a name="l00318"></a>00318       fd2a-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00319"></a>00319       b2PolygonShape bs2a;
-<a name="l00320"></a>00320       bs2a.SetAsBox(0.2,1.3, b2Vec2(1.9f,0.f), 0);
-<a name="l00321"></a>00321       fd2a-&gt;shape = &amp;bs2a;
-<a name="l00322"></a>00322       b2FixtureDef *fd3a = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00323"></a>00323       fd3a-&gt;density = 5.0;
-<a name="l00324"></a>00324       fd3a-&gt;friction = 0.5;
-<a name="l00325"></a>00325       fd3a-&gt;restitution = 0.f;
-<a name="l00326"></a>00326       fd3a-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00327"></a>00327       b2PolygonShape bs3a;  
-<a name="l00328"></a>00328       bs3a.SetAsBox(0.2,1.3, b2Vec2(-1.9f,0.f), 0);
-<a name="l00329"></a>00329       fd3a-&gt;shape = &amp;bs3a;
-<a name="l00330"></a>00330       
-<a name="l00331"></a>00331       b2BodyDef *bd2 = <span class="keyword">new</span> b2BodyDef;
-<a name="l00332"></a>00332       bd2-&gt;type = b2_dynamicBody;
-<a name="l00333"></a>00333       bd2-&gt;position.Set(2,17);
-<a name="l00334"></a>00334       bd2-&gt;fixedRotation = <span class="keyword">true</span>;
-<a name="l00335"></a>00335        
-<a name="l00336"></a>00336       b2Body* box2 = m_world-&gt;CreateBody(bd2);
-<a name="l00337"></a>00337       box2-&gt;CreateFixture(fd1a);
-<a name="l00338"></a>00338       box2-&gt;CreateFixture(fd2a);
-<a name="l00339"></a>00339       box2-&gt;CreateFixture(fd3a);
-<a name="l00340"></a>00340      
-<a name="l00341"></a>00341 
-<a name="l00342"></a>00342       <span class="comment">// The pulley joint</span>
-<a name="l00343"></a>00343       b2PulleyJointDef* myjoint = <span class="keyword">new</span> b2PulleyJointDef();
-<a name="l00344"></a>00344       b2Vec2 worldAnchorOnBody1(-10, 15); 
-<a name="l00345"></a>00345       b2Vec2 worldAnchorOnBody2(2, 15);
-<a name="l00346"></a>00346       b2Vec2 worldAnchorGround1(-10, 37); 
-<a name="l00347"></a>00347       b2Vec2 worldAnchorGround2(2, 37); 
-<a name="l00348"></a>00348       float32 ratio = 1.0f; 
-<a name="l00349"></a>00349       myjoint-&gt;Initialize(box1, box2, worldAnchorGround1, worldAnchorGround2, box1-&gt;GetWorldCenter(), box2-&gt;GetWorldCenter(), ratio);
-<a name="l00350"></a>00350       b2Joint* mj=m_world-&gt;CreateJoint(myjoint);
-<a name="l00351"></a>00351       
-<a name="l00352"></a>00352      
-<a name="l00353"></a>00353       <span class="comment">//first circle</span>
-<a name="l00354"></a>00354       b2Body* sbody;
-<a name="l00355"></a>00355       b2CircleShape circle;
-<a name="l00356"></a>00356       circle.m_radius = .5;
-<a name="l00357"></a>00357     
-<a name="l00358"></a>00358       b2FixtureDef ballfd;
-<a name="l00359"></a>00359       ballfd.shape = &amp;circle;
-<a name="l00360"></a>00360       ballfd.density = 0.05f;
-<a name="l00361"></a>00361       ballfd.friction = 0.0f;
-<a name="l00362"></a>00362       ballfd.restitution = 1.0f;
-<a name="l00363"></a>00363       b2BodyDef ballbd;
-<a name="l00364"></a>00364       ballbd.position.Set(-10.0f,37.0f);
-<a name="l00365"></a>00365       sbody = m_world-&gt;CreateBody(&amp;ballbd);
-<a name="l00366"></a>00366       sbody-&gt;CreateFixture(&amp;ballfd);
-<a name="l00367"></a>00367         
-<a name="l00368"></a>00368       <span class="comment">//second circle   </span>
-<a name="l00369"></a>00369       b2Body* sbody1;
-<a name="l00370"></a>00370       b2CircleShape circle1;
-<a name="l00371"></a>00371       circle1.m_radius = .5;
-<a name="l00372"></a>00372     
-<a name="l00373"></a>00373       b2FixtureDef ballfd1;
-<a name="l00374"></a>00374       ballfd1.shape = &amp;circle1;
-<a name="l00375"></a>00375       ballfd1.density = 0.05f;
-<a name="l00376"></a>00376       ballfd1.friction = 0.0f;
-<a name="l00377"></a>00377       ballfd1.restitution = 1.0f;
-<a name="l00378"></a>00378       b2BodyDef ballbd1;
-<a name="l00379"></a>00379       ballbd1.position.Set(2.0f,37.0f);
-<a name="l00380"></a>00380       sbody1 = m_world-&gt;CreateBody(&amp;ballbd1);
-<a name="l00381"></a>00381       sbody1-&gt;CreateFixture(&amp;ballfd1);  
-<a name="l00382"></a>00382         
-<a name="l00383"></a>00383 
-<a name="l00384"></a>00384     <span class="comment">//new Prismatic joints</span>
-<a name="l00385"></a>00385     b2PrismaticJointDef jd1,jd2;
-<a name="l00386"></a>00386     jd1.bodyA = box1;
-<a name="l00387"></a>00387     jd1.bodyB = sbody;
-<a name="l00388"></a>00388     jd1.localAnchorA.Set(0,0);
-<a name="l00389"></a>00389     jd1.localAnchorB.Set(0,0);
-<a name="l00390"></a>00390     jd1.localAxisA.Set(0,1);
-<a name="l00391"></a>00391     b2Joint* j1 = (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd1 );
-<a name="l00392"></a>00392     
-<a name="l00393"></a>00393     jd2.bodyA = box2;
-<a name="l00394"></a>00394     jd2.bodyB = sbody1;
-<a name="l00395"></a>00395     jd2.localAnchorA.Set(0,0);
-<a name="l00396"></a>00396     jd2.localAnchorB.Set(0,0);
-<a name="l00397"></a>00397     jd2.localAxisA.Set(0,1);
-<a name="l00398"></a>00398     b2Joint* j2 = (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd2 );
-<a name="l00399"></a>00399     
-<a name="l00400"></a>00400     
-<a name="l00401"></a>00401     <span class="comment">//Scissors  </span>
-<a name="l00402"></a>00402     <a class="code" href="classcs296_1_1_sci.html" title="This class implements the functionality of the scissors.">Sci</a> scissors(m_world,mj, j1, j2);
-<a name="l00403"></a>00403 
-<a name="l00404"></a>00404             
-<a name="l00405"></a>00405     {
-<a name="l00406"></a>00406           <span class="comment">//shape 1</span>
-<a name="l00407"></a>00407     
-<a name="l00408"></a>00408           b2PolygonShape shape1;
-<a name="l00409"></a>00409           shape1.SetAsBox(0.4f, 0.2f);
-<a name="l00410"></a>00410     
-<a name="l00411"></a>00411           b2BodyDef bd1;
-<a name="l00412"></a>00412           bd1.position.Set(3.0f, 40.0f);
-<a name="l00413"></a>00413           b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
-<a name="l00414"></a>00414           b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00415"></a>00415           fd1-&gt;density = 1.f;
-<a name="l00416"></a>00416           fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00417"></a>00417           fd1-&gt;shape = &amp;shape1;
-<a name="l00418"></a>00418           body1-&gt;CreateFixture(fd1);
-<a name="l00419"></a>00419     
-<a name="l00420"></a>00420 
-<a name="l00421"></a>00421           <span class="comment">//shape 2</span>
-<a name="l00422"></a>00422           b2PolygonShape shape2;
-<a name="l00423"></a>00423           shape2.SetAsBox(0.4f, 0.01f);
-<a name="l00424"></a>00424     
-<a name="l00425"></a>00425           b2BodyDef bd2;
-<a name="l00426"></a>00426           bd2.position.Set(3.0f, 26.0f);
-<a name="l00427"></a>00427           bd2.type = b2_dynamicBody;
-<a name="l00428"></a>00428           b2Body* body2 = m_world-&gt;CreateBody(&amp;bd2);
-<a name="l00429"></a>00429           b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00430"></a>00430           fd2-&gt;density = 24.0f;
-<a name="l00431"></a>00431           fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00432"></a>00432           fd2-&gt;shape = &amp;shape2;
-<a name="l00433"></a>00433           body2-&gt;CreateFixture(fd2);
-<a name="l00434"></a>00434     
-<a name="l00435"></a>00435     
-<a name="l00436"></a>00436           <span class="comment">//shape 3</span>
-<a name="l00437"></a>00437           b2PolygonShape shape3;
-<a name="l00438"></a>00438           shape3.SetAsBox(0.4f, 0.01f);
-<a name="l00439"></a>00439     
-<a name="l00440"></a>00440           b2BodyDef bd3;
-<a name="l00441"></a>00441           bd3.position.Set(3.0f, 32.0f);
-<a name="l00442"></a>00442           bd3.type = b2_dynamicBody;
-<a name="l00443"></a>00443           b2Body* body3 = m_world-&gt;CreateBody(&amp;bd3);
-<a name="l00444"></a>00444           b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00445"></a>00445           fd3-&gt;density = 24.0f;
-<a name="l00446"></a>00446           fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00447"></a>00447           fd3-&gt;shape = &amp;shape3;
-<a name="l00448"></a>00448           body3-&gt;CreateFixture(fd3);
-<a name="l00449"></a>00449           
-<a name="l00450"></a>00450     
-<a name="l00451"></a>00451     
-<a name="l00452"></a>00452           <span class="comment">//shape 4</span>
-<a name="l00453"></a>00453           b2PolygonShape shape4;
-<a name="l00454"></a>00454           shape4.SetAsBox(0.4f, 0.2f);
-<a name="l00455"></a>00455     
-<a name="l00456"></a>00456           b2BodyDef bd4;
-<a name="l00457"></a>00457           bd4.position.Set(3.0f, 20.0f);
-<a name="l00458"></a>00458           bd4.type = b2_dynamicBody;
-<a name="l00459"></a>00459           b2Body* body4 = m_world-&gt;CreateBody(&amp;bd4);
-<a name="l00460"></a>00460           b2FixtureDef *fd4 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00461"></a>00461           fd4-&gt;density = 24.0f;
-<a name="l00462"></a>00462           fd4-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00463"></a>00463           fd4-&gt;shape = &amp;shape4;
-<a name="l00464"></a>00464           body4-&gt;CreateFixture(fd4);
-<a name="l00465"></a>00465     
-<a name="l00466"></a>00466     
-<a name="l00467"></a>00467         <span class="comment">//Prismatic joints</span>
-<a name="l00468"></a>00468     b2PrismaticJointDef jd1,jd2,jd3,jd4;
-<a name="l00469"></a>00469         jd4.bodyA= body1;
-<a name="l00470"></a>00470         jd4.bodyB= body4;
-<a name="l00471"></a>00471     jd4.localAnchorA.Set(0,0);
-<a name="l00472"></a>00472     jd4.localAnchorB.Set(0,0);
-<a name="l00473"></a>00473     jd4.localAxisA.Set(0,1);
-<a name="l00474"></a>00474     jd4.enableLimit = <span class="keyword">true</span>;
-<a name="l00475"></a>00475     jd4.lowerTranslation=-20.0f;
-<a name="l00476"></a>00476     jd4.upperTranslation=40.0f;
-<a name="l00477"></a>00477     (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd4 );    
-<a name="l00478"></a>00478 
-<a name="l00479"></a>00479     jd3.bodyA= body1;
-<a name="l00480"></a>00480         jd3.bodyB= body2;
-<a name="l00481"></a>00481     jd3.localAnchorA.Set(0,0);
-<a name="l00482"></a>00482     jd3.localAnchorB.Set(0,0);
-<a name="l00483"></a>00483     jd3.localAxisA.Set(0,1);
-<a name="l00484"></a>00484     jd3.enableLimit = <span class="keyword">true</span>;
-<a name="l00485"></a>00485     jd3.lowerTranslation=-14.0f;
-<a name="l00486"></a>00486     jd3.upperTranslation=40.0f;
-<a name="l00487"></a>00487     (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd3 );    
-<a name="l00488"></a>00488 
-<a name="l00489"></a>00489         jd2.bodyA= body1;
-<a name="l00490"></a>00490         jd2.bodyB= body3;
-<a name="l00491"></a>00491     jd2.localAnchorA.Set(0,0);
-<a name="l00492"></a>00492     jd2.localAnchorB.Set(0,0);
-<a name="l00493"></a>00493     jd2.localAxisA.Set(0,1);
-<a name="l00494"></a>00494     jd2.enableLimit = <span class="keyword">true</span>;
-<a name="l00495"></a>00495     jd2.lowerTranslation=-8.0f;
-<a name="l00496"></a>00496     jd2.upperTranslation=40.0f;
-<a name="l00497"></a>00497     (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd2 );
-<a name="l00498"></a>00498   }
-<a name="l00499"></a>00499             
-<a name="l00500"></a>00500 
-<a name="l00501"></a>00501 
+<a name="l00148"></a>00148         }
+<a name="l00149"></a>00149       
+<a name="l00150"></a>00150         <span class="comment">//the balls on the left side</span>
+<a name="l00151"></a>00151         {
+<a name="l00152"></a>00152             b2Body* spherebody1;
+<a name="l00153"></a>00153     
+<a name="l00154"></a>00154             b2CircleShape circle;
+<a name="l00155"></a>00155             circle.m_radius = 0.75;
+<a name="l00156"></a>00156         b2FixtureDef ballfd2;
+<a name="l00157"></a>00157             ballfd2.shape = &amp;circle;
+<a name="l00158"></a>00158             ballfd2.density = 4.0f;
+<a name="l00159"></a>00159             ballfd2.friction = 0.0f;
+<a name="l00160"></a>00160             ballfd2.restitution =0.6f;
+<a name="l00161"></a>00161 
+<a name="l00162"></a>00162     
+<a name="l00163"></a>00163     <span class="comment">//pipe</span>
+<a name="l00164"></a>00164     {
+<a name="l00165"></a>00165             b2PolygonShape shape1;
+<a name="l00166"></a>00166             shape1.SetAsBox(.1f, 2.25f);
+<a name="l00167"></a>00167     
+<a name="l00168"></a>00168             b2BodyDef bd1;
+<a name="l00169"></a>00169             bd1.position.Set(-34.35f, 30.1f);
+<a name="l00170"></a>00170             b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
+<a name="l00171"></a>00171             b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00172"></a>00172             fd1-&gt;density = 0.f;
+<a name="l00173"></a>00173             fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00174"></a>00174             fd1-&gt;shape = &amp;shape1;
+<a name="l00175"></a>00175             body1-&gt;CreateFixture(fd1);
+<a name="l00176"></a>00176     }
+<a name="l00177"></a>00177     
+<a name="l00178"></a>00178     
+<a name="l00179"></a>00179     {
+<a name="l00180"></a>00180             b2PolygonShape shape1;
+<a name="l00181"></a>00181             shape1.SetAsBox(.1f, 2.25f);
+<a name="l00182"></a>00182             b2BodyDef bd1;
+<a name="l00183"></a>00183             bd1.position.Set(-32.65f, 30.1f);
+<a name="l00184"></a>00184             b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
+<a name="l00185"></a>00185             b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00186"></a>00186             fd1-&gt;density = 0.f;
+<a name="l00187"></a>00187             fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00188"></a>00188             fd1-&gt;shape = &amp;shape1;
+<a name="l00189"></a>00189             body1-&gt;CreateFixture(fd1);
+<a name="l00190"></a>00190     }
+<a name="l00191"></a>00191 
+<a name="l00192"></a>00192     <span class="comment">//bottom-most ball</span>
+<a name="l00193"></a>00193     {
+<a name="l00194"></a>00194             b2FixtureDef ballfd1;
+<a name="l00195"></a>00195             ballfd1.shape = &amp;circle;
+<a name="l00196"></a>00196             ballfd1.density = 4.0f;
+<a name="l00197"></a>00197             ballfd1.friction = 0.0f;
+<a name="l00198"></a>00198             ballfd1.restitution =0.3f;
+<a name="l00199"></a>00199             b2BodyDef ballbd1;
+<a name="l00200"></a>00200             ballbd1.type = b2_dynamicBody;
+<a name="l00201"></a>00201             ballbd1.position.Set(-33.5f , 27.0f);
+<a name="l00202"></a>00202             spherebody1 = m_world-&gt;CreateBody(&amp;ballbd1);
+<a name="l00203"></a>00203             spherebody1-&gt;CreateFixture(&amp;ballfd1);
+<a name="l00204"></a>00204       
+<a name="l00205"></a>00205     }
+<a name="l00206"></a>00206 
+<a name="l00207"></a>00207     <span class="comment">//second ball</span>
+<a name="l00208"></a>00208     {
+<a name="l00209"></a>00209           b2FixtureDef ballfd1;
+<a name="l00210"></a>00210               ballfd1.shape = &amp;circle;
+<a name="l00211"></a>00211               ballfd1.density = 4.0f;
+<a name="l00212"></a>00212               ballfd1.friction = 0.0f;
+<a name="l00213"></a>00213           ballfd1.restitution =0.0f;
+<a name="l00214"></a>00214           
+<a name="l00215"></a>00215           b2BodyDef ballbd1;
+<a name="l00216"></a>00216           ballbd1.type = b2_dynamicBody;
+<a name="l00217"></a>00217           ballbd1.position.Set(-33.5f, 28.5f);
+<a name="l00218"></a>00218           spherebody1 = m_world-&gt;CreateBody(&amp;ballbd1);
+<a name="l00219"></a>00219           spherebody1-&gt;SetLinearDamping(.03);
+<a name="l00220"></a>00220           spherebody1-&gt;SetLinearDamping(<a class="code" href="namespacecs296.html#acc8b716d1cf9372d0bdbe9dc0abffab3" title="Elements in the Box2D Simulation World.">globalx</a>);
+<a name="l00221"></a>00221         <span class="comment">//  std::cout&lt;&lt;globalx&lt;&lt;std::endl;</span>
+<a name="l00222"></a>00222           spherebody1-&gt;CreateFixture(&amp;ballfd1);
+<a name="l00223"></a>00223     }   
+<a name="l00224"></a>00224     
+<a name="l00225"></a>00225     <span class="comment">//third ball</span>
+<a name="l00226"></a>00226     {
+<a name="l00227"></a>00227           b2FixtureDef ballfd1;
+<a name="l00228"></a>00228               ballfd1.shape = &amp;circle;
+<a name="l00229"></a>00229               ballfd1.density = 4.0f;
+<a name="l00230"></a>00230               ballfd1.friction = 0.0f;
+<a name="l00231"></a>00231           ballfd1.restitution =0.0f;
+<a name="l00232"></a>00232           
+<a name="l00233"></a>00233           b2BodyDef ballbd1;
+<a name="l00234"></a>00234           ballbd1.type = b2_dynamicBody;
+<a name="l00235"></a>00235           ballbd1.position.Set(-33.5f , 30.0f);
+<a name="l00236"></a>00236           spherebody1 = m_world-&gt;CreateBody(&amp;ballbd1);
+<a name="l00237"></a>00237           spherebody1-&gt;SetLinearDamping(.06);
+<a name="l00238"></a>00238           spherebody1-&gt;SetLinearDamping(<a class="code" href="namespacecs296.html#a7111e478972f5d7e9134befa7cdbff5f">globaly</a>);
+<a name="l00239"></a>00239          <span class="comment">// std::cout&lt;&lt;globalx&lt;&lt;std::endl;</span>
+<a name="l00240"></a>00240           spherebody1-&gt;CreateFixture(&amp;ballfd1);
+<a name="l00241"></a>00241     }
+<a name="l00242"></a>00242     
+<a name="l00243"></a>00243     <span class="comment">//fourth ball</span>
+<a name="l00244"></a>00244     {
+<a name="l00245"></a>00245           b2FixtureDef ballfd1;
+<a name="l00246"></a>00246               ballfd1.shape = &amp;circle;
+<a name="l00247"></a>00247               ballfd1.density = 4.0f;
+<a name="l00248"></a>00248               ballfd1.friction = 0.0f;
+<a name="l00249"></a>00249           ballfd1.restitution =0.0f;
+<a name="l00250"></a>00250           
+<a name="l00251"></a>00251           b2BodyDef ballbd1;
+<a name="l00252"></a>00252           ballbd1.type = b2_dynamicBody;
+<a name="l00253"></a>00253           ballbd1.position.Set(-33.5f , 31.5f);
+<a name="l00254"></a>00254           spherebody1 = m_world-&gt;CreateBody(&amp;ballbd1);
+<a name="l00255"></a>00255           spherebody1-&gt;CreateFixture(&amp;ballfd1);
+<a name="l00256"></a>00256     }
+<a name="l00257"></a>00257     
+<a name="l00258"></a>00258     <span class="comment">//the balls on the right side</span>
+<a name="l00259"></a>00259     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;3 ; i++)
+<a name="l00260"></a>00260     {
+<a name="l00261"></a>00261           b2BodyDef ballbd;
+<a name="l00262"></a>00262           ballbd.type = b2_dynamicBody;
+<a name="l00263"></a>00263           ballbd.position.Set(3.1f, 20.95f+6*i);
+<a name="l00264"></a>00264           spherebody1 = m_world-&gt;CreateBody(&amp;ballbd);
+<a name="l00265"></a>00265           spherebody1-&gt;CreateFixture(&amp;ballfd2);
+<a name="l00266"></a>00266     }
+<a name="l00267"></a>00267 }
+<a name="l00268"></a>00268 
+<a name="l00269"></a>00269       <span class="comment">//The pulley system</span>
+<a name="l00270"></a>00270       b2BodyDef *bd = <span class="keyword">new</span> b2BodyDef;
+<a name="l00271"></a>00271       bd-&gt;type = b2_dynamicBody;
+<a name="l00272"></a>00272       bd-&gt;position.Set(-10,17);
+<a name="l00273"></a>00273       bd-&gt;fixedRotation = <span class="keyword">true</span>;
+<a name="l00274"></a>00274       
+<a name="l00275"></a>00275       <span class="comment">//The open box 1</span>
+<a name="l00276"></a>00276       b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00277"></a>00277       fd1-&gt;density = 5.0;
+<a name="l00278"></a>00278       fd1-&gt;friction = 0.5;
+<a name="l00279"></a>00279       fd1-&gt;restitution = 0.0f;
+<a name="l00280"></a>00280       fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00281"></a>00281       b2PolygonShape bs1;
+<a name="l00282"></a>00282       bs1.SetAsBox(2,0.2, b2Vec2(0.f,-1.2f), 0);
+<a name="l00283"></a>00283       fd1-&gt;shape = &amp;bs1;
+<a name="l00284"></a>00284       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00285"></a>00285       fd2-&gt;density = 5.0;
+<a name="l00286"></a>00286       fd2-&gt;friction = 0.5;
+<a name="l00287"></a>00287       fd2-&gt;restitution = 0.f;
+<a name="l00288"></a>00288       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00289"></a>00289       b2PolygonShape bs2;
+<a name="l00290"></a>00290       bs2.SetAsBox(0.2,1.3, b2Vec2(1.9f,0.f), 0);
+<a name="l00291"></a>00291       fd2-&gt;shape = &amp;bs2;
+<a name="l00292"></a>00292       b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00293"></a>00293       fd3-&gt;density = 5.0;
+<a name="l00294"></a>00294       fd3-&gt;friction = 0.5;
+<a name="l00295"></a>00295       fd3-&gt;restitution = 0.f;
+<a name="l00296"></a>00296       fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00297"></a>00297       b2PolygonShape bs3;
+<a name="l00298"></a>00298       bs3.SetAsBox(0.2,1.3, b2Vec2(-1.9f,0.f), 0);
+<a name="l00299"></a>00299       fd3-&gt;shape = &amp;bs3;
+<a name="l00300"></a>00300        
+<a name="l00301"></a>00301       b2Body* box1 = m_world-&gt;CreateBody(bd);
+<a name="l00302"></a>00302       box1-&gt;CreateFixture(fd1);
+<a name="l00303"></a>00303       box1-&gt;CreateFixture(fd2);
+<a name="l00304"></a>00304       box1-&gt;CreateFixture(fd3);
+<a name="l00305"></a>00305       
+<a name="l00306"></a>00306       <span class="comment">//The open box 2</span>
+<a name="l00307"></a>00307       b2FixtureDef *fd1a = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00308"></a>00308       fd1a-&gt;density = 5.0;
+<a name="l00309"></a>00309       fd1a-&gt;friction = 0.5;
+<a name="l00310"></a>00310 
+<a name="l00311"></a>00311       fd1a-&gt;restitution = 0.f;
+<a name="l00312"></a>00312       fd1a-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00313"></a>00313       b2PolygonShape bs1a;
+<a name="l00314"></a>00314       bs1a.SetAsBox(2,0.2, b2Vec2(0.f,-1.2f), 0);
+<a name="l00315"></a>00315       fd1a-&gt;shape = &amp;bs1a;
+<a name="l00316"></a>00316       b2FixtureDef *fd2a = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00317"></a>00317       fd2a-&gt;density = 5.0;
+<a name="l00318"></a>00318       fd2a-&gt;friction = 0.5;
+<a name="l00319"></a>00319       fd2a-&gt;restitution = 1.f;
+<a name="l00320"></a>00320       fd2a-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00321"></a>00321       b2PolygonShape bs2a;
+<a name="l00322"></a>00322       bs2a.SetAsBox(0.2,1.3, b2Vec2(1.9f,0.f), 0);
+<a name="l00323"></a>00323       fd2a-&gt;shape = &amp;bs2a;
+<a name="l00324"></a>00324       b2FixtureDef *fd3a = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00325"></a>00325       fd3a-&gt;density = 5.0;
+<a name="l00326"></a>00326       fd3a-&gt;friction = 0.5;
+<a name="l00327"></a>00327       fd3a-&gt;restitution = 0.f;
+<a name="l00328"></a>00328       fd3a-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00329"></a>00329       b2PolygonShape bs3a;  
+<a name="l00330"></a>00330       bs3a.SetAsBox(0.2,1.3, b2Vec2(-1.9f,0.f), 0);
+<a name="l00331"></a>00331       fd3a-&gt;shape = &amp;bs3a;
+<a name="l00332"></a>00332       
+<a name="l00333"></a>00333       b2BodyDef *bd2 = <span class="keyword">new</span> b2BodyDef;
+<a name="l00334"></a>00334       bd2-&gt;type = b2_dynamicBody;
+<a name="l00335"></a>00335       bd2-&gt;position.Set(2,17);
+<a name="l00336"></a>00336       bd2-&gt;fixedRotation = <span class="keyword">true</span>;
+<a name="l00337"></a>00337        
+<a name="l00338"></a>00338       b2Body* box2 = m_world-&gt;CreateBody(bd2);
+<a name="l00339"></a>00339       box2-&gt;CreateFixture(fd1a);
+<a name="l00340"></a>00340       box2-&gt;CreateFixture(fd2a);
+<a name="l00341"></a>00341       box2-&gt;CreateFixture(fd3a);
+<a name="l00342"></a>00342      
+<a name="l00343"></a>00343 
+<a name="l00344"></a>00344       <span class="comment">// The pulley joint</span>
+<a name="l00345"></a>00345       b2PulleyJointDef* myjoint = <span class="keyword">new</span> b2PulleyJointDef();
+<a name="l00346"></a>00346       b2Vec2 worldAnchorOnBody1(-10, 15); 
+<a name="l00347"></a>00347       b2Vec2 worldAnchorOnBody2(2, 15);
+<a name="l00348"></a>00348       b2Vec2 worldAnchorGround1(-10, 37); 
+<a name="l00349"></a>00349       b2Vec2 worldAnchorGround2(2, 37); 
+<a name="l00350"></a>00350       float32 ratio = 1.0f; 
+<a name="l00351"></a>00351       myjoint-&gt;Initialize(box1, box2, worldAnchorGround1, worldAnchorGround2, box1-&gt;GetWorldCenter(), box2-&gt;GetWorldCenter(), ratio);
+<a name="l00352"></a>00352       b2Joint* mj=m_world-&gt;CreateJoint(myjoint);
+<a name="l00353"></a>00353       
+<a name="l00354"></a>00354      
+<a name="l00355"></a>00355       <span class="comment">//first circle</span>
+<a name="l00356"></a>00356       b2Body* sbody;
+<a name="l00357"></a>00357       b2CircleShape circle;
+<a name="l00358"></a>00358       circle.m_radius = .5;
+<a name="l00359"></a>00359     
+<a name="l00360"></a>00360       b2FixtureDef ballfd;
+<a name="l00361"></a>00361       ballfd.shape = &amp;circle;
+<a name="l00362"></a>00362       ballfd.density = 0.05f;
+<a name="l00363"></a>00363       ballfd.friction = 0.0f;
+<a name="l00364"></a>00364       ballfd.restitution = 1.0f;
+<a name="l00365"></a>00365       b2BodyDef ballbd;
+<a name="l00366"></a>00366       ballbd.position.Set(-10.0f,37.0f);
+<a name="l00367"></a>00367       sbody = m_world-&gt;CreateBody(&amp;ballbd);
+<a name="l00368"></a>00368       sbody-&gt;CreateFixture(&amp;ballfd);
+<a name="l00369"></a>00369         
+<a name="l00370"></a>00370       <span class="comment">//second circle   </span>
+<a name="l00371"></a>00371       b2Body* sbody1;
+<a name="l00372"></a>00372       b2CircleShape circle1;
+<a name="l00373"></a>00373       circle1.m_radius = .5;
+<a name="l00374"></a>00374     
+<a name="l00375"></a>00375       b2FixtureDef ballfd1;
+<a name="l00376"></a>00376       ballfd1.shape = &amp;circle1;
+<a name="l00377"></a>00377       ballfd1.density = 0.05f;
+<a name="l00378"></a>00378       ballfd1.friction = 0.0f;
+<a name="l00379"></a>00379       ballfd1.restitution = 1.0f;
+<a name="l00380"></a>00380       b2BodyDef ballbd1;
+<a name="l00381"></a>00381       ballbd1.position.Set(2.0f,37.0f);
+<a name="l00382"></a>00382       sbody1 = m_world-&gt;CreateBody(&amp;ballbd1);
+<a name="l00383"></a>00383       sbody1-&gt;CreateFixture(&amp;ballfd1);  
+<a name="l00384"></a>00384         
+<a name="l00385"></a>00385 
+<a name="l00386"></a>00386     <span class="comment">//new Prismatic joints</span>
+<a name="l00387"></a>00387     b2PrismaticJointDef jd1,jd2;
+<a name="l00388"></a>00388     jd1.bodyA = box1;
+<a name="l00389"></a>00389     jd1.bodyB = sbody;
+<a name="l00390"></a>00390     jd1.localAnchorA.Set(0,0);
+<a name="l00391"></a>00391     jd1.localAnchorB.Set(0,0);
+<a name="l00392"></a>00392     jd1.localAxisA.Set(0,1);
+<a name="l00393"></a>00393     b2Joint* j1 = (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd1 );
+<a name="l00394"></a>00394     
+<a name="l00395"></a>00395     jd2.bodyA = box2;
+<a name="l00396"></a>00396     jd2.bodyB = sbody1;
+<a name="l00397"></a>00397     jd2.localAnchorA.Set(0,0);
+<a name="l00398"></a>00398     jd2.localAnchorB.Set(0,0);
+<a name="l00399"></a>00399     jd2.localAxisA.Set(0,1);
+<a name="l00400"></a>00400     b2Joint* j2 = (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd2 );
+<a name="l00401"></a>00401     
+<a name="l00402"></a>00402     
+<a name="l00403"></a>00403     <span class="comment">//Scissors  </span>
+<a name="l00404"></a>00404     <a class="code" href="classcs296_1_1_sci.html" title="This class implements the functionality of the scissors.">Sci</a> scissors(m_world,mj, j1, j2);
+<a name="l00405"></a>00405 
+<a name="l00406"></a>00406             
+<a name="l00407"></a>00407     {
+<a name="l00408"></a>00408           <span class="comment">//shape 1</span>
+<a name="l00409"></a>00409     
+<a name="l00410"></a>00410           b2PolygonShape shape1;
+<a name="l00411"></a>00411           shape1.SetAsBox(0.4f, 0.2f);
+<a name="l00412"></a>00412     
+<a name="l00413"></a>00413           b2BodyDef bd1;
+<a name="l00414"></a>00414           bd1.position.Set(3.0f, 40.0f);
+<a name="l00415"></a>00415           b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
+<a name="l00416"></a>00416           b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00417"></a>00417           fd1-&gt;density = 1.f;
+<a name="l00418"></a>00418           fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00419"></a>00419           fd1-&gt;shape = &amp;shape1;
+<a name="l00420"></a>00420           body1-&gt;CreateFixture(fd1);
+<a name="l00421"></a>00421     
+<a name="l00422"></a>00422 
+<a name="l00423"></a>00423           <span class="comment">//shape 2</span>
+<a name="l00424"></a>00424           b2PolygonShape shape2;
+<a name="l00425"></a>00425           shape2.SetAsBox(0.4f, 0.01f);
+<a name="l00426"></a>00426     
+<a name="l00427"></a>00427           b2BodyDef bd2;
+<a name="l00428"></a>00428           bd2.position.Set(3.0f, 26.0f);
+<a name="l00429"></a>00429           bd2.type = b2_dynamicBody;
+<a name="l00430"></a>00430           b2Body* body2 = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l00431"></a>00431           b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00432"></a>00432           fd2-&gt;density = 24.0f;
+<a name="l00433"></a>00433           fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00434"></a>00434           fd2-&gt;shape = &amp;shape2;
+<a name="l00435"></a>00435           body2-&gt;CreateFixture(fd2);
+<a name="l00436"></a>00436     
+<a name="l00437"></a>00437     
+<a name="l00438"></a>00438           <span class="comment">//shape 3</span>
+<a name="l00439"></a>00439           b2PolygonShape shape3;
+<a name="l00440"></a>00440           shape3.SetAsBox(0.4f, 0.01f);
+<a name="l00441"></a>00441     
+<a name="l00442"></a>00442           b2BodyDef bd3;
+<a name="l00443"></a>00443           bd3.position.Set(3.0f, 32.0f);
+<a name="l00444"></a>00444           bd3.type = b2_dynamicBody;
+<a name="l00445"></a>00445           b2Body* body3 = m_world-&gt;CreateBody(&amp;bd3);
+<a name="l00446"></a>00446           b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00447"></a>00447           fd3-&gt;density = 24.0f;
+<a name="l00448"></a>00448           fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00449"></a>00449           fd3-&gt;shape = &amp;shape3;
+<a name="l00450"></a>00450           body3-&gt;CreateFixture(fd3);
+<a name="l00451"></a>00451           
+<a name="l00452"></a>00452     
+<a name="l00453"></a>00453     
+<a name="l00454"></a>00454           <span class="comment">//shape 4</span>
+<a name="l00455"></a>00455           b2PolygonShape shape4;
+<a name="l00456"></a>00456           shape4.SetAsBox(0.4f, 0.2f);
+<a name="l00457"></a>00457     
+<a name="l00458"></a>00458           b2BodyDef bd4;
+<a name="l00459"></a>00459           bd4.position.Set(3.0f, 20.0f);
+<a name="l00460"></a>00460           bd4.type = b2_dynamicBody;
+<a name="l00461"></a>00461           b2Body* body4 = m_world-&gt;CreateBody(&amp;bd4);
+<a name="l00462"></a>00462           b2FixtureDef *fd4 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00463"></a>00463           fd4-&gt;density = 24.0f;
+<a name="l00464"></a>00464           fd4-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00465"></a>00465           fd4-&gt;shape = &amp;shape4;
+<a name="l00466"></a>00466           body4-&gt;CreateFixture(fd4);
+<a name="l00467"></a>00467     
+<a name="l00468"></a>00468     
+<a name="l00469"></a>00469         <span class="comment">//Prismatic joints</span>
+<a name="l00470"></a>00470     b2PrismaticJointDef jd1,jd2,jd3,jd4;
+<a name="l00471"></a>00471         jd4.bodyA= body1;
+<a name="l00472"></a>00472         jd4.bodyB= body4;
+<a name="l00473"></a>00473     jd4.localAnchorA.Set(0,0);
+<a name="l00474"></a>00474     jd4.localAnchorB.Set(0,0);
+<a name="l00475"></a>00475     jd4.localAxisA.Set(0,1);
+<a name="l00476"></a>00476     jd4.enableLimit = <span class="keyword">true</span>;
+<a name="l00477"></a>00477     jd4.lowerTranslation=-20.0f;
+<a name="l00478"></a>00478     jd4.upperTranslation=40.0f;
+<a name="l00479"></a>00479     (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd4 );    
+<a name="l00480"></a>00480 
+<a name="l00481"></a>00481     jd3.bodyA= body1;
+<a name="l00482"></a>00482         jd3.bodyB= body2;
+<a name="l00483"></a>00483     jd3.localAnchorA.Set(0,0);
+<a name="l00484"></a>00484     jd3.localAnchorB.Set(0,0);
+<a name="l00485"></a>00485     jd3.localAxisA.Set(0,1);
+<a name="l00486"></a>00486     jd3.enableLimit = <span class="keyword">true</span>;
+<a name="l00487"></a>00487     jd3.lowerTranslation=-14.0f;
+<a name="l00488"></a>00488     jd3.upperTranslation=40.0f;
+<a name="l00489"></a>00489     (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd3 );    
+<a name="l00490"></a>00490 
+<a name="l00491"></a>00491         jd2.bodyA= body1;
+<a name="l00492"></a>00492         jd2.bodyB= body3;
+<a name="l00493"></a>00493     jd2.localAnchorA.Set(0,0);
+<a name="l00494"></a>00494     jd2.localAnchorB.Set(0,0);
+<a name="l00495"></a>00495     jd2.localAxisA.Set(0,1);
+<a name="l00496"></a>00496     jd2.enableLimit = <span class="keyword">true</span>;
+<a name="l00497"></a>00497     jd2.lowerTranslation=-8.0f;
+<a name="l00498"></a>00498     jd2.upperTranslation=40.0f;
+<a name="l00499"></a>00499     (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd2 );
+<a name="l00500"></a>00500   }
+<a name="l00501"></a>00501             
 <a name="l00502"></a>00502 
-<a name="l00503"></a>00503     <span class="comment">//The see-saw system at the bottom</span>
-<a name="l00504"></a>00504     {
-<a name="l00505"></a>00505       <span class="comment">//The triangle wedge</span>
-<a name="l00506"></a>00506       b2Body* sbody;
-<a name="l00507"></a>00507       b2PolygonShape poly;
-<a name="l00508"></a>00508       b2Vec2 vertices[3];
-<a name="l00509"></a>00509       vertices[0].Set(-1,0.0);
-<a name="l00510"></a>00510       vertices[1].Set(1,0.0);
-<a name="l00511"></a>00511       vertices[2].Set(0,3.0);
-<a name="l00512"></a>00512       poly.Set(vertices, 3);
-<a name="l00513"></a>00513       b2FixtureDef wedgefd;
-<a name="l00514"></a>00514       wedgefd.shape = &amp;poly;
-<a name="l00515"></a>00515       wedgefd.density = 10.0f;
-<a name="l00516"></a>00516       wedgefd.friction = 0.0f;
-<a name="l00517"></a>00517       wedgefd.restitution = 0.0f;
-<a name="l00518"></a>00518       b2BodyDef wedgebd;
-<a name="l00519"></a>00519       wedgebd.position.Set(10.0f, -5.0f);
-<a name="l00520"></a>00520       sbody = m_world-&gt;CreateBody(&amp;wedgebd);
-<a name="l00521"></a>00521       sbody-&gt;CreateFixture(&amp;wedgefd);
-<a name="l00522"></a>00522 
-<a name="l00523"></a>00523       <span class="comment">//The plank on top of the wedge</span>
-<a name="l00524"></a>00524       b2PolygonShape shape;
-<a name="l00525"></a>00525       shape.SetAsBox(10.0f, 0.2f);
-<a name="l00526"></a>00526       b2BodyDef bd2;
-<a name="l00527"></a>00527       bd2.position.Set(10.0f, -2.0f);
-<a name="l00528"></a>00528       bd2.type = b2_dynamicBody;
-<a name="l00529"></a>00529       b2Body* body = m_world-&gt;CreateBody(&amp;bd2);
-<a name="l00530"></a>00530       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00531"></a>00531       fd2-&gt;density = 1.f;
-<a name="l00532"></a>00532       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00533"></a>00533       fd2-&gt;shape = &amp;shape;
-<a name="l00534"></a>00534       body-&gt;CreateFixture(fd2);
-<a name="l00535"></a>00535 
-<a name="l00536"></a>00536       b2RevoluteJointDef <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>;
-<a name="l00537"></a>00537       b2Vec2 anchor;
-<a name="l00538"></a>00538       anchor.Set(10.0f, -3.5f);
-<a name="l00539"></a>00539       jd.Initialize(sbody, body, anchor);
-<a name="l00540"></a>00540       m_world-&gt;CreateJoint(&amp;jd);
-<a name="l00541"></a>00541      
-<a name="l00542"></a>00542       <span class="comment">//ball1 on the see saw</span>
-<a name="l00543"></a>00543       {
-<a name="l00544"></a>00544       b2Body* sbody;
-<a name="l00545"></a>00545       b2CircleShape circle;
-<a name="l00546"></a>00546       circle.m_radius = 1.00;
-<a name="l00547"></a>00547     
-<a name="l00548"></a>00548       b2FixtureDef ballfd;
-<a name="l00549"></a>00549       ballfd.shape = &amp;circle;
-<a name="l00550"></a>00550       ballfd.density = 0.05f;
-<a name="l00551"></a>00551       ballfd.friction =0.0f;
-<a name="l00552"></a>00552       ballfd.restitution = 0.0f;
-<a name="l00553"></a>00553       b2BodyDef ballbd;
-<a name="l00554"></a>00554 
-<a name="l00555"></a>00555       ballbd.type = b2_dynamicBody;
-<a name="l00556"></a>00556       ballbd.position.Set(3.0f, -1.1f);
-<a name="l00557"></a>00557       sbody = m_world-&gt;CreateBody(&amp;ballbd);
-<a name="l00558"></a>00558       sbody-&gt;CreateFixture(&amp;ballfd);
-<a name="l00559"></a>00559       }
-<a name="l00560"></a>00560       
-<a name="l00561"></a>00561       <span class="comment">//ball2 on the see saw </span>
-<a name="l00562"></a>00562       {
-<a name="l00563"></a>00563       b2Body* sbody;
-<a name="l00564"></a>00564       b2CircleShape circle;
-<a name="l00565"></a>00565       circle.m_radius = 1.00;
-<a name="l00566"></a>00566     
-<a name="l00567"></a>00567       b2FixtureDef ballfd;
-<a name="l00568"></a>00568       ballfd.shape = &amp;circle;
-<a name="l00569"></a>00569       ballfd.density = 0.05f;
-<a name="l00570"></a>00570       ballfd.friction = 0.0f;
-<a name="l00571"></a>00571       ballfd.restitution = 0.0f;
-<a name="l00572"></a>00572       b2BodyDef ballbd;
-<a name="l00573"></a>00573       ballbd.type = b2_dynamicBody;
-<a name="l00574"></a>00574       ballbd.position.Set(17.0f,-1.1f);
-<a name="l00575"></a>00575       sbody = m_world-&gt;CreateBody(&amp;ballbd);
-<a name="l00576"></a>00576       sbody-&gt;CreateFixture(&amp;ballfd);
-<a name="l00577"></a>00577       }
-<a name="l00578"></a>00578   }
-<a name="l00579"></a>00579 
-<a name="l00580"></a>00580     {
-<a name="l00581"></a>00581       <span class="comment">//right wedge</span>
-<a name="l00582"></a>00582       b2Body* sbody;
-<a name="l00583"></a>00583       b2PolygonShape poly;
-<a name="l00584"></a>00584       b2Vec2 vertices[3];
-<a name="l00585"></a>00585       vertices[0].Set(-1.25,0.0);
-<a name="l00586"></a>00586       vertices[1].Set(1.25,0.0);
-<a name="l00587"></a>00587       vertices[2].Set(0,2.0);
-<a name="l00588"></a>00588       poly.Set(vertices, 3);
-<a name="l00589"></a>00589       b2FixtureDef wedgefd;
-<a name="l00590"></a>00590       wedgefd.shape = &amp;poly;
-<a name="l00591"></a>00591       wedgefd.density = 10.0f;
-<a name="l00592"></a>00592       wedgefd.friction = 0.0f;
-<a name="l00593"></a>00593       wedgefd.restitution = 0.0f;
-<a name="l00594"></a>00594       b2BodyDef wedgebd;
-<a name="l00595"></a>00595       wedgebd.position.Set(-23.5f, -5.0f);
-<a name="l00596"></a>00596       sbody = m_world-&gt;CreateBody(&amp;wedgebd);
-<a name="l00597"></a>00597       sbody-&gt;CreateFixture(&amp;wedgefd);
-<a name="l00598"></a>00598 
-<a name="l00599"></a>00599       <span class="comment">//The plank on top of the wedge</span>
-<a name="l00600"></a>00600       b2PolygonShape shape;
-<a name="l00601"></a>00601       shape.SetAsBox(5.0f, 0.01f);
-<a name="l00602"></a>00602       b2BodyDef bd2;
-<a name="l00603"></a>00603       bd2.position.Set(-23.0f, -3.0f);
-<a name="l00604"></a>00604       bd2.type = b2_dynamicBody;
-<a name="l00605"></a>00605       b2Body* body = m_world-&gt;CreateBody(&amp;bd2);
-<a name="l00606"></a>00606       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00607"></a>00607       fd2-&gt;density = 1.f;
-<a name="l00608"></a>00608       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00609"></a>00609       fd2-&gt;shape = &amp;shape;
-<a name="l00610"></a>00610       body-&gt;CreateFixture(fd2);
-<a name="l00611"></a>00611 
-<a name="l00612"></a>00612       b2RevoluteJointDef <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>;
-<a name="l00613"></a>00613       b2Vec2 anchor;
-<a name="l00614"></a>00614       anchor.Set(-23.5f, -3.0f);
-<a name="l00615"></a>00615       jd.Initialize(sbody, body, anchor);
-<a name="l00616"></a>00616       m_world-&gt;CreateJoint(&amp;jd);
-<a name="l00617"></a>00617      
-<a name="l00618"></a>00618     }
-<a name="l00619"></a>00619     
-<a name="l00620"></a>00620     <span class="comment">// curtain </span>
-<a name="l00621"></a>00621     {
-<a name="l00622"></a>00622       b2PolygonShape shape1;
-<a name="l00623"></a>00623       shape1.SetAsBox(2.0f, 0.1f);
-<a name="l00624"></a>00624     
-<a name="l00625"></a>00625       b2BodyDef bd1;
-<a name="l00626"></a>00626       bd1.position.Set(-33.0f, 5.0f);
-<a name="l00627"></a>00627       b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
-<a name="l00628"></a>00628       b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00629"></a>00629       fd1-&gt;density = 1.f;
-<a name="l00630"></a>00630       fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00631"></a>00631       fd1-&gt;shape = &amp;shape1;
-<a name="l00632"></a>00632     
-<a name="l00633"></a>00633       <span class="comment">//actual curtain  </span>
-<a name="l00634"></a>00634       b2PolygonShape shape2;
-<a name="l00635"></a>00635       shape2.SetAsBox(2.0f, 5.0f);
-<a name="l00636"></a>00636     
-<a name="l00637"></a>00637       b2BodyDef bd2;
-<a name="l00638"></a>00638       bd2.position.Set(-33.0f, 5.0f);
-<a name="l00639"></a>00639       bd2.type = b2_dynamicBody;
-<a name="l00640"></a>00640       b2Body* body2 = m_world-&gt;CreateBody(&amp;bd2);
-<a name="l00641"></a>00641       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00642"></a>00642       fd2-&gt;density = 0.0f;
-<a name="l00643"></a>00643       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00644"></a>00644       fd2-&gt;shape = &amp;shape2;
-<a name="l00645"></a>00645       body2-&gt;CreateFixture(fd2);
-<a name="l00646"></a>00646       
-<a name="l00647"></a>00647         b2PrismaticJointDef jd3;
-<a name="l00648"></a>00648         jd3.bodyA= body1;
-<a name="l00649"></a>00649         jd3.bodyB= body2;
-<a name="l00650"></a>00650     jd3.localAnchorA.Set(0,0);
-<a name="l00651"></a>00651     jd3.localAnchorB.Set(0,0);
-<a name="l00652"></a>00652     jd3.localAxisA.Set(1,0);
-<a name="l00653"></a>00653     jd3.enableLimit = <span class="keyword">false</span>;
-<a name="l00654"></a>00654     jd3.lowerTranslation=-2.0f;
-<a name="l00655"></a>00655     jd3.upperTranslation=10.0f;
-<a name="l00656"></a>00656     (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd3 );
-<a name="l00657"></a>00657     }
-<a name="l00658"></a>00658     
-<a name="l00659"></a>00659     <span class="comment">//candidates</span>
-<a name="l00660"></a>00660     {
-<a name="l00661"></a>00661           b2PolygonShape shape1;
-<a name="l00662"></a>00662           shape1.SetAsBox(1.0f, 0.10f);
-<a name="l00663"></a>00663     
-<a name="l00664"></a>00664           b2BodyDef bd1;
-<a name="l00665"></a>00665           bd1.position.Set(38.0f, 20.6f);
-<a name="l00666"></a>00666           b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
-<a name="l00667"></a>00667           b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00668"></a>00668           fd1-&gt;density = 1.f;
-<a name="l00669"></a>00669           fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00670"></a>00670           fd1-&gt;shape = &amp;shape1;
-<a name="l00671"></a>00671           body1-&gt;CreateFixture(fd1);
-<a name="l00672"></a>00672     
-<a name="l00673"></a>00673 
-<a name="l00674"></a>00674     
-<a name="l00675"></a>00675       b2PolygonShape shape2;
-<a name="l00676"></a>00676       shape2.SetAsBox(1.0f, .50f);
+<a name="l00503"></a>00503 
+<a name="l00504"></a>00504 
+<a name="l00505"></a>00505     <span class="comment">//The see-saw system at the bottom</span>
+<a name="l00506"></a>00506     {
+<a name="l00507"></a>00507       <span class="comment">//The triangle wedge</span>
+<a name="l00508"></a>00508       b2Body* sbody;
+<a name="l00509"></a>00509       b2PolygonShape poly;
+<a name="l00510"></a>00510       b2Vec2 vertices[3];
+<a name="l00511"></a>00511       vertices[0].Set(-1,0.0);
+<a name="l00512"></a>00512       vertices[1].Set(1,0.0);
+<a name="l00513"></a>00513       vertices[2].Set(0,3.0);
+<a name="l00514"></a>00514       poly.Set(vertices, 3);
+<a name="l00515"></a>00515       b2FixtureDef wedgefd;
+<a name="l00516"></a>00516       wedgefd.shape = &amp;poly;
+<a name="l00517"></a>00517       wedgefd.density = 10.0f;
+<a name="l00518"></a>00518       wedgefd.friction = 0.0f;
+<a name="l00519"></a>00519       wedgefd.restitution = 0.0f;
+<a name="l00520"></a>00520       b2BodyDef wedgebd;
+<a name="l00521"></a>00521       wedgebd.position.Set(10.0f, -5.0f);
+<a name="l00522"></a>00522       sbody = m_world-&gt;CreateBody(&amp;wedgebd);
+<a name="l00523"></a>00523       sbody-&gt;CreateFixture(&amp;wedgefd);
+<a name="l00524"></a>00524 
+<a name="l00525"></a>00525       <span class="comment">//The plank on top of the wedge</span>
+<a name="l00526"></a>00526       b2PolygonShape shape;
+<a name="l00527"></a>00527       shape.SetAsBox(10.0f, 0.2f);
+<a name="l00528"></a>00528       b2BodyDef bd2;
+<a name="l00529"></a>00529       bd2.position.Set(10.0f, -2.0f);
+<a name="l00530"></a>00530       bd2.type = b2_dynamicBody;
+<a name="l00531"></a>00531       b2Body* body = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l00532"></a>00532       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00533"></a>00533       fd2-&gt;density = 1.f;
+<a name="l00534"></a>00534       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00535"></a>00535       fd2-&gt;shape = &amp;shape;
+<a name="l00536"></a>00536       body-&gt;CreateFixture(fd2);
+<a name="l00537"></a>00537 
+<a name="l00538"></a>00538       b2RevoluteJointDef <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>;
+<a name="l00539"></a>00539       b2Vec2 anchor;
+<a name="l00540"></a>00540       anchor.Set(10.0f, -3.5f);
+<a name="l00541"></a>00541       jd.Initialize(sbody, body, anchor);
+<a name="l00542"></a>00542       m_world-&gt;CreateJoint(&amp;jd);
+<a name="l00543"></a>00543      
+<a name="l00544"></a>00544       <span class="comment">//ball1 on the see saw</span>
+<a name="l00545"></a>00545       {
+<a name="l00546"></a>00546       b2Body* sbody;
+<a name="l00547"></a>00547       b2CircleShape circle;
+<a name="l00548"></a>00548       circle.m_radius = 1.00;
+<a name="l00549"></a>00549     
+<a name="l00550"></a>00550       b2FixtureDef ballfd;
+<a name="l00551"></a>00551       ballfd.shape = &amp;circle;
+<a name="l00552"></a>00552       ballfd.density = 0.05f;
+<a name="l00553"></a>00553       ballfd.friction =0.0f;
+<a name="l00554"></a>00554       ballfd.restitution = 0.0f;
+<a name="l00555"></a>00555       b2BodyDef ballbd;
+<a name="l00556"></a>00556 
+<a name="l00557"></a>00557       ballbd.type = b2_dynamicBody;
+<a name="l00558"></a>00558       ballbd.position.Set(3.0f, -1.1f);
+<a name="l00559"></a>00559       sbody = m_world-&gt;CreateBody(&amp;ballbd);
+<a name="l00560"></a>00560       sbody-&gt;CreateFixture(&amp;ballfd);
+<a name="l00561"></a>00561       }
+<a name="l00562"></a>00562       
+<a name="l00563"></a>00563       <span class="comment">//ball2 on the see saw </span>
+<a name="l00564"></a>00564       {
+<a name="l00565"></a>00565       b2Body* sbody;
+<a name="l00566"></a>00566       b2CircleShape circle;
+<a name="l00567"></a>00567       circle.m_radius = 1.00;
+<a name="l00568"></a>00568     
+<a name="l00569"></a>00569       b2FixtureDef ballfd;
+<a name="l00570"></a>00570       ballfd.shape = &amp;circle;
+<a name="l00571"></a>00571       ballfd.density = 0.05f;
+<a name="l00572"></a>00572       ballfd.friction = 0.0f;
+<a name="l00573"></a>00573       ballfd.restitution = 0.0f;
+<a name="l00574"></a>00574       b2BodyDef ballbd;
+<a name="l00575"></a>00575       ballbd.type = b2_dynamicBody;
+<a name="l00576"></a>00576       ballbd.position.Set(17.0f,-1.1f);
+<a name="l00577"></a>00577       sbody = m_world-&gt;CreateBody(&amp;ballbd);
+<a name="l00578"></a>00578       sbody-&gt;CreateFixture(&amp;ballfd);
+<a name="l00579"></a>00579       }
+<a name="l00580"></a>00580   }
+<a name="l00581"></a>00581 
+<a name="l00582"></a>00582     {
+<a name="l00583"></a>00583       <span class="comment">//right wedge</span>
+<a name="l00584"></a>00584       b2Body* sbody;
+<a name="l00585"></a>00585       b2PolygonShape poly;
+<a name="l00586"></a>00586       b2Vec2 vertices[3];
+<a name="l00587"></a>00587       vertices[0].Set(-1.25,0.0);
+<a name="l00588"></a>00588       vertices[1].Set(1.25,0.0);
+<a name="l00589"></a>00589       vertices[2].Set(0,2.0);
+<a name="l00590"></a>00590       poly.Set(vertices, 3);
+<a name="l00591"></a>00591       b2FixtureDef wedgefd;
+<a name="l00592"></a>00592       wedgefd.shape = &amp;poly;
+<a name="l00593"></a>00593       wedgefd.density = 10.0f;
+<a name="l00594"></a>00594       wedgefd.friction = 0.0f;
+<a name="l00595"></a>00595       wedgefd.restitution = 0.0f;
+<a name="l00596"></a>00596       b2BodyDef wedgebd;
+<a name="l00597"></a>00597       wedgebd.position.Set(-23.5f, -5.0f);
+<a name="l00598"></a>00598       sbody = m_world-&gt;CreateBody(&amp;wedgebd);
+<a name="l00599"></a>00599       sbody-&gt;CreateFixture(&amp;wedgefd);
+<a name="l00600"></a>00600 
+<a name="l00601"></a>00601       <span class="comment">//The plank on top of the wedge</span>
+<a name="l00602"></a>00602       b2PolygonShape shape;
+<a name="l00603"></a>00603       shape.SetAsBox(5.0f, 0.01f);
+<a name="l00604"></a>00604       b2BodyDef bd2;
+<a name="l00605"></a>00605       bd2.position.Set(-23.0f, -3.0f);
+<a name="l00606"></a>00606       bd2.type = b2_dynamicBody;
+<a name="l00607"></a>00607       b2Body* body = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l00608"></a>00608       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00609"></a>00609       fd2-&gt;density = 1.f;
+<a name="l00610"></a>00610       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00611"></a>00611       fd2-&gt;shape = &amp;shape;
+<a name="l00612"></a>00612       body-&gt;CreateFixture(fd2);
+<a name="l00613"></a>00613 
+<a name="l00614"></a>00614       b2RevoluteJointDef <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>;
+<a name="l00615"></a>00615       b2Vec2 anchor;
+<a name="l00616"></a>00616       anchor.Set(-23.5f, -3.0f);
+<a name="l00617"></a>00617       jd.Initialize(sbody, body, anchor);
+<a name="l00618"></a>00618       m_world-&gt;CreateJoint(&amp;jd);
+<a name="l00619"></a>00619      
+<a name="l00620"></a>00620     }
+<a name="l00621"></a>00621     
+<a name="l00622"></a>00622     <span class="comment">// curtain </span>
+<a name="l00623"></a>00623     {
+<a name="l00624"></a>00624       b2PolygonShape shape1;
+<a name="l00625"></a>00625       shape1.SetAsBox(2.0f, 0.1f);
+<a name="l00626"></a>00626     
+<a name="l00627"></a>00627       b2BodyDef bd1;
+<a name="l00628"></a>00628       bd1.position.Set(-33.0f, 5.0f);
+<a name="l00629"></a>00629       b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
+<a name="l00630"></a>00630       b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00631"></a>00631       fd1-&gt;density = 1.f;
+<a name="l00632"></a>00632       fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00633"></a>00633       fd1-&gt;shape = &amp;shape1;
+<a name="l00634"></a>00634     
+<a name="l00635"></a>00635       <span class="comment">//actual curtain  </span>
+<a name="l00636"></a>00636       b2PolygonShape shape2;
+<a name="l00637"></a>00637       shape2.SetAsBox(2.0f, 5.0f);
+<a name="l00638"></a>00638     
+<a name="l00639"></a>00639       b2BodyDef bd2;
+<a name="l00640"></a>00640       bd2.position.Set(-33.0f, 5.0f);
+<a name="l00641"></a>00641       bd2.type = b2_dynamicBody;
+<a name="l00642"></a>00642       b2Body* body2 = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l00643"></a>00643       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00644"></a>00644       fd2-&gt;density = 0.0f;
+<a name="l00645"></a>00645       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00646"></a>00646       fd2-&gt;shape = &amp;shape2;
+<a name="l00647"></a>00647       body2-&gt;CreateFixture(fd2);
+<a name="l00648"></a>00648       
+<a name="l00649"></a>00649         b2PrismaticJointDef jd3;
+<a name="l00650"></a>00650         jd3.bodyA= body1;
+<a name="l00651"></a>00651         jd3.bodyB= body2;
+<a name="l00652"></a>00652     jd3.localAnchorA.Set(0,0);
+<a name="l00653"></a>00653     jd3.localAnchorB.Set(0,0);
+<a name="l00654"></a>00654     jd3.localAxisA.Set(1,0);
+<a name="l00655"></a>00655     jd3.enableLimit = <span class="keyword">false</span>;
+<a name="l00656"></a>00656     jd3.lowerTranslation=-2.0f;
+<a name="l00657"></a>00657     jd3.upperTranslation=10.0f;
+<a name="l00658"></a>00658     (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd3 );
+<a name="l00659"></a>00659     }
+<a name="l00660"></a>00660     
+<a name="l00662"></a>00662     {
+<a name="l00663"></a>00663           b2PolygonShape shape1;
+<a name="l00664"></a>00664           shape1.SetAsBox(1.0f, 0.1f);
+<a name="l00665"></a>00665     
+<a name="l00666"></a>00666           b2BodyDef bd1;
+<a name="l00667"></a>00667           bd1.position.Set(38.0f, 21.3f);
+<a name="l00668"></a>00668           b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
+<a name="l00669"></a>00669           b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00670"></a>00670           fd1-&gt;density = 1.f;
+<a name="l00671"></a>00671         <span class="comment">//  fd1-&gt;restitution = .5f;</span>
+<a name="l00672"></a>00672           fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00673"></a>00673           fd1-&gt;shape = &amp;shape1;
+<a name="l00674"></a>00674           body1-&gt;CreateFixture(fd1);
+<a name="l00675"></a>00675     
+<a name="l00676"></a>00676 
 <a name="l00677"></a>00677     
-<a name="l00678"></a>00678       b2BodyDef bd2;
-<a name="l00679"></a>00679       bd2.position.Set(38.0f, 20.6f);
-<a name="l00680"></a>00680       bd2.type = b2_dynamicBody;
-<a name="l00681"></a>00681       b2Body* body2 = m_world-&gt;CreateBody(&amp;bd2);
-<a name="l00682"></a>00682       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00683"></a>00683       fd2-&gt;density = 0.0f;
-<a name="l00684"></a>00684       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00685"></a>00685       fd2-&gt;shape = &amp;shape2;
-<a name="l00686"></a>00686       body2-&gt;CreateFixture(fd2);
-<a name="l00687"></a>00687       b2PrismaticJointDef jd3;
-<a name="l00688"></a>00688       jd3.bodyA= body1;
-<a name="l00689"></a>00689       jd3.bodyB= body2;
-<a name="l00690"></a>00690       jd3.localAnchorA.Set(0,0);
-<a name="l00691"></a>00691       jd3.localAnchorB.Set(0,0);
-<a name="l00692"></a>00692       jd3.localAxisA.Set(1,0);
-<a name="l00693"></a>00693       jd3.enableLimit = <span class="keyword">false</span>;
-<a name="l00694"></a>00694       jd3.lowerTranslation=0.0f;
-<a name="l00695"></a>00695       jd3.upperTranslation=0.0f;
-<a name="l00696"></a>00696       (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd3 );
-<a name="l00697"></a>00697       }
-<a name="l00698"></a>00698     
-<a name="l00699"></a>00699     
-<a name="l00700"></a>00700     {
-<a name="l00701"></a>00701      b2PolygonShape shape1;
-<a name="l00702"></a>00702       shape1.SetAsBox(1.0f, 0.1f);
+<a name="l00678"></a>00678       b2PolygonShape shape2;
+<a name="l00679"></a>00679       shape2.SetAsBox(1.0f, .50f);
+<a name="l00680"></a>00680     
+<a name="l00681"></a>00681       b2BodyDef bd2;
+<a name="l00682"></a>00682       bd2.position.Set(38.0f, 20.6f);
+<a name="l00683"></a>00683       bd2.type = b2_dynamicBody;
+<a name="l00684"></a>00684       b2Body* body2 = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l00685"></a>00685       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00686"></a>00686       fd2-&gt;density = 0.0f;
+<a name="l00687"></a>00687      <span class="comment">// fd1-&gt;restitution = .5f;</span>
+<a name="l00688"></a>00688       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00689"></a>00689       fd2-&gt;shape = &amp;shape2;
+<a name="l00690"></a>00690       body2-&gt;CreateFixture(fd2);
+<a name="l00691"></a>00691        b2PrismaticJointDef jd3;
+<a name="l00692"></a>00692       jd3.bodyA= body1;
+<a name="l00693"></a>00693       jd3.bodyB= body2;
+<a name="l00694"></a>00694     jd3.localAnchorA.Set(0,0);
+<a name="l00695"></a>00695     jd3.localAnchorB.Set(0,.5f);
+<a name="l00696"></a>00696     jd3.localAxisA.Set(1,0);
+<a name="l00697"></a>00697     jd3.enableLimit = <span class="keyword">true</span>;
+<a name="l00698"></a>00698     jd3.lowerTranslation=-3.0f;
+<a name="l00699"></a>00699     jd3.upperTranslation=3.0f;
+<a name="l00700"></a>00700     (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd3 );
+<a name="l00701"></a>00701     }
+<a name="l00702"></a>00702     
 <a name="l00703"></a>00703     
-<a name="l00704"></a>00704       b2BodyDef bd1;
-<a name="l00705"></a>00705       bd1.position.Set(38.0f, 18.9f);
-<a name="l00706"></a>00706       <span class="comment">//bd1.type = b2_dynamicBody;</span>
-<a name="l00707"></a>00707       b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
-<a name="l00708"></a>00708       b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00709"></a>00709       fd1-&gt;density = 1.f;
-<a name="l00710"></a>00710       fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00711"></a>00711       fd1-&gt;shape = &amp;shape1;
-<a name="l00712"></a>00712       body1-&gt;CreateFixture(fd1);
-<a name="l00713"></a>00713     
-<a name="l00714"></a>00714 
-<a name="l00715"></a>00715     
-<a name="l00716"></a>00716       b2PolygonShape shape2;
-<a name="l00717"></a>00717       shape2.SetAsBox(1.0f, .50f);
+<a name="l00704"></a>00704     {
+<a name="l00705"></a>00705      b2PolygonShape shape1;
+<a name="l00706"></a>00706       shape1.SetAsBox(1.0f, 0.1f);
+<a name="l00707"></a>00707     
+<a name="l00708"></a>00708       b2BodyDef bd1;
+<a name="l00709"></a>00709       bd1.position.Set(38.0f, 19.5f);
+<a name="l00710"></a>00710       <span class="comment">//bd1.type = b2_dynamicBody;</span>
+<a name="l00711"></a>00711       b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
+<a name="l00712"></a>00712       b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00713"></a>00713       fd1-&gt;density = 1.f;
+<a name="l00714"></a>00714 <span class="comment">//  fd1-&gt;restitution = .5f;</span>
+<a name="l00715"></a>00715       fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00716"></a>00716       fd1-&gt;shape = &amp;shape1;
+<a name="l00717"></a>00717       body1-&gt;CreateFixture(fd1);
 <a name="l00718"></a>00718     
-<a name="l00719"></a>00719       b2BodyDef bd2;
-<a name="l00720"></a>00720       bd2.position.Set(38.0f, 18.9f);
-<a name="l00721"></a>00721       bd2.type = b2_dynamicBody;
-<a name="l00722"></a>00722       b2Body* body2 = m_world-&gt;CreateBody(&amp;bd2);
-<a name="l00723"></a>00723       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00724"></a>00724       fd2-&gt;density = 0.0f;
-<a name="l00725"></a>00725       <span class="comment">// fd2-&gt;restitution = 0.2f;</span>
-<a name="l00726"></a>00726       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00727"></a>00727       fd2-&gt;shape = &amp;shape2;
-<a name="l00728"></a>00728       body2-&gt;CreateFixture(fd2);
-<a name="l00729"></a>00729       b2PrismaticJointDef jd3;
-<a name="l00730"></a>00730       jd3.bodyA= body1;
-<a name="l00731"></a>00731       jd3.bodyB= body2;
-<a name="l00732"></a>00732       jd3.localAnchorA.Set(0,0);
-<a name="l00733"></a>00733       jd3.localAnchorB.Set(0,0);
-<a name="l00734"></a>00734       jd3.localAxisA.Set(1,0);
-<a name="l00735"></a>00735       jd3.enableLimit = <span class="keyword">false</span>;
-<a name="l00736"></a>00736       jd3.lowerTranslation=0.0f;
-<a name="l00737"></a>00737       jd3.upperTranslation=0.0f;
-<a name="l00738"></a>00738       (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd3 );
-<a name="l00739"></a>00739       }
-<a name="l00740"></a>00740     
-<a name="l00741"></a>00741     {
-<a name="l00742"></a>00742      b2PolygonShape shape1;
-<a name="l00743"></a>00743       shape1.SetAsBox(1.0f, 0.1f);
-<a name="l00744"></a>00744     
-<a name="l00745"></a>00745       b2BodyDef bd1;
-<a name="l00746"></a>00746       bd1.position.Set(38.0f, 17.2f);
-<a name="l00747"></a>00747       <span class="comment">//bd1.type = b2_dynamicBody;</span>
-<a name="l00748"></a>00748       b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
-<a name="l00749"></a>00749       b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00750"></a>00750       fd1-&gt;density = 1.f;
-<a name="l00751"></a>00751       fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00752"></a>00752       fd1-&gt;shape = &amp;shape1;
-<a name="l00753"></a>00753       body1-&gt;CreateFixture(fd1);
-<a name="l00754"></a>00754     
-<a name="l00755"></a>00755 
-<a name="l00756"></a>00756     
-<a name="l00757"></a>00757       b2PolygonShape shape2;
-<a name="l00758"></a>00758       shape2.SetAsBox(1.0f, .50f);
-<a name="l00759"></a>00759     
-<a name="l00760"></a>00760       b2BodyDef bd2;
-<a name="l00761"></a>00761       bd2.position.Set(38.0f, 17.2f);
-<a name="l00762"></a>00762       bd2.type = b2_dynamicBody;
-<a name="l00763"></a>00763       b2Body* body2 = m_world-&gt;CreateBody(&amp;bd2);
-<a name="l00764"></a>00764       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00765"></a>00765       fd2-&gt;density = 0.0f;
-<a name="l00766"></a>00766       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00767"></a>00767       fd2-&gt;shape = &amp;shape2;
-<a name="l00768"></a>00768       body2-&gt;CreateFixture(fd2);
-<a name="l00769"></a>00769       b2PrismaticJointDef jd3;
-<a name="l00770"></a>00770       jd3.bodyA= body1;
-<a name="l00771"></a>00771       jd3.bodyB= body2;
-<a name="l00772"></a>00772       jd3.localAnchorA.Set(0,0);
-<a name="l00773"></a>00773       jd3.localAnchorB.Set(0,0);
-<a name="l00774"></a>00774       jd3.localAxisA.Set(1,0);
-<a name="l00775"></a>00775       jd3.enableLimit = <span class="keyword">false</span>;
-<a name="l00776"></a>00776       jd3.lowerTranslation=0.0f;
-<a name="l00777"></a>00777       jd3.upperTranslation=0.0f;
-<a name="l00778"></a>00778       (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd3 );
-<a name="l00779"></a>00779     }
-<a name="l00780"></a>00780     
-<a name="l00781"></a>00781     <span class="comment">//hitting platform  </span>
-<a name="l00782"></a>00782     {
-<a name="l00783"></a>00783           b2PolygonShape shape1;
-<a name="l00784"></a>00784           shape1.SetAsBox(1.0f, 0.1f);
-<a name="l00785"></a>00785     
-<a name="l00786"></a>00786           b2BodyDef bd1;
-<a name="l00787"></a>00787           bd1.position.Set(13.4f, 0.9f);
-<a name="l00788"></a>00788           bd1.angle =  -45*180/3.14;
-<a name="l00789"></a>00789           b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
-<a name="l00790"></a>00790           b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
-<a name="l00791"></a>00791           fd1-&gt;density = 1.f;
-<a name="l00792"></a>00792           fd1-&gt;restitution = 1.5f;
-<a name="l00793"></a>00793          
-<a name="l00794"></a>00794           
-<a name="l00795"></a>00795           fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
-<a name="l00796"></a>00796           fd1-&gt;shape = &amp;shape1;
-<a name="l00797"></a>00797           body1-&gt;CreateFixture(fd1);
-<a name="l00798"></a>00798         }    
-<a name="l00799"></a>00799   }
-<a name="l00800"></a>00800 
-<a name="l00801"></a><a class="code" href="namespacecs296.html#a6a02c1b92c2165c5e723308bcb9c340c">00801</a>   <a class="code" href="structcs296_1_1sim__t.html" title="This class implements simulation.">sim_t</a> *<a class="code" href="namespacecs296.html#a6a02c1b92c2165c5e723308bcb9c340c">sim</a> = <span class="keyword">new</span> <a class="code" href="structcs296_1_1sim__t.html" title="This class implements simulation.">sim_t</a>(<span class="stringliteral">&quot;Dominos&quot;</span>, dominos_t::create);
-<a name="l00802"></a>00802 }
+<a name="l00719"></a>00719 
+<a name="l00720"></a>00720     
+<a name="l00721"></a>00721       b2PolygonShape shape2;
+<a name="l00722"></a>00722       shape2.SetAsBox(1.0f, .50f);
+<a name="l00723"></a>00723     
+<a name="l00724"></a>00724       b2BodyDef bd2;
+<a name="l00725"></a>00725       bd2.position.Set(38.0f, 18.9f);
+<a name="l00726"></a>00726       bd2.type = b2_dynamicBody;
+<a name="l00727"></a>00727       b2Body* body2 = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l00728"></a>00728       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00729"></a>00729       fd2-&gt;density = 0.0f;
+<a name="l00730"></a>00730 <span class="comment">//  fd1-&gt;restitution = .5f;</span>
+<a name="l00731"></a>00731      <span class="comment">// fd2-&gt;restitution = 0.2f;</span>
+<a name="l00732"></a>00732       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00733"></a>00733       fd2-&gt;shape = &amp;shape2;
+<a name="l00734"></a>00734       body2-&gt;CreateFixture(fd2);
+<a name="l00735"></a>00735        b2PrismaticJointDef jd3;
+<a name="l00736"></a>00736       jd3.bodyA= body1;
+<a name="l00737"></a>00737       jd3.bodyB= body2;
+<a name="l00738"></a>00738     jd3.localAnchorA.Set(0,0);
+<a name="l00739"></a>00739     jd3.localAnchorB.Set(0,.5f);
+<a name="l00740"></a>00740     jd3.localAxisA.Set(1,0);
+<a name="l00741"></a>00741     jd3.enableLimit = <span class="keyword">true</span>;
+<a name="l00742"></a>00742     jd3.lowerTranslation=-3.0f;
+<a name="l00743"></a>00743     jd3.upperTranslation=3.0f;
+<a name="l00744"></a>00744     (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd3 );
+<a name="l00745"></a>00745     }
+<a name="l00746"></a>00746     
+<a name="l00747"></a>00747     {
+<a name="l00748"></a>00748      b2PolygonShape shape1;
+<a name="l00749"></a>00749       shape1.SetAsBox(1.0f, 0.1f);
+<a name="l00750"></a>00750     
+<a name="l00751"></a>00751       b2BodyDef bd1;
+<a name="l00752"></a>00752       bd1.position.Set(38.0f, 17.8f);
+<a name="l00753"></a>00753       <span class="comment">//bd1.type = b2_dynamicBody;</span>
+<a name="l00754"></a>00754       b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
+<a name="l00755"></a>00755       b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00756"></a>00756       fd1-&gt;density = 1.f;
+<a name="l00757"></a>00757     <span class="comment">//fd1-&gt;restitution = .5f;</span>
+<a name="l00758"></a>00758       fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00759"></a>00759       fd1-&gt;shape = &amp;shape1;
+<a name="l00760"></a>00760       body1-&gt;CreateFixture(fd1);
+<a name="l00761"></a>00761     
+<a name="l00762"></a>00762 
+<a name="l00763"></a>00763     
+<a name="l00764"></a>00764       b2PolygonShape shape2;
+<a name="l00765"></a>00765       shape2.SetAsBox(1.0f, .50f);
+<a name="l00766"></a>00766     
+<a name="l00767"></a>00767       b2BodyDef bd2;
+<a name="l00768"></a>00768       bd2.position.Set(38.0f, 17.2f);
+<a name="l00769"></a>00769       bd2.type = b2_dynamicBody;
+<a name="l00770"></a>00770       b2Body* body2 = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l00771"></a>00771       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00772"></a>00772       fd2-&gt;density = 0.0f;
+<a name="l00773"></a>00773     <span class="comment">//fd1-&gt;restitution = .5f;</span>
+<a name="l00774"></a>00774       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00775"></a>00775       fd2-&gt;shape = &amp;shape2;
+<a name="l00776"></a>00776       body2-&gt;CreateFixture(fd2);
+<a name="l00777"></a>00777        b2PrismaticJointDef jd3;
+<a name="l00778"></a>00778       jd3.bodyA= body1;
+<a name="l00779"></a>00779       jd3.bodyB= body2;
+<a name="l00780"></a>00780     jd3.localAnchorA.Set(0,0);
+<a name="l00781"></a>00781     jd3.localAnchorB.Set(0,.5f);
+<a name="l00782"></a>00782     jd3.localAxisA.Set(1,0);
+<a name="l00783"></a>00783     jd3.enableLimit = <span class="keyword">true</span>;
+<a name="l00784"></a>00784     jd3.lowerTranslation=-3.0f;
+<a name="l00785"></a>00785     jd3.upperTranslation=3.0f;
+<a name="l00786"></a>00786     (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd3 );
+<a name="l00787"></a>00787     }
+<a name="l00788"></a>00788     
+<a name="l00789"></a>00789     <span class="comment">//hitting platform  </span>
+<a name="l00790"></a>00790     {
+<a name="l00791"></a>00791           b2PolygonShape shape1;
+<a name="l00792"></a>00792           shape1.SetAsBox(1.0f, 0.1f);
+<a name="l00793"></a>00793     
+<a name="l00794"></a>00794           b2BodyDef bd1;
+<a name="l00795"></a>00795           bd1.position.Set(13.4f, 0.9f);
+<a name="l00796"></a>00796           bd1.angle =  -45*180/3.14;
+<a name="l00797"></a>00797           b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
+<a name="l00798"></a>00798           b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00799"></a>00799           fd1-&gt;density = 1.f;
+<a name="l00800"></a>00800           fd1-&gt;restitution = 1.5f;
+<a name="l00801"></a>00801          
+<a name="l00802"></a>00802           
+<a name="l00803"></a>00803           fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00804"></a>00804           fd1-&gt;shape = &amp;shape1;
+<a name="l00805"></a>00805           body1-&gt;CreateFixture(fd1);
+<a name="l00806"></a>00806         }
+<a name="l00807"></a>00807 
+<a name="l00808"></a>00808     <span class="comment">//platform 1</span>
+<a name="l00809"></a>00809     
+<a name="l00810"></a>00810     {
+<a name="l00811"></a>00811           b2PolygonShape shape;
+<a name="l00812"></a>00812           shape.SetAsBox(3.0f, 0.05f);
+<a name="l00813"></a>00813           b2BodyDef bd2;
+<a name="l00814"></a>00814           bd2.position.Set(44.0f, 19.7f);
+<a name="l00815"></a>00815           b2Body* body = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l00816"></a>00816           b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00817"></a>00817           fd2-&gt;density = 1.f;
+<a name="l00818"></a>00818           fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00819"></a>00819           fd2-&gt;shape = &amp;shape;
+<a name="l00820"></a>00820           body-&gt;CreateFixture(fd2);
+<a name="l00821"></a>00821     
+<a name="l00822"></a>00822     
+<a name="l00823"></a>00823           b2PolygonShape shape1;
+<a name="l00824"></a>00824           shape1.SetAsBox(5.0f, 0.05f);
+<a name="l00825"></a>00825           b2BodyDef bd;
+<a name="l00826"></a>00826           bd.position.Set(50.0f, 15.5f);
+<a name="l00827"></a>00827         bd.angle = -70*180/3.14;
+<a name="l00828"></a>00828           b2Body* body1 = m_world-&gt;CreateBody(&amp;bd);
+<a name="l00829"></a>00829           <span class="comment">//body1-&gt;SetTransrm(body1-&gt;GetPosition(),45);</span>
+<a name="l00830"></a>00830           b2FixtureDef *fd = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00831"></a>00831           fd-&gt;density = 1.f;
+<a name="l00832"></a>00832           fd-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00833"></a>00833           fd-&gt;shape = &amp;shape1;
+<a name="l00834"></a>00834           body1-&gt;CreateFixture(fd);
+<a name="l00835"></a>00835 
+<a name="l00836"></a>00836          b2PolygonShape shape3;
+<a name="l00837"></a>00837           shape3.SetAsBox(8.0f, 0.05f);
+<a name="l00838"></a>00838           b2BodyDef bd3;
+<a name="l00839"></a>00839           bd3.position.Set(61.0f, 11.3f);
+<a name="l00840"></a>00840           b2Body* body3 = m_world-&gt;CreateBody(&amp;bd3);
+<a name="l00841"></a>00841           b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00842"></a>00842           fd3-&gt;density = 1.f;
+<a name="l00843"></a>00843           fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00844"></a>00844           fd3-&gt;shape = &amp;shape3;
+<a name="l00845"></a>00845           body3-&gt;CreateFixture(fd3);
+<a name="l00846"></a>00846       }
+<a name="l00847"></a>00847 
+<a name="l00848"></a>00848     <span class="comment">//platform 2</span>
+<a name="l00849"></a>00849     
+<a name="l00850"></a>00850     {
+<a name="l00851"></a>00851           b2PolygonShape shape;
+<a name="l00852"></a>00852           shape.SetAsBox(2.0f, 0.05f);
+<a name="l00853"></a>00853           b2BodyDef bd2;
+<a name="l00854"></a>00854           bd2.position.Set(43.0f, 18.1f);
+<a name="l00855"></a>00855           b2Body* body = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l00856"></a>00856           b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00857"></a>00857           fd2-&gt;density = 1.f;
+<a name="l00858"></a>00858           fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00859"></a>00859           fd2-&gt;shape = &amp;shape;
+<a name="l00860"></a>00860           body-&gt;CreateFixture(fd2);
+<a name="l00861"></a>00861 
+<a name="l00862"></a>00862          b2PolygonShape shape1;
+<a name="l00863"></a>00863           shape1.SetAsBox(6.5f, 0.05f);
+<a name="l00864"></a>00864           b2BodyDef bd;
+<a name="l00865"></a>00865           bd.position.Set(49.0f, 12.90f);
+<a name="l00866"></a>00866         bd.angle = -70*180/3.14;
+<a name="l00867"></a>00867           b2Body* body1 = m_world-&gt;CreateBody(&amp;bd);
+<a name="l00868"></a>00868           <span class="comment">//body1-&gt;SetTransrm(body1-&gt;GetPosition(),45);</span>
+<a name="l00869"></a>00869           b2FixtureDef *fd = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00870"></a>00870           fd-&gt;density = 1.f;
+<a name="l00871"></a>00871           fd-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00872"></a>00872           fd-&gt;shape = &amp;shape1;
+<a name="l00873"></a>00873           body1-&gt;CreateFixture(fd);
+<a name="l00874"></a>00874 
+<a name="l00875"></a>00875          b2PolygonShape shape3;
+<a name="l00876"></a>00876           shape3.SetAsBox(11.0f, 0.05f);
+<a name="l00877"></a>00877           b2BodyDef bd3;
+<a name="l00878"></a>00878           bd3.position.Set(64.0f, 7.5f);
+<a name="l00879"></a>00879           b2Body* body3 = m_world-&gt;CreateBody(&amp;bd3);
+<a name="l00880"></a>00880           b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00881"></a>00881           fd3-&gt;density = 1.f;
+<a name="l00882"></a>00882           fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00883"></a>00883           fd3-&gt;shape = &amp;shape3;
+<a name="l00884"></a>00884           body3-&gt;CreateFixture(fd3);
+<a name="l00885"></a>00885       }
+<a name="l00886"></a>00886 
+<a name="l00887"></a>00887     <span class="comment">//platform 3</span>
+<a name="l00888"></a>00888 
+<a name="l00889"></a>00889     {
+<a name="l00890"></a>00890           b2PolygonShape shape;
+<a name="l00891"></a>00891           shape.SetAsBox(1.0f, 0.05f);
+<a name="l00892"></a>00892           b2BodyDef bd2;
+<a name="l00893"></a>00893           bd2.position.Set(42.0f, 16.4f);
+<a name="l00894"></a>00894           b2Body* body = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l00895"></a>00895           b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00896"></a>00896           fd2-&gt;density = 1.f;
+<a name="l00897"></a>00897           fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00898"></a>00898           fd2-&gt;shape = &amp;shape;
+<a name="l00899"></a>00899           body-&gt;CreateFixture(fd2);
+<a name="l00900"></a>00900 
+<a name="l00901"></a>00901          b2PolygonShape shape1;
+<a name="l00902"></a>00902           shape1.SetAsBox(8.0f, 0.05f);
+<a name="l00903"></a>00903           b2BodyDef bd;
+<a name="l00904"></a>00904           bd.position.Set(48.0f, 10.00f);
+<a name="l00905"></a>00905         bd.angle = -70*180/3.14;
+<a name="l00906"></a>00906           b2Body* body1 = m_world-&gt;CreateBody(&amp;bd);
+<a name="l00907"></a>00907           <span class="comment">//body1-&gt;SetTransrm(body1-&gt;GetPosition(),45);</span>
+<a name="l00908"></a>00908           b2FixtureDef *fd = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00909"></a>00909           fd-&gt;density = 1.f;
+<a name="l00910"></a>00910           fd-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00911"></a>00911           fd-&gt;shape = &amp;shape1;
+<a name="l00912"></a>00912           body1-&gt;CreateFixture(fd);
+<a name="l00913"></a>00913 
+<a name="l00914"></a>00914          b2PolygonShape shape3;
+<a name="l00915"></a>00915           shape3.SetAsBox(14.0f, 0.05f);
+<a name="l00916"></a>00916           b2BodyDef bd3;
+<a name="l00917"></a>00917           bd3.position.Set(67.0f, 3.7f);
+<a name="l00918"></a>00918           b2Body* body3 = m_world-&gt;CreateBody(&amp;bd3);
+<a name="l00919"></a>00919           b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l00920"></a>00920           fd3-&gt;density = 1.f;
+<a name="l00921"></a>00921           fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l00922"></a>00922           fd3-&gt;shape = &amp;shape3;
+<a name="l00923"></a>00923           body3-&gt;CreateFixture(fd3);
+<a name="l00924"></a>00924 
+<a name="l00925"></a>00925       }
+<a name="l00926"></a>00926 
+<a name="l00927"></a>00927     <span class="comment">//Ball on platform 1</span>
+<a name="l00928"></a>00928     
+<a name="l00929"></a>00929      {
+<a name="l00930"></a>00930       b2Body* sbody;
+<a name="l00931"></a>00931       b2CircleShape circle;
+<a name="l00932"></a>00932       circle.m_radius = .65;
+<a name="l00933"></a>00933     
+<a name="l00934"></a>00934       b2FixtureDef ballfd;
+<a name="l00935"></a>00935       ballfd.shape = &amp;circle;
+<a name="l00936"></a>00936       ballfd.density = 0.05f;
+<a name="l00937"></a>00937       ballfd.friction = 0.0f;
+<a name="l00938"></a>00938       ballfd.restitution = 0.0f;
+<a name="l00939"></a>00939       b2BodyDef ballbd;
+<a name="l00940"></a>00940       ballbd.type = b2_dynamicBody;
+<a name="l00941"></a>00941       ballbd.position.Set(42.0f,20.75f);
+<a name="l00942"></a>00942       sbody = m_world-&gt;CreateBody(&amp;ballbd);
+<a name="l00943"></a>00943       sbody-&gt;CreateFixture(&amp;ballfd);
+<a name="l00944"></a>00944       }
+<a name="l00945"></a>00945 
+<a name="l00946"></a>00946     <span class="comment">//Ball on platform 2</span>
+<a name="l00947"></a>00947      {
+<a name="l00948"></a>00948       b2Body* sbody;
+<a name="l00949"></a>00949       b2CircleShape circle;
+<a name="l00950"></a>00950       circle.m_radius = .65;
+<a name="l00951"></a>00951     
+<a name="l00952"></a>00952       b2FixtureDef ballfd;
+<a name="l00953"></a>00953       ballfd.shape = &amp;circle;
+<a name="l00954"></a>00954       ballfd.density = 1.f;
+<a name="l00955"></a>00955       ballfd.friction = 0.0f;
+<a name="l00956"></a>00956       ballfd.restitution = 0.0f;
+<a name="l00957"></a>00957       b2BodyDef ballbd;
+<a name="l00958"></a>00958       ballbd.type = b2_dynamicBody;
+<a name="l00959"></a>00959       ballbd.position.Set(42.0f,19.0f);
+<a name="l00960"></a>00960       sbody = m_world-&gt;CreateBody(&amp;ballbd);
+<a name="l00961"></a>00961       sbody-&gt;CreateFixture(&amp;ballfd);
+<a name="l00962"></a>00962       }
+<a name="l00963"></a>00963 
+<a name="l00964"></a>00964     <span class="comment">//Ball on platform 3</span>
+<a name="l00965"></a>00965      {
+<a name="l00966"></a>00966       b2Body* sbody;
+<a name="l00967"></a>00967       b2CircleShape circle;
+<a name="l00968"></a>00968       circle.m_radius = .65;
+<a name="l00969"></a>00969     
+<a name="l00970"></a>00970       b2FixtureDef ballfd;
+<a name="l00971"></a>00971       ballfd.shape = &amp;circle;
+<a name="l00972"></a>00972       ballfd.density = 2.f;
+<a name="l00973"></a>00973       ballfd.friction = 0.0f;
+<a name="l00974"></a>00974       ballfd.restitution = 0.0f;
+<a name="l00975"></a>00975       b2BodyDef ballbd;
+<a name="l00976"></a>00976       ballbd.type = b2_dynamicBody;
+<a name="l00977"></a>00977       ballbd.position.Set(42.0f,17.25f);
+<a name="l00978"></a>00978       sbody = m_world-&gt;CreateBody(&amp;ballbd);
+<a name="l00979"></a>00979       sbody-&gt;CreateFixture(&amp;ballfd);
+<a name="l00980"></a>00980       }
+<a name="l00981"></a>00981     
+<a name="l00982"></a>00982     <span class="comment">//Dominos on platform 1</span>
+<a name="l00983"></a>00983         {
+<a name="l00984"></a>00984       b2PolygonShape shape;
+<a name="l00985"></a>00985       shape.SetAsBox(0.1f, 1.00f);
+<a name="l00986"></a>00986     
+<a name="l00987"></a>00987       b2FixtureDef fd;
+<a name="l00988"></a>00988       fd.shape = &amp;shape;
+<a name="l00989"></a>00989       fd.density = .50f;
+<a name="l00990"></a>00990       fd.friction = 0.4f;
+<a name="l00991"></a>00991       <span class="comment">//fd.restitution=1.f;</span>
+<a name="l00992"></a>00992         
+<a name="l00993"></a>00993       <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 10; ++i)
+<a name="l00994"></a>00994     {
+<a name="l00995"></a>00995       b2BodyDef bd;
+<a name="l00996"></a>00996       bd.type = b2_dynamicBody;
+<a name="l00997"></a>00997       bd.position.Set(57.0f + .50f * i, 12.35f);
+<a name="l00998"></a>00998       b2Body* body = m_world-&gt;CreateBody(&amp;bd);
+<a name="l00999"></a>00999       body-&gt;CreateFixture(&amp;fd);
+<a name="l01000"></a>01000     }
+<a name="l01001"></a>01001     }
+<a name="l01002"></a>01002 
+<a name="l01003"></a>01003     <span class="comment">//second ball on platform 1</span>
+<a name="l01004"></a>01004          {
+<a name="l01005"></a>01005       b2Body* sbody;
+<a name="l01006"></a>01006       b2CircleShape circle;
+<a name="l01007"></a>01007       circle.m_radius = .65;
+<a name="l01008"></a>01008     
+<a name="l01009"></a>01009       b2FixtureDef ballfd;
+<a name="l01010"></a>01010       ballfd.shape = &amp;circle;
+<a name="l01011"></a>01011       ballfd.density = 2.0f;
+<a name="l01012"></a>01012       ballfd.friction = 0.0f;
+<a name="l01013"></a>01013       ballfd.restitution = 0.0f;
+<a name="l01014"></a>01014       b2BodyDef ballbd;
+<a name="l01015"></a>01015       ballbd.type = b2_dynamicBody;
+<a name="l01016"></a>01016       ballbd.position.Set(63.0f,11.95f);
+<a name="l01017"></a>01017       sbody = m_world-&gt;CreateBody(&amp;ballbd);
+<a name="l01018"></a>01018       sbody-&gt;CreateFixture(&amp;ballfd);
+<a name="l01019"></a>01019       }
+<a name="l01020"></a>01020 
+<a name="l01021"></a>01021     <span class="comment">//balls on platform 2</span>
+<a name="l01022"></a>01022          {
+<a name="l01023"></a>01023       b2Body* sbody;
+<a name="l01024"></a>01024       b2CircleShape circle;
+<a name="l01025"></a>01025       circle.m_radius = .65;
+<a name="l01026"></a>01026     
+<a name="l01027"></a>01027       b2FixtureDef ballfd,ballfd1;
+<a name="l01028"></a>01028       ballfd.shape = &amp;circle;
+<a name="l01029"></a>01029       ballfd.density = 1.f;
+<a name="l01030"></a>01030       ballfd.friction = 0.0f;
+<a name="l01031"></a>01031       ballfd.restitution = 1.f;
+<a name="l01032"></a>01032 
+<a name="l01033"></a>01033     ballfd1.shape = &amp;circle;
+<a name="l01034"></a>01034       ballfd1.density = 1.f;
+<a name="l01035"></a>01035       ballfd1.friction = 0.0f;
+<a name="l01036"></a>01036       ballfd1.restitution = 0.f;
+<a name="l01037"></a>01037       b2BodyDef ballbd;
+<a name="l01038"></a>01038       ballbd.type = b2_dynamicBody;
+<a name="l01039"></a>01039     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;3 ; i++){
+<a name="l01040"></a>01040       ballbd.position.Set(56.0f +3*i,8.25f);
+<a name="l01041"></a>01041       sbody = m_world-&gt;CreateBody(&amp;ballbd);
+<a name="l01042"></a>01042       sbody-&gt;CreateFixture(&amp;ballfd);
+<a name="l01043"></a>01043     }
+<a name="l01044"></a>01044     ballbd.position.Set(65.0f ,8.25f);
+<a name="l01045"></a>01045       sbody = m_world-&gt;CreateBody(&amp;ballbd);
+<a name="l01046"></a>01046       sbody-&gt;CreateFixture(&amp;ballfd1);
+<a name="l01047"></a>01047     
+<a name="l01048"></a>01048       }
+<a name="l01049"></a>01049 
+<a name="l01050"></a>01050     <span class="comment">//holder1</span>
+<a name="l01051"></a>01051     {
+<a name="l01052"></a>01052     
+<a name="l01053"></a>01053      b2BodyDef *bd = <span class="keyword">new</span> b2BodyDef;
+<a name="l01054"></a>01054       bd-&gt;type = b2_dynamicBody;
+<a name="l01055"></a>01055       bd-&gt;position.Set(82.5,5.0);
+<a name="l01056"></a>01056       bd-&gt;fixedRotation = <span class="keyword">true</span>;
+<a name="l01057"></a>01057         
+<a name="l01058"></a>01058     b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l01059"></a>01059       fd1-&gt;density = 1.0;
+<a name="l01060"></a>01060       fd1-&gt;friction = 0.5;
+<a name="l01061"></a>01061       fd1-&gt;restitution = 0.0f;
+<a name="l01062"></a>01062       fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l01063"></a>01063       b2PolygonShape bs1;
+<a name="l01064"></a>01064       bs1.SetAsBox(1,0.1, b2Vec2(0.f,-.9f), 0);
+<a name="l01065"></a>01065       fd1-&gt;shape = &amp;bs1;
+<a name="l01066"></a>01066       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l01067"></a>01067       fd2-&gt;density = 1.0;
+<a name="l01068"></a>01068       fd2-&gt;friction = 0.5;
+<a name="l01069"></a>01069       fd2-&gt;restitution = 0.f;
+<a name="l01070"></a>01070       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l01071"></a>01071       b2PolygonShape bs2;
+<a name="l01072"></a>01072       bs2.SetAsBox(1,0.1, b2Vec2(0.0f,.9f), 0);
+<a name="l01073"></a>01073       fd2-&gt;shape = &amp;bs2;
+<a name="l01074"></a>01074       b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l01075"></a>01075       fd3-&gt;density = 0.0;
+<a name="l01076"></a>01076       fd3-&gt;friction = 0.5;
+<a name="l01077"></a>01077       fd3-&gt;restitution = 0.f;
+<a name="l01078"></a>01078       fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l01079"></a>01079       b2PolygonShape bs3;
+<a name="l01080"></a>01080       bs3.SetAsBox(0.1,1.0, b2Vec2(.9f,0.f), 0);
+<a name="l01081"></a>01081       fd3-&gt;shape = &amp;bs3;
+<a name="l01082"></a>01082        
+<a name="l01083"></a>01083       b2Body* box1 = m_world-&gt;CreateBody(bd);
+<a name="l01084"></a>01084       box1-&gt;CreateFixture(fd1);
+<a name="l01085"></a>01085       box1-&gt;CreateFixture(fd2);
+<a name="l01086"></a>01086       box1-&gt;CreateFixture(fd3);
+<a name="l01087"></a>01087 
+<a name="l01088"></a>01088 
+<a name="l01089"></a>01089         <span class="comment">//member 1</span>
+<a name="l01090"></a>01090      
+<a name="l01091"></a>01091       b2Body* sbody;
+<a name="l01092"></a>01092       b2CircleShape circle;
+<a name="l01093"></a>01093       circle.m_radius = 1.00;
+<a name="l01094"></a>01094     
+<a name="l01095"></a>01095       b2FixtureDef ballfd;
+<a name="l01096"></a>01096       ballfd.shape = &amp;circle;
+<a name="l01097"></a>01097       ballfd.density = 0.05f;
+<a name="l01098"></a>01098       ballfd.friction = 0.0f;
+<a name="l01099"></a>01099       ballfd.restitution = 0.2f;
+<a name="l01100"></a>01100       b2BodyDef ballbd,ballbd1;
+<a name="l01101"></a>01101     <span class="comment">//  ballbd.type = b2_dynamicBody;</span>
+<a name="l01102"></a>01102       ballbd.position.Set(88.0f ,2.00f);
+<a name="l01103"></a>01103       ballbd1.position.Set(82.5f ,20.00f);
+<a name="l01104"></a>01104       sbody = m_world-&gt;CreateBody(&amp;ballbd);
+<a name="l01105"></a>01105       sbody1 = m_world-&gt;CreateBody(&amp;ballbd1);
+<a name="l01106"></a>01106       sbody-&gt;CreateFixture(&amp;ballfd);
+<a name="l01107"></a>01107     sbody1-&gt;CreateFixture(&amp;ballfd);
+<a name="l01108"></a>01108 
+<a name="l01109"></a>01109     b2PolygonShape shape1;
+<a name="l01110"></a>01110       shape1.SetAsBox(1.5f, 1.5f);
+<a name="l01111"></a>01111     
+<a name="l01112"></a>01112       b2BodyDef bd1;
+<a name="l01113"></a>01113       bd1.position.Set(88.0f , -0.5f);
+<a name="l01114"></a>01114       b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
+<a name="l01115"></a>01115       b2FixtureDef *fds1 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l01116"></a>01116       fds1-&gt;density = 1.f;
+<a name="l01117"></a>01117       fds1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l01118"></a>01118       fds1-&gt;shape = &amp;shape1;
+<a name="l01119"></a>01119     body1-&gt;CreateFixture(fds1);
+<a name="l01120"></a>01120 
+<a name="l01121"></a>01121     b2PolygonShape shape2;
+<a name="l01122"></a>01122       shape2.SetAsBox(.25f, 1.6f);
+<a name="l01123"></a>01123     
+<a name="l01124"></a>01124       b2BodyDef bd2, bd3,bd4;
+<a name="l01125"></a>01125     bd4.type=b2_dynamicBody;
+<a name="l01126"></a>01126       bd2.position.Set(89.0f  , -3.8f);
+<a name="l01127"></a>01127     bd3.position.Set(87.0f  , -3.8f);
+<a name="l01128"></a>01128     bd4.position.Set(90.0f  , -0.8f);
+<a name="l01129"></a>01129       b2Body* body2 = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l01130"></a>01130     b2Body* body3 = m_world-&gt;CreateBody(&amp;bd3);
+<a name="l01131"></a>01131     b2Body* body4 = m_world-&gt;CreateBody(&amp;bd4);
+<a name="l01132"></a>01132       b2FixtureDef *fds2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l01133"></a>01133       fds2-&gt;density = 1.f;
+<a name="l01134"></a>01134       fds2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l01135"></a>01135       fds2-&gt;shape = &amp;shape2;
+<a name="l01136"></a>01136     body2-&gt;CreateFixture(fds2);
+<a name="l01137"></a>01137     body3-&gt;CreateFixture(fds2);
+<a name="l01138"></a>01138     body4-&gt;CreateFixture(fds2);
+<a name="l01139"></a>01139      
+<a name="l01140"></a>01140     b2RevoluteJointDef <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>;
+<a name="l01141"></a>01141       jd.bodyA=body1;
+<a name="l01142"></a>01142     jd.bodyB=body4;
+<a name="l01143"></a>01143       <span class="comment">//anchor.Set(91.0f, -3.8f);</span>
+<a name="l01144"></a>01144       jd.localAnchorA.Set(1.5,1.5);
+<a name="l01145"></a>01145     jd.localAnchorB.Set(.25,1.6);
+<a name="l01146"></a>01146       m_world-&gt;CreateJoint(&amp;jd);
+<a name="l01147"></a>01147 
+<a name="l01148"></a>01148 
+<a name="l01149"></a>01149      b2PulleyJointDef* myjoint = <span class="keyword">new</span> b2PulleyJointDef();
+<a name="l01150"></a>01150       b2Vec2 worldAnchorOnBody1(82.5, 5.0); <span class="comment">// Anchor point on body 1 in world axis</span>
+<a name="l01151"></a>01151       b2Vec2 worldAnchorOnBody2(89.5, -2.0); <span class="comment">// Anchor point on body 2 in world axis</span>
+<a name="l01152"></a>01152       b2Vec2 worldAnchorGround1(82.5, 20.0); <span class="comment">// Anchor point for ground 1 in world axis</span>
+<a name="l01153"></a>01153       b2Vec2 worldAnchorGround2(89.5, 20.0); <span class="comment">// Anchor point for ground 2 in world axis</span>
+<a name="l01154"></a>01154       float32 ratio = 1.0f; <span class="comment">// Define ratio</span>
+<a name="l01155"></a>01155       myjoint-&gt;Initialize(box1, body4, worldAnchorGround1, worldAnchorGround2, box1-&gt;GetWorldCenter(), body4-&gt;GetWorldCenter(), ratio);
+<a name="l01156"></a>01156       m_world-&gt;CreateJoint(myjoint);
+<a name="l01157"></a>01157 
+<a name="l01158"></a>01158     b2PrismaticJointDef jd1;
+<a name="l01159"></a>01159         jd1.bodyA= sbody1;
+<a name="l01160"></a>01160         jd1.bodyB= box1;
+<a name="l01161"></a>01161     jd1.localAnchorA.Set(0,0);
+<a name="l01162"></a>01162     jd1.localAnchorB.Set(0,0);
+<a name="l01163"></a>01163     jd1.localAxisA.Set(0,1);
+<a name="l01164"></a>01164     (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd1 );    
+<a name="l01165"></a>01165 
+<a name="l01166"></a>01166     }
+<a name="l01167"></a>01167     
+<a name="l01168"></a>01168 
+<a name="l01169"></a>01169     <span class="comment">//holder 2</span>
+<a name="l01170"></a>01170     {
+<a name="l01171"></a>01171     
+<a name="l01172"></a>01172      b2BodyDef *bd = <span class="keyword">new</span> b2BodyDef;
+<a name="l01173"></a>01173       bd-&gt;type = b2_dynamicBody;
+<a name="l01174"></a>01174       bd-&gt;position.Set(76.5,8.6);
+<a name="l01175"></a>01175       bd-&gt;fixedRotation = <span class="keyword">true</span>;
+<a name="l01176"></a>01176         
+<a name="l01177"></a>01177     b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l01178"></a>01178       fd1-&gt;density = 1.0;
+<a name="l01179"></a>01179       fd1-&gt;friction = 0.5;
+<a name="l01180"></a>01180       fd1-&gt;restitution = 0.0f;
+<a name="l01181"></a>01181       fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l01182"></a>01182       b2PolygonShape bs1;
+<a name="l01183"></a>01183       bs1.SetAsBox(1,0.1, b2Vec2(0.f,-.9f), 0);
+<a name="l01184"></a>01184       fd1-&gt;shape = &amp;bs1;
+<a name="l01185"></a>01185       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l01186"></a>01186       fd2-&gt;density = 1.0;
+<a name="l01187"></a>01187       fd2-&gt;friction = 0.5;
+<a name="l01188"></a>01188       fd2-&gt;restitution = 0.f;
+<a name="l01189"></a>01189       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l01190"></a>01190       b2PolygonShape bs2;
+<a name="l01191"></a>01191       bs2.SetAsBox(1,0.1, b2Vec2(0.0f,.9f), 0);
+<a name="l01192"></a>01192       fd2-&gt;shape = &amp;bs2;
+<a name="l01193"></a>01193       b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l01194"></a>01194       fd3-&gt;density = 0.0;
+<a name="l01195"></a>01195       fd3-&gt;friction = 0.5;
+<a name="l01196"></a>01196       fd3-&gt;restitution = 0.f;
+<a name="l01197"></a>01197       fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l01198"></a>01198       b2PolygonShape bs3;
+<a name="l01199"></a>01199       bs3.SetAsBox(0.1,1.0, b2Vec2(.9f,0.f), 0);
+<a name="l01200"></a>01200       fd3-&gt;shape = &amp;bs3;
+<a name="l01201"></a>01201        
+<a name="l01202"></a>01202       b2Body* box1 = m_world-&gt;CreateBody(bd);
+<a name="l01203"></a>01203       box1-&gt;CreateFixture(fd1);
+<a name="l01204"></a>01204       box1-&gt;CreateFixture(fd2);
+<a name="l01205"></a>01205       box1-&gt;CreateFixture(fd3);
+<a name="l01206"></a>01206 
+<a name="l01207"></a>01207     <span class="comment">//member 2</span>
+<a name="l01208"></a>01208 
+<a name="l01209"></a>01209     
+<a name="l01210"></a>01210       b2Body* sbody;
+<a name="l01211"></a>01211 
+<a name="l01212"></a>01212       b2CircleShape circle;
+<a name="l01213"></a>01213 
+<a name="l01214"></a>01214       circle.m_radius = 1.00;
+<a name="l01215"></a>01215 
+<a name="l01216"></a>01216     
+<a name="l01217"></a>01217 
+<a name="l01218"></a>01218       b2FixtureDef ballfd;
+<a name="l01219"></a>01219 
+<a name="l01220"></a>01220       ballfd.shape = &amp;circle;
+<a name="l01221"></a>01221 
+<a name="l01222"></a>01222       ballfd.density = 0.05f;
+<a name="l01223"></a>01223 
+<a name="l01224"></a>01224       ballfd.friction = 0.0f;
+<a name="l01225"></a>01225 
+<a name="l01226"></a>01226       ballfd.restitution = 0.2f;
+<a name="l01227"></a>01227       b2BodyDef ballbd, ballbd1;
+<a name="l01228"></a>01228     <span class="comment">//  ballbd.type = b2_dynamicBody;</span>
+<a name="l01229"></a>01229 
+<a name="l01230"></a>01230       ballbd.position.Set(98.0f ,2.00f);
+<a name="l01231"></a>01231     ballbd1.position.Set(76.5f ,22.50f);
+<a name="l01232"></a>01232       sbody = m_world-&gt;CreateBody(&amp;ballbd);
+<a name="l01233"></a>01233 
+<a name="l01234"></a>01234       sbody-&gt;CreateFixture(&amp;ballfd);
+<a name="l01235"></a>01235 
+<a name="l01236"></a>01236      sbody1 = m_world-&gt;CreateBody(&amp;ballbd1);
+<a name="l01237"></a>01237 
+<a name="l01238"></a>01238       sbody1-&gt;CreateFixture(&amp;ballfd);
+<a name="l01239"></a>01239 
+<a name="l01240"></a>01240     b2PolygonShape shape1;
+<a name="l01241"></a>01241 
+<a name="l01242"></a>01242       shape1.SetAsBox(1.5f, 1.5f);
+<a name="l01243"></a>01243     
+<a name="l01244"></a>01244 
+<a name="l01245"></a>01245       b2BodyDef bd1;
+<a name="l01246"></a>01246       bd1.position.Set(98.0f , -0.5f);
+<a name="l01247"></a>01247       b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
+<a name="l01248"></a>01248 
+<a name="l01249"></a>01249       b2FixtureDef *fds1 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l01250"></a>01250       fds1-&gt;density = 1.f;
+<a name="l01251"></a>01251 
+<a name="l01252"></a>01252       fds1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l01253"></a>01253 
+<a name="l01254"></a>01254       fds1-&gt;shape = &amp;shape1;
+<a name="l01255"></a>01255     body1-&gt;CreateFixture(fds1);
+<a name="l01256"></a>01256 
+<a name="l01257"></a>01257     b2PolygonShape shape2;
+<a name="l01258"></a>01258       shape2.SetAsBox(.25f, 1.6f);
+<a name="l01259"></a>01259     
+<a name="l01260"></a>01260       b2BodyDef bd2, bd3,bd4;
+<a name="l01261"></a>01261     bd4.type=b2_dynamicBody;
+<a name="l01262"></a>01262       bd2.position.Set(99.0f  , -3.8f);
+<a name="l01263"></a>01263     bd3.position.Set(97.0f  , -3.8f);
+<a name="l01264"></a>01264     bd4.position.Set(100.0f  , -0.8f);
+<a name="l01265"></a>01265       b2Body* body2 = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l01266"></a>01266     b2Body* body3 = m_world-&gt;CreateBody(&amp;bd3);
+<a name="l01267"></a>01267     b2Body* body4 = m_world-&gt;CreateBody(&amp;bd4);
+<a name="l01268"></a>01268       b2FixtureDef *fds2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l01269"></a>01269       fds2-&gt;density = .5f;
+<a name="l01270"></a>01270       fds2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l01271"></a>01271       fds2-&gt;shape = &amp;shape2;
+<a name="l01272"></a>01272     body2-&gt;CreateFixture(fds2);
+<a name="l01273"></a>01273     body3-&gt;CreateFixture(fds2);
+<a name="l01274"></a>01274     body4-&gt;CreateFixture(fds2);
+<a name="l01275"></a>01275     
+<a name="l01276"></a>01276 
+<a name="l01277"></a>01277 
+<a name="l01278"></a>01278      b2PulleyJointDef* myjoint = <span class="keyword">new</span> b2PulleyJointDef();
+<a name="l01279"></a>01279       b2Vec2 worldAnchorOnBody1(76.5, 8.6); <span class="comment">// Anchor point on body 1 in world axis</span>
+<a name="l01280"></a>01280       b2Vec2 worldAnchorOnBody2(99.5, -2.0); <span class="comment">// Anchor point on body 2 in world axis</span>
+<a name="l01281"></a>01281       b2Vec2 worldAnchorGround1(76.5, 22.5); <span class="comment">// Anchor point for ground 1 in world axis</span>
+<a name="l01282"></a>01282       b2Vec2 worldAnchorGround2(99.5, 22.5); <span class="comment">// Anchor point for ground 2 in world axis</span>
+<a name="l01283"></a>01283       float32 ratio = 1.0f; <span class="comment">// Define ratio</span>
+<a name="l01284"></a>01284       myjoint-&gt;Initialize(box1, body4, worldAnchorGround1, worldAnchorGround2, box1-&gt;GetWorldCenter(), body4-&gt;GetWorldCenter(), ratio);
+<a name="l01285"></a>01285       m_world-&gt;CreateJoint(myjoint);
+<a name="l01286"></a>01286 
+<a name="l01287"></a>01287 
+<a name="l01288"></a>01288     
+<a name="l01289"></a>01289     b2PrismaticJointDef jd1;
+<a name="l01290"></a>01290         jd1.bodyA= sbody1;
+<a name="l01291"></a>01291         jd1.bodyB= box1;
+<a name="l01292"></a>01292     jd1.localAnchorA.Set(0,0);
+<a name="l01293"></a>01293     jd1.localAnchorB.Set(0,0);
+<a name="l01294"></a>01294     jd1.localAxisA.Set(0,1);
+<a name="l01295"></a>01295     (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd1 );
+<a name="l01296"></a>01296     
+<a name="l01297"></a>01297      
+<a name="l01298"></a>01298     b2RevoluteJointDef <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>;
+<a name="l01299"></a>01299       jd.bodyA=body1;
+<a name="l01300"></a>01300     jd.bodyB=body4;
+<a name="l01301"></a>01301       <span class="comment">//anchor.Set(91.0f, -3.8f);</span>
+<a name="l01302"></a>01302       jd.localAnchorA.Set(1.5,1.5);
+<a name="l01303"></a>01303     jd.localAnchorB.Set(.25,1.6);
+<a name="l01304"></a>01304       m_world-&gt;CreateJoint(&amp;jd);    
+<a name="l01305"></a>01305 
+<a name="l01306"></a>01306     }
+<a name="l01307"></a>01307 
+<a name="l01308"></a>01308     
+<a name="l01309"></a>01309 
+<a name="l01310"></a>01310 
+<a name="l01311"></a>01311     <span class="comment">//holder 3</span>
+<a name="l01312"></a>01312 
+<a name="l01313"></a>01313     {
+<a name="l01314"></a>01314     
+<a name="l01315"></a>01315      b2BodyDef *bd = <span class="keyword">new</span> b2BodyDef;
+<a name="l01316"></a>01316       bd-&gt;type = b2_dynamicBody;
+<a name="l01317"></a>01317       bd-&gt;position.Set(70.5,12.2);
+<a name="l01318"></a>01318       bd-&gt;fixedRotation = <span class="keyword">true</span>;
+<a name="l01319"></a>01319         
+<a name="l01320"></a>01320     b2FixtureDef *fd1 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l01321"></a>01321       fd1-&gt;density = 2.0;
+<a name="l01322"></a>01322       fd1-&gt;friction = 0.5;
+<a name="l01323"></a>01323       fd1-&gt;restitution = 0.0f;
+<a name="l01324"></a>01324       fd1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l01325"></a>01325       b2PolygonShape bs1;
+<a name="l01326"></a>01326       bs1.SetAsBox(1,0.1, b2Vec2(0.f,-.9f), 0);
+<a name="l01327"></a>01327       fd1-&gt;shape = &amp;bs1;
+<a name="l01328"></a>01328       b2FixtureDef *fd2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l01329"></a>01329       fd2-&gt;density = 2.0;
+<a name="l01330"></a>01330       fd2-&gt;friction = 0.5;
+<a name="l01331"></a>01331       fd2-&gt;restitution = 0.f;
+<a name="l01332"></a>01332       fd2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l01333"></a>01333       b2PolygonShape bs2;
+<a name="l01334"></a>01334       bs2.SetAsBox(1,0.1, b2Vec2(0.0f,.9f), 0);
+<a name="l01335"></a>01335       fd2-&gt;shape = &amp;bs2;
+<a name="l01336"></a>01336       b2FixtureDef *fd3 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l01337"></a>01337       fd3-&gt;density = 0.0;
+<a name="l01338"></a>01338       fd3-&gt;friction = 0.5;
+<a name="l01339"></a>01339       fd3-&gt;restitution = 0.f;
+<a name="l01340"></a>01340       fd3-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l01341"></a>01341       b2PolygonShape bs3;
+<a name="l01342"></a>01342       bs3.SetAsBox(0.1,1.0, b2Vec2(.9f,0.f), 0);
+<a name="l01343"></a>01343       fd3-&gt;shape = &amp;bs3;
+<a name="l01344"></a>01344        
+<a name="l01345"></a>01345       b2Body* box1 = m_world-&gt;CreateBody(bd);
+<a name="l01346"></a>01346       box1-&gt;CreateFixture(fd1);
+<a name="l01347"></a>01347       box1-&gt;CreateFixture(fd2);
+<a name="l01348"></a>01348       box1-&gt;CreateFixture(fd3);
+<a name="l01349"></a>01349     
+<a name="l01350"></a>01350     <span class="comment">//member 3</span>
+<a name="l01351"></a>01351 
+<a name="l01352"></a>01352             
+<a name="l01353"></a>01353      
+<a name="l01354"></a>01354       b2Body* sbody;
+<a name="l01355"></a>01355 
+<a name="l01356"></a>01356       b2CircleShape circle;
+<a name="l01357"></a>01357 
+<a name="l01358"></a>01358       circle.m_radius = 1.00;
+<a name="l01359"></a>01359 
+<a name="l01360"></a>01360     
+<a name="l01361"></a>01361 
+<a name="l01362"></a>01362       b2FixtureDef ballfd;
+<a name="l01363"></a>01363 
+<a name="l01364"></a>01364       ballfd.shape = &amp;circle;
+<a name="l01365"></a>01365 
+<a name="l01366"></a>01366       ballfd.density = 0.05f;
+<a name="l01367"></a>01367 
+<a name="l01368"></a>01368       ballfd.friction = 0.0f;
+<a name="l01369"></a>01369 
+<a name="l01370"></a>01370       ballfd.restitution = 0.2f;
+<a name="l01371"></a>01371       b2BodyDef ballbd,ballbd1;
+<a name="l01372"></a>01372     <span class="comment">//  ballbd.type = b2_dynamicBody;</span>
+<a name="l01373"></a>01373 
+<a name="l01374"></a>01374       ballbd.position.Set(108.0f ,2.00f);
+<a name="l01375"></a>01375     ballbd1.position.Set(70.5f ,25.00f);
+<a name="l01376"></a>01376       sbody = m_world-&gt;CreateBody(&amp;ballbd);
+<a name="l01377"></a>01377     sbody1 = m_world-&gt;CreateBody(&amp;ballbd1);
+<a name="l01378"></a>01378     
+<a name="l01379"></a>01379       sbody-&gt;CreateFixture(&amp;ballfd);
+<a name="l01380"></a>01380     sbody1-&gt;CreateFixture(&amp;ballfd);
+<a name="l01381"></a>01381     b2PolygonShape shape1;
+<a name="l01382"></a>01382 
+<a name="l01383"></a>01383       shape1.SetAsBox(1.5f, 1.5f);
+<a name="l01384"></a>01384     
+<a name="l01385"></a>01385 
+<a name="l01386"></a>01386       b2BodyDef bd1;
+<a name="l01387"></a>01387       bd1.position.Set(108.0f , -0.5f);
+<a name="l01388"></a>01388       b2Body* body1 = m_world-&gt;CreateBody(&amp;bd1);
+<a name="l01389"></a>01389 
+<a name="l01390"></a>01390       b2FixtureDef *fds1 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l01391"></a>01391       fds1-&gt;density = 1.f;
+<a name="l01392"></a>01392 
+<a name="l01393"></a>01393       fds1-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l01394"></a>01394 
+<a name="l01395"></a>01395       fds1-&gt;shape = &amp;shape1;
+<a name="l01396"></a>01396     body1-&gt;CreateFixture(fds1);
+<a name="l01397"></a>01397 
+<a name="l01398"></a>01398     b2PolygonShape shape2;
+<a name="l01399"></a>01399       shape2.SetAsBox(.25f, 1.6f);
+<a name="l01400"></a>01400     
+<a name="l01401"></a>01401       b2BodyDef bd2, bd3,bd4;
+<a name="l01402"></a>01402     bd4.type=b2_dynamicBody;
+<a name="l01403"></a>01403       bd2.position.Set(109.0f  , -3.8f);
+<a name="l01404"></a>01404     bd3.position.Set(107.0f  , -3.8f);
+<a name="l01405"></a>01405     bd4.position.Set(110.0f  , -0.8f);
+<a name="l01406"></a>01406       b2Body* body2 = m_world-&gt;CreateBody(&amp;bd2);
+<a name="l01407"></a>01407     b2Body* body3 = m_world-&gt;CreateBody(&amp;bd3);
+<a name="l01408"></a>01408     b2Body* body4 = m_world-&gt;CreateBody(&amp;bd4);
+<a name="l01409"></a>01409       b2FixtureDef *fds2 = <span class="keyword">new</span> b2FixtureDef;
+<a name="l01410"></a>01410       fds2-&gt;density = 1.50f;
+<a name="l01411"></a>01411       fds2-&gt;shape = <span class="keyword">new</span> b2PolygonShape;
+<a name="l01412"></a>01412       fds2-&gt;shape = &amp;shape2;
+<a name="l01413"></a>01413     body2-&gt;CreateFixture(fds2);
+<a name="l01414"></a>01414     body3-&gt;CreateFixture(fds2);
+<a name="l01415"></a>01415     body4-&gt;CreateFixture(fds2);
+<a name="l01416"></a>01416      
+<a name="l01417"></a>01417     b2RevoluteJointDef <a class="code" href="cs296__base_8cpp.html#a8a7d95ec5da7ef01597e5c597a51c5d1">jd</a>;
+<a name="l01418"></a>01418       jd.bodyA=body1;
+<a name="l01419"></a>01419     jd.bodyB=body4;
+<a name="l01420"></a>01420       <span class="comment">//anchor.Set(91.0f, -3.8f);</span>
+<a name="l01421"></a>01421       jd.localAnchorA.Set(1.5,1.5);
+<a name="l01422"></a>01422     jd.localAnchorB.Set(.25,1.6);
+<a name="l01423"></a>01423       m_world-&gt;CreateJoint(&amp;jd);
+<a name="l01424"></a>01424 
+<a name="l01425"></a>01425 
+<a name="l01426"></a>01426      b2PulleyJointDef* myjoint = <span class="keyword">new</span> b2PulleyJointDef();
+<a name="l01427"></a>01427       b2Vec2 worldAnchorOnBody1(70.5, 12.2); <span class="comment">// Anchor point on body 1 in world axis</span>
+<a name="l01428"></a>01428       b2Vec2 worldAnchorOnBody2(109.5, -2.0); <span class="comment">// Anchor point on body 2 in world axis</span>
+<a name="l01429"></a>01429       b2Vec2 worldAnchorGround1(70.5, 25.0); <span class="comment">// Anchor point for ground 1 in world axis</span>
+<a name="l01430"></a>01430       b2Vec2 worldAnchorGround2(109.5, 25.0); <span class="comment">// Anchor point for ground 2 in world axis</span>
+<a name="l01431"></a>01431       float32 ratio = 1.0f; <span class="comment">// Define ratio</span>
+<a name="l01432"></a>01432       myjoint-&gt;Initialize(box1, body4, worldAnchorGround1, worldAnchorGround2, box1-&gt;GetWorldCenter(), body4-&gt;GetWorldCenter(), ratio);
+<a name="l01433"></a>01433       m_world-&gt;CreateJoint(myjoint);
+<a name="l01434"></a>01434 
+<a name="l01435"></a>01435     
+<a name="l01436"></a>01436     b2PrismaticJointDef jd1;
+<a name="l01437"></a>01437         jd1.bodyA= sbody1;
+<a name="l01438"></a>01438         jd1.bodyB= box1;
+<a name="l01439"></a>01439     jd1.localAnchorA.Set(0,0);
+<a name="l01440"></a>01440     jd1.localAnchorB.Set(0,0);
+<a name="l01441"></a>01441     jd1.localAxisA.Set(0,1);
+<a name="l01442"></a>01442     (b2PrismaticJoint*)m_world-&gt;CreateJoint( &amp;jd1 );    
+<a name="l01443"></a>01443 
+<a name="l01444"></a>01444     }
+<a name="l01445"></a>01445 
+<a name="l01446"></a>01446 
+<a name="l01447"></a>01447       
+<a name="l01448"></a>01448 
+<a name="l01449"></a>01449     
+<a name="l01450"></a>01450 
+<a name="l01451"></a>01451   }
+<a name="l01452"></a>01452 
+<a name="l01453"></a><a class="code" href="namespacecs296.html#a6a02c1b92c2165c5e723308bcb9c340c">01453</a>   <a class="code" href="structcs296_1_1sim__t.html" title="This class implements simulation.">sim_t</a> *<a class="code" href="namespacecs296.html#a6a02c1b92c2165c5e723308bcb9c340c">sim</a> = <span class="keyword">new</span> <a class="code" href="structcs296_1_1sim__t.html" title="This class implements simulation.">sim_t</a>(<span class="stringliteral">&quot;Dominos&quot;</span>, dominos_t::create);
+<a name="l01454"></a>01454 }
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -881,7 +1530,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 10 2013 15:50:46 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 10 2013 19:41:22 for CS296 Base Code Documentation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

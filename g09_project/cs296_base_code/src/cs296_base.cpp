@@ -153,8 +153,9 @@ void base_sim_t::draw_title(int x, int y, const char *string)
 
 void base_sim_t::drawtxt(int x, int y)
 {
-    std::cout<<x<<"dcdfcfsfc"<<y<<std::endl;
-    m_debug_draw.DrawString(x, y, "Thank You for Voting");
+  //  std::cout<<x<<"dcdfcfsfc"<<y<<std::endl;
+    m_debug_draw.DrawString(x, y, "Rube-GoldBerg : Voting Machine");
+    m_debug_draw.DrawString(x, y+15, " Remember! Every Vote Counts ");
 }
 
 

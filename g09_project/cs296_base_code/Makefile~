@@ -106,9 +106,9 @@ install:
 	@make -s $(BINDIR)/$(TARGET)
 	@make -s doc
 	##@make -s report
-	cd $(INSTALL_PATH);@mkdir -p cs296_base_code;cd cs296_base_code;mkdir -p bin;mkdir -p doc
+	@cd $(INSTALL_PATH);mkdir -p cs296_base_code;cd cs296_base_code;mkdir -p bin;mkdir -p doc
 	@cp -R $(BINDIR)/* $(INSTALL_PATH)/cs296_base_code/bin
-	@cp -R $(DOCDIR)/*.pdf $(INSTALL_PATH)/cs296_base_code/doc/
+	#@cp -R $(DOCDIR)/*.pdf $(INSTALL_PATH)/cs296_base_code/doc/
 	@cp -R $(DOCDIR)/html $(INSTALL_PATH)/cs296_base_code/doc/
 	
 
